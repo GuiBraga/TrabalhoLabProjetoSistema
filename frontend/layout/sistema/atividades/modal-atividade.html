@@ -1,0 +1,56 @@
+<div class="modal fade" id="modal-nova-atividade" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal" type="button" name="button">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Cadastro de Atividade</h4>
+      </div>
+      <div class="modal-body">
+        <form action="" method="POST">
+          <div class="row">
+            <div class="form-group col-xs-12 col-md-10">
+              <label>Nome da atividade:</label>
+              <input required type="text" name="nome-atividade" class="form-control" placeholder="">
+            </div>
+
+             <div class="form-group col-xs-12 col-md-2">
+              <label>Tempo gasto:</label>
+              <input required type="time" name="tempo-gasto-atividade" class="form-control" placeholder="">
+            </div>
+          </div>
+           <div class="row">
+             
+            <!--<div class="form-group col-xs-6 col-md-3">
+              <label>Data Início:</label>
+              <input required type="date" name="data-inicio-atividade" class="form-control" placeholder="">
+            </div>
+            <div class="form-group col-xs-6 col-md-3">
+              <label>Hora Início:</label>
+              <input required type="time" name="hora-inicio-atividade" class="form-control" placeholder="">
+            </div>
+             <div class="form-group col-xs-6 col-md-3">
+              <label>Data Final:</label>
+              <input required type="date" name="data-final-atividade" class="form-control" placeholder="">
+            </div>
+            <div class="form-group col-xs-6 col-md-3">
+              <label>Hora Final:</label>
+              <input required type="time" name="hora-final-atividade" class="form-control" placeholder="">
+            </div>-->
+          </div>
+          <div class="row">
+            <div class="form-group col-xs-12 col-md-12">
+              <label>Observação:</label>
+              <textarea class="textarea-observacao" rows="10" name="observacao-atividade"></textarea>
+            </div>            
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secundario btn-radius" data-dismiss="modal" type="button">Cancelar</button>
+        <button class="btn btn-principal btn-radius" type="submit">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
