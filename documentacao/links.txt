@@ -1,0 +1,11 @@
+Links
+
+Banco de dados 
+
+artigo sobre ferramenta:
+http://www.devmedia.com.br/dbdesigner-modelagem-e-implementacao-de-banco-de-dados/30897
+
+link para download da ferramenta:
+http://dbdesigner-4.en.lo4d.com/download
+
+opçao LO4D.com US
