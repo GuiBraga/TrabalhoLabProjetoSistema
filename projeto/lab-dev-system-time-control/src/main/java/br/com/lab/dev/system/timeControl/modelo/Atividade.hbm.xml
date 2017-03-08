@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 8, 2017 12:14:55 AM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="br.com.lab.dev.system.timeControl.modelo.Atividade" table="atividade" catalog="timeControl" optimistic-lock="version">
+        <id name="idAtividade" type="java.lang.Integer">
+            <column name="id_atividade" />
+            <generator class="identity" />
+        </id>
+        <property name="usuarioIdUsuario" type="int">
+            <column name="usuario_id_usuario" not-null="true" />
+        </property>
+        <property name="nome" type="string">
+            <column name="nome" length="100" not-null="true" />
+        </property>
+        <property name="descricao" type="string">
+            <column name="descricao" not-null="true" />
+        </property>
+        <property name="prioridade" type="int">
+            <column name="prioridade" not-null="true" />
+        </property>
+        <property name="categoria" type="string">
+            <column name="categoria" length="50" />
+        </property>
+    </class>
+</hibernate-mapping>
