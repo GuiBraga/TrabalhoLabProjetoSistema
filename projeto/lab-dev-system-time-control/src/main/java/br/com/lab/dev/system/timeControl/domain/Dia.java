@@ -1,5 +1,5 @@
-package br.com.lab.dev.system.timeControl.modelo;
-// Generated Mar 9, 2017 12:01:10 AM by Hibernate Tools 4.3.1.Final
+package br.com.lab.dev.system.timeControl.domain;
+// Generated 11/03/2017 10:36:49 by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -62,4 +62,33 @@ public class Dia implements java.io.Serializable {
 		this.totalHorasDia = totalHorasDia;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idDia == null) ? 0 : idDia.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Dia other = (Dia) obj;
+		if (idDia == null) {
+			if (other.getIdDia() != null)
+				return false;
+		} else if (!idDia.equals(other.getIdDia()))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Dia [idDia=" + idDia + ", dataDia=" + dataDia + ", totalHorasDia=" + totalHorasDia + "]";
+	}
 }

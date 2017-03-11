@@ -1,5 +1,5 @@
-package br.com.lab.dev.system.timeControl.modelo;
-// Generated Mar 9, 2017 12:01:10 AM by Hibernate Tools 4.3.1.Final
+package br.com.lab.dev.system.timeControl.domain;
+// Generated 11/03/2017 10:36:49 by Hibernate Tools 4.3.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -61,7 +61,7 @@ public class Usuario implements java.io.Serializable {
 		this.email = email;
 	}
 
-	@Column(name = "senha", nullable = false, length = 4)
+	@Column(name = "senha", nullable = false, length = 50)
 	public String getSenha() {
 		return this.senha;
 	}
@@ -79,4 +79,34 @@ public class Usuario implements java.io.Serializable {
 		this.profissao = profissao;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idUsuario == null) ? 0 : idUsuario.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Usuario other = (Usuario) obj;
+		if (idUsuario == null) {
+			if (other.getIdUsuario() != null)
+				return false;
+		} else if (!idUsuario.equals(other.getIdUsuario()))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", nome=" + nome + ", email=" + email + ", senha=" + senha
+				+ ", profissao=" + profissao + "]";
+	}
 }
