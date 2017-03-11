@@ -18,7 +18,7 @@ import com.mchange.v2.c3p0.ComboPooledDataSource;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = "br.com.lab.dev.system.timeControl.repositorios")
+@EnableJpaRepositories(basePackages = "br.com.lab.dev.system.timeControl.service.repository")
 public class ConfiguracaoBD {
 	
 	@Bean
@@ -35,14 +35,14 @@ public class ConfiguracaoBD {
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws Exception {
 		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 		entityManagerFactoryBean.setDataSource(dataSource());
-		entityManagerFactoryBean.setPackagesToScan("br.com.lab.dev.system.timeControl.modelo.entidades");
+		entityManagerFactoryBean.setPackagesToScan("br.com.lab.dev.system.timeControl.domain.entidades");
 		entityManagerFactoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
 		entityManagerFactoryBean.setJpaDialect(new HibernateJpaDialect());
 		
 		Properties jpaProterties = new Properties();
 		jpaProterties.put("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
 		jpaProterties.put("hibernate.hbm2ddl.auto", "create");
-		//Após criar o banco comentar linha acima e descomentar a linha abaixo
+		//Apï¿½s criar o banco comentar linha acima e descomentar a linha abaixo
 		//jpaProterties.put("hibernate.hbm2ddl.auto", "update");
 		entityManagerFactoryBean.setJpaProperties(jpaProterties);
 		return entityManagerFactoryBean;

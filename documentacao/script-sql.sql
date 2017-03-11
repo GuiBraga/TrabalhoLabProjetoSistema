@@ -36,7 +36,7 @@ CREATE TABLE atividade (
 CREATE TABLE tempo_investido (
   dia_id_dia INTEGER UNSIGNED NOT NULL,
   atividade_id_atividade INTEGER UNSIGNED NOT NULL,
-  id_atividade_dia INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
+  id_tempo_investido INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   horas_gastas TIME NOT NULL,
   data_inicio DATETIME NOT NULL,
   data_fim DATETIME NOT NULL,
