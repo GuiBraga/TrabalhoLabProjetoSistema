@@ -1,5 +1,5 @@
-package teste;
-// Generated 11/03/2017 10:33:18 by Hibernate Tools 4.3.1.Final
+package br.com.lab.dev.system.timeControl.domain;
+// Generated 11/03/2017 10:36:49 by Hibernate Tools 4.3.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -97,4 +97,34 @@ public class Atividade implements java.io.Serializable {
 		this.categoria = categoria;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idAtividade == null) ? 0 : idAtividade.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Atividade other = (Atividade) obj;
+		if (idAtividade == null) {
+			if (other.getIdAtividade() != null)
+				return false;
+		} else if (!idAtividade.equals(other.getIdAtividade()))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Atividade [idAtividade=" + idAtividade + ", usuarioIdUsuario=" + usuarioIdUsuario + ", nome=" + nome
+				+ ", descricao=" + descricao + ", prioridade=" + prioridade + ", categoria=" + categoria + "]";
+	}
 }

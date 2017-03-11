@@ -1,5 +1,5 @@
-package teste;
-// Generated 11/03/2017 10:33:18 by Hibernate Tools 4.3.1.Final
+package br.com.lab.dev.system.timeControl.domain;
+// Generated 11/03/2017 10:36:49 by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -96,4 +96,35 @@ public class TempoInvestido implements java.io.Serializable {
 		this.dataFim = dataFim;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((idTempoInvestido == null) ? 0 : idTempoInvestido.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TempoInvestido other = (TempoInvestido) obj;
+		if (idTempoInvestido == null) {
+			if (other.getIdTempoInvestido() != null)
+				return false;
+		} else if (!idTempoInvestido.equals(other.getIdTempoInvestido()))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "TempoInvestido [idTempoInvestido=" + idTempoInvestido + ", diaIdDia=" + diaIdDia
+				+ ", atividadeIdAtividade=" + atividadeIdAtividade + ", horasGastas=" + horasGastas + ", dataInicio="
+				+ dataInicio + ", dataFim=" + dataFim + "]";
+	}
 }
