@@ -1,20 +1,6 @@
-	<div id='calendar'></div>
-	<script>
-		$(document).ready(function(){
-  $(".icon-close").on("click",function(){
-    $(".main-menu").removeClass("expanded");
-     $("main").addClass("expanded");
-  });
-
-  $(".icon-open").on("click", function(){
-    $(".main-menu").addClass("expanded");
-     $("main").removeClass("expanded");
-  });
-
-    $('[data-toggle="tooltip"]').tooltip();
-
-		
-		$('#calendar').fullCalendar({
+angular.module("timeControl").controller("homeController", function($scope){
+  
+  $("#calendar").fullCalendar({
 			locale: "pt-br",
 			defaultView: 'agendaDay',
 			showMinutes: true,
@@ -66,6 +52,7 @@
 				}
 			]
 		});
-	});
 
-	</script>
+    $(".fc-time-grid-container").height("498px");
+
+ });

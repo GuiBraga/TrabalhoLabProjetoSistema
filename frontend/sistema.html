@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="img/x-icon" href="img/icon.png">
+    <link href='css/lib/fullcalendar.min.css' rel='stylesheet' />  
  
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/lib/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/sistema.css">
     
@@ -16,20 +17,27 @@
     <script src="js/lib/angular/angular-messages.js" charset="utf-8"></script>
     <script src="js/sistema/timeControl.js" charset="utf-8"></script>
     <script src="js/sistema/Controllers/timeControlController.js" charset="utf-8"></script>
+    <script src="js/sistema/Controllers/homeController.js" charset="utf-8"></script>
+    <script src="js/sistema/Controllers/atividadeController.js" charset="utf-8"></script>
     <script src="js/sistema/Config/routeConfig.js" charset="utf-8"></script>
     
     <!-- fim angular -->
 
+    
+    <script src='js/lib/moment.min.js'></script>   
     <script src="js/lib/jquery-3.1.1.slim.min.js" charset="utf-8"></script>
+    <script src='js/lib/fullcalendar.js'></script>
+    <script src='js/lib/locale-all.js'></script>  
     <script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
     <script src="js/sistema/init.js" charset="utf-8"></script>    
     <title>TimeControl</title>
   </head>
   <body ng-controller="timeControlController">
-  <div ng-include="'layout/sistema/menu.html'" ></div>
   <div ng-include="'layout/sistema/header.html'" ></div>
   <div ng-include="'layout/sistema/atividades/modal-atividade.html'" ></div>
+
     <main>
+      <div ng-include="'layout/sistema/menu.html'" ></div>
      <ng-view/>
     </main>
   

@@ -44,26 +44,28 @@ body{
 }
 
 .btn-principal:hover, .btn-principal:active, .btn-principal:visited, .btn-principal:focus{
-    background-color: rgb(248, 120, 80);
-    color: #fff;
-    border: 1px solid rgb(248, 120, 80);
+    background-color: #a0e5ee;
+    color: #000;
+    border: 1px solid #a0e5ee;
 }
 .btn-principal{    
-    background-color: #ff5520;
-    color: #fff;
-    border: 1px solid #ff5520;
+    background-color: #00bcd4;
+    color: #000;
+    border: 1px solid #00bcd4;
 }
 
-.btn-secundario{    
+.btn-secundario, .fc button{    
     background-color:initial;
-    color: #ff5520;
-    border: 1px solid #ff5520;
+    color: #00bcd4;
+    border: 1px solid #00bcd4;
 }
 
-.btn-secundario:hover, .btn-secundario:active, .btn-secundario:visited, .btn-secundario:focus{
-    background-color: rgb(248, 120, 80);
+.btn-secundario:hover, .btn-secundario:active, .btn-secundario:visited, .btn-secundario:focus, 
+.fc button:hover, .fc button:active, .fc button:visited, .fc button:focus,
+.fc-state-active{
+    background-color: #a0e5ee;
     color: #fff;
-    border: 1px solid rgb(248, 120, 80);
+    border: 1px solid #a0e5ee;
 }
 
 input[type=text], input[type=number], input[type=datetime], input[type=date], input[type=time]{
@@ -74,11 +76,11 @@ input[type=text], input[type=number], input[type=datetime], input[type=date], in
 
 .form-control:focus, textarea:focus{
   box-shadow: initial;
-	border-bottom-color: #ff5520;
+	border-bottom-color: #00bcd4;
 	
 }
  textarea:focus{
-	border-color: #ff5520;
+	border-color: #00bcd4;
 border-width: 2px;
  }
 
