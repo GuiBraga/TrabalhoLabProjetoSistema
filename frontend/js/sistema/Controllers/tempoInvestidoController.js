@@ -1,0 +1,1 @@
+angular.module("timeControl").controller("tempoInvestidoController", function($scope){ });

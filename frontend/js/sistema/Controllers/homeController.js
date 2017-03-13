@@ -2,7 +2,7 @@ angular.module("timeControl").controller("homeController", function($scope){
   
   $("#calendar").fullCalendar({
 			locale: "pt-br",
-			defaultView: 'agendaDay',
+			defaultView: 'agendaWeek',
 			showMinutes: true,
 			showAllDay: false,
 			header: {
@@ -36,19 +36,19 @@ angular.module("timeControl").controller("homeController", function($scope){
 					title: 'teste',
 					start: '2017-03-12T09:00:00',
 					end: '2017-03-12T10:00:00',
-					color: '#ff0000'
+					color: '#34b04f'
 				},
 				{
 					title: 'teste',
 					start: '2017-03-12T10:00:00',
 					end: '2017-03-12T10:31:00',
-					color: '#ffff00'
+					color: '#f8e64a'
 				},
 				{
 					title: 'teste',
 					start: '2017-03-12T08:00:00',
 					end: '2017-03-12T08:20:00',
-					color: '#00ff00'
+					color: '#f44336'
 				}
 			]
 		});

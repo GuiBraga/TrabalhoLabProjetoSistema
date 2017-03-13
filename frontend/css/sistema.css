@@ -176,3 +176,15 @@ header{
 .fc-unthemed td.fc-today {
     background: rgba(0, 188, 212, 0.22);
 }
+.fc-event, .fc-event:hover, .ui-widget .fc-event {
+    color: #000;
+}
+.baixa{
+ background-color: #34b04f;
+}
+.media{
+ background-color: #f8e64a;
+}
+.alta{
+ background-color: #f44336;
+}

@@ -13,5 +13,6 @@ angular.module("timeControl").config(function($routeProvider){
 		templateUrl: "layout/site/login.html",
 		controller: "timeControlController",
     });
+
     $routeProvider.otherwise({redirectTo: "/home"});
 });

@@ -9,5 +9,10 @@ angular.module("timeControl").config(function($routeProvider){
 		controller: "atividadeController",
     });
 
-    $routeProvider.otherwise({redirectTo: "/atividades"});
+$routeProvider.when("/tempo_investido", {
+		templateUrl: "layout/sistema/tempo_investido/lista-tempo-investido.html",
+		controller: "tempoInvestidoController",
+    });
+
+    $routeProvider.otherwise({redirectTo: "/inicio"});
 });
