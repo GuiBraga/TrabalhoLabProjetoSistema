@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="timeControl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+    <link rel="shortcut icon" type="img/x-icon" href="img/icon.png">
+    <link rel="stylesheet" href="css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/cadastro.css" >
+   
+    <!-- ANGULAR ARQUIVOS -->
+    <script src="js/lib/angular/angular.min.js" charset="utf-8"></script>
+    <script src="js/lib/angular/angular-route-.js" charset="utf-8"></script>
+    <script src="js/lib/angular/angular-messages.js" charset="utf-8"></script>
+    <script src="js/site/timeControl.js" charset="utf-8"></script>
+    <script src="js/site/Controllers/timeControlController.js" charset="utf-8"></script>
+    <script src="js/site/Config/routeConfig.js" charset="utf-8"></script> 
+    <!-- FIM ANGULAR -->
+
+    <script src="js/lib/jquery-3.1.1.slim.min.js" charset="utf-8"></script>
+    <script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
+    <script src="js/site/init.js" charset="utf-8"></script>    
+    <title>TimeControl</title>
+  </head>
+    
+  <body ng-controller="timeControlController">
+    <div class="navbar-header col-md-6">      
+        <a class="navbar-brand" href="#" id="logo-cadastro-time">
+            <h1 class="logo" id="logo-cadastro">Time Control</h1>
+        </a>
+    </div>
+      
+    <main>
+        <section class="cadastroTimeControl">
+            <div class="col-md-12 body-cadastro" >
+                <div id="labelReg1">
+                    Registre-se
+                </div>
+                
+                <div id="labelReg2">
+                    Já tem uma conta? 
+                    <a href="../frontend/login.html" id="registre-cadastro">&nbsp;Login</a><br><br>
+                </div>
+                
+                <div id="labelPadrao">
+                    <text> Os campos que possuem (*) são de preenchimento obrigatório. </text>
+                </div>
+
+                 <div id="cadastrar-layout">
+                    <form class="form-cadastro">
+                        <label for="inputNome" class="">Nome: *</label><br>
+                        <input type="text" id="inputNome" class="form-control" placeholder="Informe seu nome" required ><br>
+                        <label for="inputProf" class="">Profissão: *</label><br>
+                        <input type="text" id="inputProf" class="form-control" placeholder="Informe sua Profissão" required ><br>
+
+                        <label for="inputEmail" class="">Email: *</label><br>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Informe seu e-mail" required ><br> 
+                        <label for="inputEmail" class="">Digite seu e-mal novamente: *</label><br>
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Informe seu e-mail" required ><br> 
+
+                        <label for="inputPassword" class="">Senha: *</label><br>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Informe sua senha com 4 dígitos" maxlength="4" required ><br>
+                        <label for="inputPassword" class="">Digite sua senha novamente: *</label><br>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Informe sua senha com 4 dígitos" maxlength="4" required ><br>
+
+                        <button class="button button-cadastrar" type="submit">Registar</button> <br>		
+                    </form>
+                </div>
+
+                <div id="labelTermoUso">
+                    <text>Ao se inscrever, você concorda com os 
+                        <a href="#" style="color: #33ccff"> Termos de Uso</a>,<br>
+                        <a href="#" style="color: #33ccff"> Política de Privacidade </a>
+                        e a receber emails com novidades do TimeControl.
+                    </text>
+                </div>
+            </div>
+        </section>
+    </main>
+    <div ng-include="'layout/site/footer.html'" class="footerCadastro"></div>
+      
+  </body>
+</html>

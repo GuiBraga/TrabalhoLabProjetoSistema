@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="timeControl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="shortcut icon" type="img/x-icon" href="img/icon.png">
+    <link rel="stylesheet" href="css/lib/bootstrap.min.css">
+    <link rel="stylesheet" href="../frontend/css/login.css" >
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/style.css">
+   
+    <!-- ANGULAR ARQUIVOS -->
+    <script src="js/lib/angular/angular.min.js" charset="utf-8"></script>
+    <script src="js/lib/angular/angular-route-.js" charset="utf-8"></script>
+    <script src="js/lib/angular/angular-messages.js" charset="utf-8"></script>
+    <script src="js/site/timeControl.js" charset="utf-8"></script>
+    <script src="js/site/Controllers/timeControlController.js" charset="utf-8"></script>
+    <script src="js/site/Config/routeConfig.js" charset="utf-8"></script>
+    <!-- FIM ANGULAR -->
+
+    <script src="js/lib/jquery-3.1.1.slim.min.js" charset="utf-8"></script>
+    <script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
+    <script src="js/site/init.js" charset="utf-8"></script>      
+    <title>TimeControl</title>
+  </head>
+    
+  <body ng-controller="timeControlController">
+      
+    <div class="navbar-header col-md-6">   
+        <a class="navbar-brand" href="#" id="logo-login-time">
+            <h1 class="logo" id="logo-login">Time Control</h1>
+        </a>
+    </div>
+      
+    <main>
+     <section class="loginTimeControl">
+        <div class="col-md-12 body-login">
+            <div id="labelLogin">
+                Login
+            </div>
+            <div id="labelRegistre">
+                Novo no TimeControl? 
+                <a href="../frontend/cadastro.html" id="registre-login"> &nbsp; Registre-se</a>
+            </div>
+            
+            <div id="login-layout">
+                <form class="form-signin">
+                    <label for="inputEmail" class="">Email:</label><br>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Informe seu e-mail" required ><br><br>
+                    <label for="inputPassword" class="">Senha:</label><br>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Informe sua senha" maxlength="4" required ><br>
+
+                    <button class="button button-login" type="submit">Login</button>
+                </form>
+            </div>  
+            
+        </div>
+    </section>
+    </main>
+      
+      <div ng-include="'layout/site/footer.html'" class="footerLogin"></div>
+    </body>
+</html>

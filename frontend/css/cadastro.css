@@ -1,0 +1,105 @@
+body {
+  padding-top: 20px;
+  padding-bottom: 10px;  
+}
+
+#labelPadrao{
+  color: #000000;
+  font-family: "Poppins Light";
+  font-size: 12px;
+  text-align: center;
+}
+
+#labelReg1{
+  color: #000000;
+  font-family: "Poppins Light";
+  font-size: 30px;
+  text-align: center;
+}
+
+#labelReg2{
+  color:#000000;
+  font-family: "Poppins Light";
+  font-size:13px;
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+#labelTermoUso{
+  color: #000000;
+  font-family: "Poppins Light";
+  font-size: 12px;
+  text-align: center;
+  padding: 13px;
+  text-decoration: none;
+
+}
+
+input[type=text], input[type=email], input[type=password]{
+	border-width: 0;
+	border-bottom-width: 1px;
+	box-shadow: initial;
+}
+
+.form-cadastro {
+    max-width: 600px;
+    padding: 10px;
+    margin: 20px;
+    font: 12px Poppins Light
+}
+
+.button-cadastrar {
+    background-color:  #33ccff; 
+    color: #F8F8FF;
+	border: 1px solid #33ccff;
+    padding: 2px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 15px 195px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+	border-radius: 50px;
+}
+
+button.button.button-cadastrar:hover {
+    background-color: #a0e5ee;
+    color: #000000;
+}
+
+.cadastroUsuario{
+    background-color: #FFF!important;
+}
+
+#registre-cadastro{
+    color: #33ccff;
+    text-decoration: none!important;
+}
+
+#logo-cadastro{
+    color: #000!important;
+    text-decoration: none!important;
+    padding-left: 13%!important;
+}
+
+.body-cadastro{
+    background-color: #FFF;
+    padding-top: 3% 
+}
+
+#logo-cadastro-time{
+    text-decoration: none!important;
+    width: 450px;
+    height: 55px;
+}
+
+#cadastrar-layout{
+    padding-left: 26.5% 
+}
+
+.footerCadastro{
+    margin-top: 39.2%;
+}
+
