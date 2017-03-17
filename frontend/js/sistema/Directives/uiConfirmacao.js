@@ -4,9 +4,9 @@ angular.module('timeControl').directive('uiConfirmacao', function(){
 		templateUrl: 'layout/sistema/uiConfirmacao',
 		restrict: 'E',
 		scope:{
-			id_modal: "@",
-			btn_fechar: "@",
-			btn_confirmar: "@",
+			identificador: "@",
+			fechar: '@',
+			confirmar: '@',
 			titulo: '@',
 			mensagem: '@'
 		},
