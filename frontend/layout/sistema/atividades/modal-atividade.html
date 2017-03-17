@@ -10,17 +10,17 @@
       <div class="modal-body">
         <form action="" method="POST">
           <div class="row">
-            <div class="form-group col-xs-12 col-md-8">
+            <div class="form-group col-xs-12 col-md-10">
               <label>Nome da atividade:</label>
-              <input required type="text" name="nome-atividade" ng-model="nome-atividade" class="form-control" placeholder="">
+              <input required type="text" name="nomeAtividade" ng-model="nomeAtividade" class="form-control" placeholder="">
             </div>
-             <div class="form-group col-xs-6 col-md-2">
+             <!-- <div class="form-group col-xs-6 col-md-2">
               <label>Tempo gasto:</label>
-              <input required type="time" name="tempo-gasto-atividade" ng-model="tempo-gasto-atividade" class="form-control" placeholder="">
-            </div>
-             <div class="form-group col-xs-6 col-md-2">
+              <input required type="time" name="tempo-gastoAtividade" ng-model="tempo-gastoAtividade" class="form-control" placeholder="">
+            </div> -->
+             <div class="form-group col-xs-12 col-md-2">
               <label>Prioridade:</label>
-              <select name="prioridade-atividade" ng-model="prioridade-atividade" class="form-control">
+              <select name="prioridadeAtividade" ng-model="prioridadeAtividade" class="form-control">
                 <option>Selecione</option>
                 <option class="baixa" value="0">Baixa</option>
                 <option class="media" value="1">Média</option>
@@ -33,25 +33,25 @@
              
             <!--<div class="form-group col-xs-6 col-md-3">
               <label>Data Início:</label>
-              <input required type="date" name="data-inicio-atividade" class="form-control" placeholder="">
+              <input required type="date" name="data-inicioAtividade" class="form-control" placeholder="">
             </div>
             <div class="form-group col-xs-6 col-md-3">
               <label>Hora Início:</label>
-              <input required type="time" name="hora-inicio-atividade" class="form-control" placeholder="">
+              <input required type="time" name="hora-inicioAtividade" class="form-control" placeholder="">
             </div>
              <div class="form-group col-xs-6 col-md-3">
               <label>Data Final:</label>
-              <input required type="date" name="data-final-atividade" class="form-control" placeholder="">
+              <input required type="date" name="data-finalAtividade" class="form-control" placeholder="">
             </div>
             <div class="form-group col-xs-6 col-md-3">
               <label>Hora Final:</label>
-              <input required type="time" name="hora-final-atividade" class="form-control" placeholder="">
+              <input required type="time" name="hora-finalAtividade" class="form-control" placeholder="">
             </div>-->
           </div>
           <div class="row">
             <div class="form-group col-xs-12 col-md-12">
-              <label>Observação:</label>
-              <textarea class="textarea-observacao" ng-model="observacao-atividade" rows="10" name="observacao-atividade"></textarea>
+              <label>Descrição:</label>
+              <textarea class="textarea-observacao" ng-model="descricaoAtividade" rows="10" name="descricaoAtividade"></textarea>
             </div>            
           </div>
         </form>

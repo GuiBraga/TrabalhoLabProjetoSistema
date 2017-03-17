@@ -6,7 +6,7 @@ angular.module("timeControl").controller("homeController", function($scope){
 			showMinutes: true,
 			showAllDay: false,
 			header: {
-				left: 'prev,next today',
+				left: 'prev,next',
 				center: 'title',
 				right: 'agendaWeek,agendaDay'
 			},

@@ -4,14 +4,24 @@ angular.module("timeControl").config(function($routeProvider){
 		controller: "timeControlController",
     });
 
+    $routeProvider.when("/quem-somos", {
+		templateUrl: "layout/site/quem-somos.html",
+		controller: "paginaController",
+    });
+
      $routeProvider.when("/funcionalidades", {
 		templateUrl: "layout/site/funcionalidades.html",
-		controller: "timeControlController",
+		controller: "paginaController",
     });
 
     $routeProvider.when("/login", {
 		templateUrl: "layout/site/login.html",
-		controller: "timeControlController",
+		controller: "paginaController",
+    });
+
+    $routeProvider.when("/cadastro", {
+        templateUrl: "layout/site/cadastro.html",
+        controller: "paginaController",
     });
 
     $routeProvider.otherwise({redirectTo: "/home"});

@@ -2,6 +2,7 @@
     background:url('../img/banner_timeControl.jpg') no-repeat;
     background-size: cover;
     height: 670px;
+    margin-top: -150px;
 }
 
 .home h1, .home p{
@@ -27,11 +28,22 @@ a{
 .nav>li.active{
     border-bottom: 2px solid #fff;
 }
+header.header-page .nav>li.active{
+  border-bottom-color: #fff;
+}
+
 header:hover .nav>li.active,
 header.menuScroll:not(:hover) .nav>li.active{
     border-bottom: 2px solid #000;
 }
+header.header-page.menuScroll:not(:hover) .nav>li.active,
+header.header-page:hover .nav>li.active,
+header.header-page.menuScroll:not(:hover) .nav>li.active{
+  border-bottom-color: #fff;
+}
+
  header{
+   top: 0;
    width: 100%;
    position: fixed;
    z-index: 99;
@@ -42,9 +54,18 @@ header.menuScroll:not(:hover) .nav>li.active{
     transition: all .3s ease-out;
  }
 
+header.header-page{
+  background-color: rgba(0, 0, 0, 0.83);
+}
+
  header:hover .logo, header:hover .nav>li>a,
  header.menuScroll .logo, header.menuScroll .nav>li>a{
     color: #000;
+ }
+
+header.header-page:hover .logo, header.header-page:hover .nav>li>a,
+header.header-page.menuScroll .logo, header.header-page.menuScroll .nav>li>a{
+  color: #fff;
  }
 
 header:hover .nav>li>a:focus, header:hover .nav>li>a:hover{ 
@@ -55,6 +76,11 @@ header:hover .nav>li:not(.active)>a:focus, header:hover .nav>li:not(.active)>a:h
  header.menuScroll:not(:hover) .nav>li:not(.active)>a:focus{
     border-bottom: 2px solid #000;
 }
+
+header.header-page:hover .nav>li:not(.active)>a:focus, header.header-page:hover .nav>li:not(.active)>a:hover,
+ header.header-page.menuScroll:not(:hover) .nav>li:not(.active)>a:focus{
+    border-bottom-color: #fff;
+ }
 
  .nav>li>a{
    color: #fff;
@@ -68,13 +94,240 @@ header:hover .nav>li:not(.active)>a:focus, header:hover .nav>li:not(.active)>a:h
     display: flex;
    justify-content: center; 
 }
-
+main{
+  margin-top: 150px;
+  margin-bottom: 80px;
+}
 footer{
     padding: 30px 0;
-    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.83);
     color: #fff;
 }
 .nav>li>a:focus, .nav>li>a:hover{
     background-color: initial;
+}
+
+.fundadores{
+    height: 460px;    
+    border: 1px solid #e8e8e8;
+    box-shadow: 0px 20px 40px rgba(0,0,0,.15);
+    padding-top: 20px;
+    margin-bottom: 80px;
+}
+
+.componente-grupo{
+}
+.componente-grupo img{
+    height: 180px;
+    width: 200px;
+}
+
+.componente-grupo h2{
+    font-size: 18px;
+    
+}
+
+.vmv{
+    margin: 80px 0;
+        position: relative;
+    height: 230px;
+}
+.componente-grupo h3{
+    font-size: 12px;
+    color: #acabab;
+}
+.componente-grupo{
+}
+.fundadores ul :not(:first-child){
+    margin-left: 30px;
+}
+
+.fundadores ul li{
+    list-style: none;
+}
+.valores span:before{
+ color: #00bcd4;
+}
+   
+.valores ul{
+    padding-left: 0;
+}
+
+.valores ul li{
+    list-style: none;   
+}
+.componente-grupo li{
+    margin-left:10px;
+}
+.titulos{
+    margin:40px;
+}
+.funcionalidades img{
+    width: 100%;
+}
+
+
+
+/*CADASTRO*/
+
+
+
+#labelPadrao{
+  color: #000000;
+
+  font-size: 12px;
+}
+
+#labelReg1{
+  color: #000000;
+
+  font-size: 30px;
+  text-align: center;
+}
+
+#labelReg2{
+  color:#000000;
+
+  font-size:13px;
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+#labelTermoUso{
+  color: #000000;
+
+  font-size: 12px;
+  text-align: center;
+  padding: 13px;
+  text-decoration: none;
+
+}
+
+
+.form-cadastro {
+    max-width: 600px;
+    padding: 10px;
+    margin: 20px;
+    font-size: 12px;
+}
+
+.button-cadastrar {
+    background-color:  #33ccff; 
+    color: #F8F8FF;
+    border: 1px solid #33ccff;
+    padding: 2px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 15px 195px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+button.button.button-cadastrar:hover {
+    background-color: #a0e5ee;
+    color: #000000;
+}
+
+.cadastroUsuario{
+    background-color: #FFF!important;
+}
+
+#registre-cadastro{
+    color: #33ccff;
+    text-decoration: none!important;
+}
+
+#logo-cadastro{
+    color: #000!important;
+    text-decoration: none!important;
+    padding-left: 13%!important;
+}
+
+
+#logo-cadastro-time{
+    text-decoration: none!important;
+    width: 450px;
+    height: 55px;
+}
+
+#cadastrar-layout{
+    padding-left: 26.5% ;
+}
+
+
+/*LOGIN*/
+
+
+#labelLogin{
+  color: #000000;
+
+  font-size: 30px;
+  text-align: center;
+}
+
+#labelRegistre{
+  color:#000000;
+
+  font-size:13px;
+  text-align: center;
+  padding-bottom: 24px;
+}
+
+#labelPadrao{
+  color: #000000;
+
+  font-size: 12px;
+  text-align: right;
+}
+
+
+.form-signin {
+    max-width: 600px;
+    font-size: 12px;
+}
+
+.container-login{ 
+    border-right: 1px solid #808080; 
+}
+
+.button-login {
+    background-color:  #33ccff; 
+    color: #F8F8FF;
+    border: 1px solid #33ccff;
+    padding: 5px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    margin: 15px 195px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+button.button.button-login:hover {
+    background-color: #a0e5ee;
+    color: #000000;
+}
+
+#registre-login{
+    color: #33ccff;
+    text-decoration: none!important;
+}
+
+#logo-login{
+    color: #000!important;
+    text-decoration: none!important;
+    padding-left: 13%!important; 
+}
+
+
+#logo-login-time{
+     width: 450px;
 }
 

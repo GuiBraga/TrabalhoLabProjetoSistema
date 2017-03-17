@@ -20,11 +20,8 @@
   </thead>
   <tbody>
     <tr ng-repeat="atividade in atividades">
-      <td>{{atividade["nome-atividade"]}}</td>
-      <td>{{atividade["observacao-atividade"]}}
-      <!--<td>20:30</td>
-      <td>20:30</td>
-      <td>20:30</td>-->
+      <td>{{atividade["nomeAtividade"]}}</td>
+      <td>{{atividade["descricaoAtividade"]}}</td>
       <td>
         <span class="glyphicon glyphicon-eye-open" title="Visualizar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
         <span class="glyphicon glyphicon-pencil" title="Editar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>        

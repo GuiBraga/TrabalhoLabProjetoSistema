@@ -68,7 +68,7 @@ body{
     border: 1px solid #a0e5ee;
 }
 
-input[type=text], input[type=number], input[type=datetime], input[type=date], input[type=time]{
+input[type=text], input[type=number], input[type=datetime], input[type=date], input[type=time], input[type=password], input[type=email]{
 	border-width: 0;
 	border-bottom-width: 2px;
 	box-shadow: initial;
