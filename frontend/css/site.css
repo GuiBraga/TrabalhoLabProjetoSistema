@@ -68,7 +68,10 @@ header.header-page.menuScroll .logo, header.header-page.menuScroll .nav>li>a{
   color: #fff;
  }
 
-header:hover .nav>li>a:focus, header:hover .nav>li>a:hover{ 
+.logo.usuario {
+  color: #000;
+}
+header:hover .nav>li>a:focus, header:hover .nav>li>a:hover{
     background-color: initial;
 }
 
@@ -87,12 +90,12 @@ header.header-page:hover .nav>li:not(.active)>a:focus, header.header-page:hover 
  }
 
 .home-info{
-    padding-top: 150px; 
+    padding-top: 150px;
 }
 .home-btn{
     margin-top: 40px;
     display: flex;
-   justify-content: center; 
+   justify-content: center;
 }
 main{
   margin-top: 150px;
@@ -108,7 +111,7 @@ footer{
 }
 
 .fundadores{
-    height: 460px;    
+    height: 460px;
     border: 1px solid #e8e8e8;
     box-shadow: 0px 20px 40px rgba(0,0,0,.15);
     padding-top: 20px;
@@ -124,7 +127,7 @@ footer{
 
 .componente-grupo h2{
     font-size: 18px;
-    
+
 }
 
 .vmv{
@@ -148,13 +151,13 @@ footer{
 .valores span:before{
  color: #00bcd4;
 }
-   
+
 .valores ul{
     padding-left: 0;
 }
 
 .valores ul li{
-    list-style: none;   
+    list-style: none;
 }
 .componente-grupo li{
     margin-left:10px;
@@ -212,7 +215,7 @@ footer{
 }
 
 .button-cadastrar {
-    background-color:  #33ccff; 
+    background-color:  #33ccff;
     color: #F8F8FF;
     border: 1px solid #33ccff;
     padding: 2px 30px;
@@ -290,12 +293,12 @@ button.button.button-cadastrar:hover {
     font-size: 12px;
 }
 
-.container-login{ 
-    border-right: 1px solid #808080; 
+.container-login{
+    border-right: 1px solid #808080;
 }
 
 .button-login {
-    background-color:  #33ccff; 
+    background-color:  #33ccff;
     color: #F8F8FF;
     border: 1px solid #33ccff;
     padding: 5px 40px;
@@ -323,11 +326,10 @@ button.button.button-login:hover {
 #logo-login{
     color: #000!important;
     text-decoration: none!important;
-    padding-left: 13%!important; 
+    padding-left: 13%!important;
 }
 
 
 #logo-login-time{
      width: 450px;
 }
-

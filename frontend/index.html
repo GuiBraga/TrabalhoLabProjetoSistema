@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="img/x-icon" href="img/icon.png">
- 
+
     <link rel="stylesheet" href="css/lib/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/site.css">    
-   
+    <link rel="stylesheet" href="css/site.css">
+
 
     <!-- ANGULAR ARQUIVOS -->
     <script src="js/lib/angular/angular.min.js" charset="utf-8"></script>
@@ -17,13 +17,14 @@
     <script src="js/site/timeControl.js" charset="utf-8"></script>
     <script src="js/site/Controllers/timeControlController.js" charset="utf-8"></script>
     <script src="js/site/Controllers/paginaController.js" charset="utf-8"></script>
+    <script src="js/site/Controllers/usuarioController.js" charset="utf-8"></script>
     <script src="js/site/Config/routeConfig.js" charset="utf-8"></script>
-    
+
     <!-- fim angular -->
 
     <script src="js/lib/jquery-3.1.1.slim.min.js" charset="utf-8"></script>
     <script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
-    <script src="js/site/init.js" charset="utf-8"></script>    
+    <script src="js/site/init.js" charset="utf-8"></script>
     <title>TimeControl</title>
   </head>
   <body ng-controller="timeControlController">
@@ -32,6 +33,6 @@
      <ng-view/>
     </main>
   <div ng-include="'layout/site/footer.html'"></div>
-     
+
   </body>
 </html>

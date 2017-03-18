@@ -45,22 +45,22 @@ body{
 
 .btn-principal:hover, .btn-principal:active, .btn-principal:visited, .btn-principal:focus{
     background-color: #a0e5ee;
-    color: #000;
+    color: #fff;
     border: 1px solid #a0e5ee;
 }
-.btn-principal{    
+.btn-principal{
     background-color: #00bcd4;
-    color: #000;
+    color: #fff;
     border: 1px solid #00bcd4;
 }
 
-.btn-secundario, .fc button{    
+.btn-secundario, .fc button{
     background-color:initial;
     color: #00bcd4;
     border: 1px solid #00bcd4;
 }
 
-.btn-secundario:hover, .btn-secundario:active, .btn-secundario:visited, .btn-secundario:focus, 
+.btn-secundario:hover, .btn-secundario:active, .btn-secundario:visited, .btn-secundario:focus,
 .fc button:hover, .fc button:active, .fc button:visited, .fc button:focus,
 .fc-state-active{
     background-color: #a0e5ee;
@@ -77,7 +77,7 @@ input[type=text], input[type=number], input[type=datetime], input[type=date], in
 .form-control:focus, textarea:focus{
   box-shadow: initial;
 	border-bottom-color: #00bcd4;
-	
+
 }
  textarea:focus{
 	border-color: #00bcd4;
@@ -90,4 +90,8 @@ border-width: 2px;
 
 .textarea-observacao{
 	width: 100%;
+}
+
+.esconde{
+	display:none;
 }

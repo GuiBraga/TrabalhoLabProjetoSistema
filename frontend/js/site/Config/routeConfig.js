@@ -16,12 +16,12 @@ angular.module("timeControl").config(function($routeProvider){
 
     $routeProvider.when("/login", {
 		templateUrl: "layout/site/login.html",
-		controller: "paginaController",
+		controller: "usuarioController",
     });
 
     $routeProvider.when("/cadastro", {
         templateUrl: "layout/site/cadastro.html",
-        controller: "paginaController",
+        controller: "usuarioController",
     });
 
     $routeProvider.otherwise({redirectTo: "/home"});
