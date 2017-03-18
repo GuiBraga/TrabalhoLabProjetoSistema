@@ -1,7 +1,7 @@
 angular.module('timeControl').directive('uiConfirmacao', function(){
 
 	return {
-		templateUrl: 'layout/sistema/uiConfirmacao',
+		templateUrl: 'layout/sistema/uiConfirmacao.html',
 		restrict: 'E',
 		scope:{
 			identificador: "@",
