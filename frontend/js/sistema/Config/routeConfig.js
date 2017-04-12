@@ -14,5 +14,10 @@ $routeProvider.when("/tempo_investido", {
 		controller: "tempoInvestidoController",
     });
 
+$routeProvider.when("/historico", {
+		templateUrl: "layout/sistema/historico/lista-historico.html",
+		controller: "historicoController",
+    });
+
     $routeProvider.otherwise({redirectTo: "/inicio"});
 });

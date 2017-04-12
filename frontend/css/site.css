@@ -1,5 +1,5 @@
 .home{
-    background:url('../img/banner_timeControl.jpg') no-repeat;
+    background:url('../img/banner_timeControl.gif') no-repeat;
     background-size: cover;
     height: 670px;
     margin-top: -150px;
@@ -90,16 +90,15 @@ header.header-page:hover .nav>li:not(.active)>a:focus, header.header-page:hover 
  }
 
 .home-info{
-    padding-top: 150px;
+    padding-top: 470px;
 }
 .home-btn{
-    margin-top: 40px;
+    margin-top: 5px;
     display: flex;
    justify-content: center;
 }
 main{
   margin-top: 150px;
-  margin-bottom: 80px;
 }
 footer{
     padding: 30px 0;

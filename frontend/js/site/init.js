@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $(window).scroll(function()
+/*  $(window).scroll(function()
   {
   var scrollTop = $(window).scrollTop(); // qto foi rolado a barra
 
@@ -8,8 +8,8 @@ $(document).ready(function(){
     $('header').addClass("menuScroll");
   }else{
     $('header').removeClass("menuScroll");
-  }               
-  });
+  }
+}); */
 
   $('.menu-topo li').click(function(){
     $('.menu-topo li').removeClass('active');

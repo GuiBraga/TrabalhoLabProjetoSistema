@@ -1,1 +1,1 @@
-angular.module("timeControl", ["ngMessages", "ngRoute"]);
+angular.module("timeControl", ["ngMessages", "ngRoute", "googlechart"]);

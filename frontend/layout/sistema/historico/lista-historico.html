@@ -1,0 +1,45 @@
+<section>
+  <h1>Histórico</h1>
+  <section class="charts">
+    <h4>Ranking de horas gastas na semana retrasada, semana passada, e atual</h4>
+    <div class="row charts-semanais">
+      <h5>Semanal</h5>
+      <div google-chart chart="myChartObject" class="col-md-4" style="height:200px"></div>
+      <div google-chart chart="myChartObject" class="col-md-4" style="height:200px"></div>
+      <div google-chart chart="myChartObject" class="col-md-4" style="height:200px"></div>
+    </div>
+    <div class="row charts-total">
+      <h5>Semana retrasada, semana passada, e atual</h5>
+          <div google-chart chart="myChartObject" class="col-md-12" style="height:200px"></div>
+    </div>
+
+  </section>
+
+  <table class="table table-condensed table-hover">
+  <thead>
+    <tr>
+      <th>Nome Atividade</th>
+      <th>Semana Retrasada</th>
+      <th>Semana Passada</th>
+      <th>Semana Atual</th>
+  <!--<th>Ações</th>-->
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="atividade in atividades">
+      <td>{{atividade["nomeAtividade"]}}</td>
+      <td>{{atividade["totalGastoSemanaRetrasada"]}}</td>
+      <td>{{atividade["totalGastoSemanaPassada"]}}</td>
+      <td>{{atividade["totalGastoSemanaAtual"]}}</td>
+  <!--  <td>
+        <span class="glyphicon glyphicon-eye-open" title="Visualizar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
+        <span class="glyphicon glyphicon-pencil" title="Editar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
+        <span class="glyphicon glyphicon-trash" aria-hidden="true" data-placement="top" title="Excluir" aria-hidden="true" data-toggle="modal" data-target="#excluir"></span>
+
+      </td> -->
+    </tr>
+
+  </tbody>
+</table>
+<!--<ui-confirmacao identificador="excluir"  fechar="Não"  confirmar="Sim"  titulo="Atenção" mensagem="Tem certeza que deseja excluir?"></ui-confirmacao> -->
+</section>

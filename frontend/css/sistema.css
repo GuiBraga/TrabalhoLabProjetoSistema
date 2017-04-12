@@ -2,9 +2,9 @@
 body{
   background-color: rgba(0, 188, 212, 0.06);
 }
-.settings {  
-  height:73px; 
-  float:left; 
+.settings {
+  height:73px;
+  float:left;
   width:250px;
   margin:0px;
   text-align: center;
@@ -19,7 +19,7 @@ body{
 }
 
 .fa-lg {
-  font-size: 1em;  
+  font-size: 1em;
 }
 
 .fa {
@@ -28,7 +28,7 @@ body{
   width: 55px;
   height: 36px;
   text-align: center;
-  top:7px; 
+  top:7px;
   font-size:20px;
 }
 
@@ -99,7 +99,7 @@ main {
   transition:all .14s linear;
 }
 
-.main-menu .nav-text  {   
+.main-menu .nav-text  {
   position:relative;
   display:table-cell;
   vertical-align:middle;
@@ -116,7 +116,7 @@ nav {
   -moz-user-select:none;
   -ms-user-select:none;
   -o-user-select:none;
-  user-select:none;  
+  user-select:none;
 }
 
 nav ul,nav li {
@@ -129,10 +129,10 @@ nav ul,nav li {
 .main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
   color:#fff;
   background-color:#00bcd4;
-  text-shadow: 0px 0px 0px; 
+  text-shadow: 0px 0px 0px;
 }
 
-.menu-sistema>li>a{    
+.menu-sistema>li>a{
     padding-top: 5px;
     padding-bottom: 5px;
     color: #000;
@@ -143,7 +143,7 @@ header{
   background-color: rgba(255, 255, 255, 0.63);
 }
 
-.menu-sistema>li>a:focus, .menu-sistema>li>a:hover {   
+.menu-sistema>li>a:focus, .menu-sistema>li>a:hover {
   background-color: initial;
 }
 
@@ -164,7 +164,7 @@ header{
 }
 
 .fc-state-default {
-    border: 1px solid;   
+    border: 1px solid;
     background-image: initial;
 
     border-color: #e6e6e6 #e6e6e6 #bfbfbf;
@@ -191,4 +191,12 @@ header{
 
 #calendar{
   margin-right: 30px;
+}
+
+.charts-semanais{
+  margin-bottom: 10px;
+}
+
+.charts-total{
+  margin-bottom: 30px;
 }
