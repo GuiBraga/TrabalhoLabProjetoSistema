@@ -1,0 +1,56 @@
+<section>
+  <h1>Relatório</h1>
+  <div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#ranking" aria-controls="home" role="tab" data-toggle="tab" target="_self" >Ranking</a></li>
+    <li role="presentation"><a href="#historico-atvidades" aria-controls="profile" role="tab" data-toggle="tab" target="_self">Histórico Atividades</a></li>
+</ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="ranking">
+      <section class="charts">
+        <h4>Horas Gastas na semana por atividade</h4>
+        <div class="row charts-semanais">
+          <div ng-repeat="(key, grafico) in graficos" google-chart chart="{{grafico}}" class="col-md-4" style="height:200px"></div>
+        </div>
+        <div class="row charts-total">
+          <h4>Ranking de atividades que demandaram mais tempo na semana atual</h4>
+              <div google-chart chart="myChartObject" class="col-md-12" style="height:200px"></div>
+        </div>
+
+      </section>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="historico-atvidades">
+      <table class="table table-condensed table-hover">
+    <thead>
+      <tr>
+        <th>Nome Atividade</th>
+        <th>Semana Retrasada</th>
+        <th>Semana Passada</th>
+        <th>Semana Atual</th>
+    <!--<th>Ações</th>-->
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="atividade in atividades">
+        <td>{{atividade["nomeAtividade"]}}</td>
+        <td>{{atividade["totalGastoSemanaRetrasada"]}}</td>
+        <td>{{atividade["totalGastoSemanaPassada"]}}</td>
+        <td>{{atividade["totalGastoSemanaAtual"]}}</td>
+    <!--  <td>
+          <span class="glyphicon glyphicon-eye-open" title="Visualizar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
+          <span class="glyphicon glyphicon-pencil" title="Editar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
+          <span class="glyphicon glyphicon-trash" aria-hidden="true" data-placement="top" title="Excluir" aria-hidden="true" data-toggle="modal" data-target="#excluir"></span>
+
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
+    </div>
+  </div>
+
+</div>
+<!--<ui-confirmacao identificador="excluir"  fechar="Não"  confirmar="Sim"  titulo="Atenção" mensagem="Tem certeza que deseja excluir?"></ui-confirmacao> -->
+</section>
