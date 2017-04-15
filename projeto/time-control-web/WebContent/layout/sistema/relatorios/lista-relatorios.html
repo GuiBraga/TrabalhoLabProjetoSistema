@@ -11,13 +11,25 @@
   <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="ranking">
       <section class="charts">
-        <h4>Horas Gastas na semana por atividade</h4>
+        <h4 ng-if="graficosPrioridadeAlta.length">Horas Gastas na semana por atividades com PRIORIDADE ALTA</h4>
         <div class="row charts-semanais">
-          <div ng-repeat="(key, grafico) in graficos" google-chart chart="{{grafico}}" class="col-md-4" style="height:200px"></div>
+          <div ng-repeat="(key, grafico) in graficosPrioridadeAlta" google-chart chart="{{grafico}}" class="col-md-6 col-xs-12" style="height:200px"></div>
         </div>
+
+        <h4 ng-if="graficosPrioridadeMedia.length">Horas Gastas na semana por atividades com PRIORIDADE MEDIA</h4>
+        <div class="row charts-semanais">
+          <div ng-repeat="(key, grafico) in graficosPrioridadeMedia" google-chart chart="{{grafico}}" class="col-md-6 col-xs-12" style="height:200px"></div>
+        </div>
+
+        <h4 ng-if="graficosPrioridadeBaixa.length">Horas Gastas na semana por atividades com PRIORIDADE BAIXA</h4>
+        <div class="row charts-semanais">
+          <div ng-repeat="(key, grafico) in graficosPrioridadeBaixa" google-chart chart="{{grafico}}" class="col-md-6 col-xs-12" style="height:200px"></div>
+        </div>
+
+
         <div class="row charts-total">
           <h4>Ranking de atividades que demandaram mais tempo na semana atual</h4>
-              <div google-chart chart="myChartObject" class="col-md-12" style="height:200px"></div>
+              <div google-chart chart="rankingGrafico" class="col-md-12" style="height:200px"></div>
         </div>
 
       </section>
