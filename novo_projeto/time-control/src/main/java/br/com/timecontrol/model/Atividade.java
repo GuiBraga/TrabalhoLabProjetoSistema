@@ -93,4 +93,5 @@ public class Atividade{
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+
 }

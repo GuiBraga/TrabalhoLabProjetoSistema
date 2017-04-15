@@ -35,9 +35,8 @@
   		<property name="entityManagerFactory" ref="entityManagerFactory"/>
 	</bean>  
  
- 
 	 <tx:annotation-driven transaction-manager="transactionManager"/>
- 
+	 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">

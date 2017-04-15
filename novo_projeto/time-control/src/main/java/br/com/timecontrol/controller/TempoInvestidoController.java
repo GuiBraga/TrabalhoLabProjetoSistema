@@ -23,16 +23,16 @@ public class TempoInvestidoController {
 	@Autowired
 	TempoInvestidoRepository tempoInvestidoRepository;
  
-	@RequestMapping(value ="/{codigo}", method= RequestMethod.GET)
-	public ResponseBuilder listarTodas(@PathVariable Integer codigo){
+	@RequestMapping(value ="/{codigo}", method= RequestMethod.GET, produces = "application/json")
+	public TempoInvestido buscarPorCodigo(@PathVariable Integer codigo){
 		TempoInvestido tempoInvestido = tempoInvestidoRepository.consultarPorCodigo(codigo);
-		return Response.ok(tempoInvestido, "response");
+		return tempoInvestido;
 	}
 	
 	@RequestMapping(value ="/todos", method= RequestMethod.GET)
-	public ResponseBuilder listarTodas(){
+	public List<TempoInvestido> listarTodas(){
 		List<TempoInvestido> tempoInvestidos = tempoInvestidoRepository.listarTodos();
-		return Response.ok(tempoInvestidos, "response");
+		return tempoInvestidos;
 	}
  
 	@RequestMapping(value="/", method= RequestMethod.POST)
@@ -59,7 +59,7 @@ public class TempoInvestidoController {
 		return Response.ok("OK", "response");
 	}
 	
-	@RequestMapping(value="/{codigo}", method= RequestMethod.DELETE)
+	@RequestMapping(value="/{codigo}", method=RequestMethod.DELETE)
 	public ResponseBuilder deletar(@PathVariable Integer codigo){
 		
 		try {

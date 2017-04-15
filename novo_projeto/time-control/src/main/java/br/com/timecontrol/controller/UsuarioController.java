@@ -22,13 +22,13 @@ public class UsuarioController {
 	UsuarioRepository usuarioRepository;
 
 	@RequestMapping(value = "/validaLogin", method = RequestMethod.GET)
-	public ResponseBuilder buscaAtividadeUsuario(@QueryParam(value = "email") String email,
+	public Usuario buscaAtividadeUsuario(@QueryParam(value = "email") String email,
 			@QueryParam(value = "senha") String senha) {
 		Usuario usuario = usuarioRepository.buscarPorEmailSenha(email, senha);
-		return Response.ok(usuario, "response");
+		return usuario;
 	}
 	
-	@RequestMapping(value="/", method= RequestMethod.POST)
+	@RequestMapping(value="/", method= RequestMethod.POST, headers = "Content-type=application/json", consumes = "application/json")
 	public @ResponseBody ResponseBuilder criar(@RequestBody Usuario usuario){
 		
 		try {

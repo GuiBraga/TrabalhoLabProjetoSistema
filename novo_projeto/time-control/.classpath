@@ -29,6 +29,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Guilherme/Downloads/spring-data-jpa-1.11.0.RC1.jar"/>
+	<classpathentry kind="lib" path="src/main/java/library/spring-data-jpa-1.11.0.RC1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

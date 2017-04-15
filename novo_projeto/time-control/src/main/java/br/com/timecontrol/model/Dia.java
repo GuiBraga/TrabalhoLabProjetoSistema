@@ -55,6 +55,6 @@ public class Dia {
 
 	public void setTotalHorasDia(Date totalHorasDia) {
 		this.totalHorasDia = totalHorasDia;
-	}
+	}	
 
 }

@@ -24,15 +24,15 @@ public class AtividadeController {
 	AtividadeRepository atividadeRepository;
 	
 	@RequestMapping(value ="/{codigo}", method= RequestMethod.GET)
-	public ResponseBuilder buscarPorCodigo(@PathVariable Integer codigo){
+	public Atividade buscarPorCodigo(@PathVariable Integer codigo){
 		Atividade atividade = atividadeRepository.consultarPorCodigo(codigo);
-		return Response.ok(atividade, "response");
+		return atividade;
 	}
 	
 	@RequestMapping(value ="/todos", method= RequestMethod.GET)
-	public ResponseBuilder listarTodas(){
+	public List<Atividade> listarTodas(){
 		List<Atividade> atividades = atividadeRepository.listarTodas();
-		return Response.ok(atividades, "response");
+		return atividades;
 	}
  
 	@RequestMapping(value="/", method= RequestMethod.POST)
