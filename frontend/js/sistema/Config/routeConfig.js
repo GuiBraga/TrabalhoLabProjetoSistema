@@ -19,5 +19,10 @@ $routeProvider.when("/historico", {
 		controller: "historicoController",
     });
 
+$routeProvider.when("/relatorios", {
+		templateUrl: "layout/sistema/relatorios/lista-relatorios.html",
+		controller: "relatoriosController",
+    });
+
     $routeProvider.otherwise({redirectTo: "/inicio"});
 });

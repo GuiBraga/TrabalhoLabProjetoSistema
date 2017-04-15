@@ -193,6 +193,10 @@ header{
   margin-right: 30px;
 }
 
+.charts{
+  display: block;
+}
+
 .charts-semanais{
   margin-bottom: 10px;
 }
