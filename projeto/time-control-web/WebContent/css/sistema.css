@@ -195,6 +195,9 @@ header{
 
 .charts{
   display: block;
+  height: 485px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .charts-semanais{

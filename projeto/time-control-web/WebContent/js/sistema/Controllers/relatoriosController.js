@@ -53,7 +53,7 @@ angular.module("timeControl").controller("relatoriosController", function($scope
 
       var colunas=[
           {id: "t", label: "Dia da semana", type: "string"},
-          {id: "s", label: "", type: "number"}
+          {id: "s", label: "Tempo", type: "number"}
       ];
 
       $scope.graficosPrioridadeBaixa = [];
@@ -93,7 +93,9 @@ angular.module("timeControl").controller("relatoriosController", function($scope
           data: {"cols": colunas, "rows": graficoDados},
           "type": "ColumnChart",
           options: {
+            fontName: "Poppins Regular",
             backgroundColor: "#f0fbfc",
+            legend: "none",
             'title': atividade.nomeAtividade,
                "isStacked": "true",
                   "displayExactValues": true,
@@ -148,7 +150,6 @@ angular.module("timeControl").controller("relatoriosController", function($scope
         ];
         var graficoDados = [];
         var atividadesOrdenadas = ordenarTotalHoras($scope.atividades);
-        console.log(atividadesOrdenadas);
         atividadesOrdenadas.map(function(atividade){
           graficoDados.push({c: [
                 {v: atividade.nomeAtividade},
@@ -160,7 +161,10 @@ angular.module("timeControl").controller("relatoriosController", function($scope
           data: {"cols": colunas, "rows": graficoDados},
           "type": "BarChart",
           options: {
+          
+            fontName: "Poppins Regular",
             backgroundColor: "#f0fbfc",
+            legend: "none",
             'title': "",
                "isStacked": "true",
                   "displayExactValues": true,
