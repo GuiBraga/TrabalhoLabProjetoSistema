@@ -11,13 +11,12 @@
             <div id="login-layout">
                 <form class="form-signin center-block">
                     <label for="inputEmail" class="">Email:</label><br>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Informe seu e-mail" required ><br><br>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Informe seu e-mail" required ng-model="email" ><br><br>
                     <label for="inputPassword" class="">Senha:</label><br>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Informe sua senha" minlength="4" maxlength="4" required ><br>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Informe sua senha" minlength="4" maxlength="4" required ng-model="senha"><br>
 
-                    <button class="button button-login" type="submit">Entrar</button>
+                    <button class="button button-login" type="submit" ng-click="logar()">Entrar</button>
                 </form>
             </div>  
-            
         </div>
     </section>
