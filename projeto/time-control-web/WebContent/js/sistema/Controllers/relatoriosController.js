@@ -44,7 +44,7 @@ angular.module("timeControl").controller("relatoriosController", function($scope
     "totalGastoSegunda": "10.00",
     "totalGastoTerca": "10.00",
     "totalGastoQuarta": "1.00",
-    "totalGastoQuinta": "0.00",
+    "totalGastoQuinta": "1.00",
     "totalGastoSexta": "10.00",
     "totalGastoSabado": "17.00",
     "totalGastoDomingo": "10.00",
@@ -60,6 +60,7 @@ angular.module("timeControl").controller("relatoriosController", function($scope
       $scope.graficosPrioridadeMedia = [];
       $scope.graficosPrioridadeAlta = [];
       $scope.atividades.map(function(atividade){
+
       var graficoDados=  [{c: [
             {v: "Seg"},
             {v: atividade.totalGastoSegunda},
@@ -97,7 +98,7 @@ angular.module("timeControl").controller("relatoriosController", function($scope
             backgroundColor: "#f0fbfc",
             legend: "none",
             'title': atividade.nomeAtividade,
-               "isStacked": "true",
+               "isStacked": "false",
                   "displayExactValues": true,
 
                   "vAxis": {
@@ -113,19 +114,20 @@ angular.module("timeControl").controller("relatoriosController", function($scope
         };
 
         var corPrioridade = ["yellow", "#00FFFF"];
-        if(atividade.prioridadeAtividade == 0){
-          configuracoesGraficos.options.colors = ["green", "#34b04f"];
-            $scope.graficosPrioridadeBaixa.push(configuracoesGraficos);
-        }
-        if(atividade.prioridadeAtividade == 1){
-          configuracoesGraficos.options.colors = ["yellow", "#f8e64a"];
-            $scope.graficosPrioridadeMedia.push(configuracoesGraficos);
-        }
-        if(atividade.prioridadeAtividade == 2){
-          configuracoesGraficos.options.colors = ["red", "#f44336"];
-            $scope.graficosPrioridadeAlta.push(configuracoesGraficos);
-        }
+                if(atividade.prioridadeAtividade == 0){
+                  configuracoesGraficos.options.colors = ["green", "#34b04f"];
+                    $scope.graficosPrioridadeBaixa.push(configuracoesGraficos);
+                }
+                if(atividade.prioridadeAtividade == 1){
+                  configuracoesGraficos.options.colors = ["yellow", "#f8e64a"];
+                    $scope.graficosPrioridadeMedia.push(configuracoesGraficos);
+                }
+                if(atividade.prioridadeAtividade == 2){
+                  configuracoesGraficos.options.colors = ["red", "#f44336"];
+                    $scope.graficosPrioridadeAlta.push(configuracoesGraficos);
+                }
       });
+
 
       function somarTotalHoras(){
         $scope.atividades.forEach(function(atividade){
@@ -146,14 +148,33 @@ angular.module("timeControl").controller("relatoriosController", function($scope
       function montaGraficoRanking(){
         var colunas=[
             {id: "t", label: "Atividades", type: "string"},
-            {id: "s", label: "", type: "number", color: "#00ffff"}
+            {id: "s", label: "", type: "number"},
+            {type:"string", role: "style"}
         ];
+
+
+
         var graficoDados = [];
         var atividadesOrdenadas = ordenarTotalHoras($scope.atividades);
         atividadesOrdenadas.map(function(atividade){
+
+          var corPrioridade = "#00FFFF";
+          if(atividade.prioridadeAtividade == 0){
+            corPrioridade = "#34b04f";
+
+          }
+          if(atividade.prioridadeAtividade == 1){
+            corPrioridade = "#f8e64a";
+
+          }
+          if(atividade.prioridadeAtividade == 2){
+            corPrioridade = "#f44336";
+
+          }
           graficoDados.push({c: [
                 {v: atividade.nomeAtividade},
                 {v: atividade.totalHoras},
+                {v: "color: "+ corPrioridade}
             ]});
         });
         $scope.rankingGrafico = {
@@ -161,13 +182,13 @@ angular.module("timeControl").controller("relatoriosController", function($scope
           data: {"cols": colunas, "rows": graficoDados},
           "type": "BarChart",
           options: {
-          
+
             fontName: "Poppins Regular",
             backgroundColor: "#f0fbfc",
             legend: "none",
             'title': "",
-               "isStacked": "true",
-                  "displayExactValues": true,
+            "isStacked": true,
+            "displayExactValues": true,
 
                   "vAxis": {
               "title": "Atividades",
