@@ -35,6 +35,14 @@ public class Usuario{
 	}
 	
 	
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
+
 	public String getProfissao() {
 		return profissao;
 	}
@@ -66,5 +74,7 @@ public class Usuario{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	
 	
 }
