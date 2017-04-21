@@ -1,4 +1,4 @@
-$(document).ready(function(){
+/*$(document).ready(function(){
 /*  $(window).scroll(function()
   {
   var scrollTop = $(window).scrollTop(); // qto foi rolado a barra
@@ -9,11 +9,11 @@ $(document).ready(function(){
   }else{
     $('header').removeClass("menuScroll");
   }
-}); */
+}); *//*
 
   $('.menu-topo li').click(function(){
     $('.menu-topo li').removeClass('active');
     $(this).addClass('active');
   });
 
-});
+});*/

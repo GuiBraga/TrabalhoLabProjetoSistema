@@ -1,31 +1,40 @@
-<section>
-  <h1>Histórico</h1>
-  <table class="table table-condensed table-hover">
-  <thead>
-    <tr>
-      <th>Nome Atividade</th>
-      <th>Semana Retrasada</th>
-      <th>Semana Passada</th>
-      <th>Semana Atual</th>
-  <!--<th>Ações</th>-->
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="atividade in atividades">
-      <td>{{atividade["nomeAtividade"]}}</td>
-      <td>{{atividade["totalGastoSemanaRetrasada"]}}</td>
-      <td>{{atividade["totalGastoSemanaPassada"]}}</td>
-      <td>{{atividade["totalGastoSemanaAtual"]}}</td>
-  <!--  <td>
-        <span class="glyphicon glyphicon-eye-open" title="Visualizar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
-        <span class="glyphicon glyphicon-pencil" title="Editar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
-        <span class="glyphicon glyphicon-trash" aria-hidden="true" data-placement="top" title="Excluir" aria-hidden="true" data-toggle="modal" data-target="#excluir"></span>
+<link rel="stylesheet" href="css/sistema.css">
+<script src="js/sistema/init.js" charset="utf-8"></script>
+<div ng-include="'layout/sistema/header.html'" ></div>
+<div ng-include="'layout/sistema/atividades/modal-atividade.html'" ></div>
+<div ng-include="'layout/sistema/tempo_investido/modal-tempo-investido.html'" ></div>
 
-      </td> -->
-    </tr>
+<main>
+  <div ng-include="'layout/sistema/menu.html'" ></div>
+  <section>
+    <h1>Histórico</h1>
+    <table class="table table-condensed table-hover">
+    <thead>
+      <tr>
+        <th>Nome Atividade</th>
+        <th>Semana Retrasada</th>
+        <th>Semana Passada</th>
+        <th>Semana Atual</th>
+    <!--<th>Ações</th>-->
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="atividade in atividades">
+        <td>{{atividade["nomeAtividade"]}}</td>
+        <td>{{atividade["totalGastoSemanaRetrasada"]}}</td>
+        <td>{{atividade["totalGastoSemanaPassada"]}}</td>
+        <td>{{atividade["totalGastoSemanaAtual"]}}</td>
+    <!--  <td>
+          <span class="glyphicon glyphicon-eye-open" title="Visualizar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
+          <span class="glyphicon glyphicon-pencil" title="Editar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
+          <span class="glyphicon glyphicon-trash" aria-hidden="true" data-placement="top" title="Excluir" aria-hidden="true" data-toggle="modal" data-target="#excluir"></span>
 
-  </tbody>
-</table>
+        </td> -->
+      </tr>
 
-<!--<ui-confirmacao identificador="excluir"  fechar="Não"  confirmar="Sim"  titulo="Atenção" mensagem="Tem certeza que deseja excluir?"></ui-confirmacao> -->
-</section>
+    </tbody>
+  </table>
+
+  <!--<ui-confirmacao identificador="excluir"  fechar="Não"  confirmar="Sim"  titulo="Atenção" mensagem="Tem certeza que deseja excluir?"></ui-confirmacao> -->
+  </section>
+</main>

@@ -1,4 +1,12 @@
-	<div id='calendar'></div>
+<link rel="stylesheet" href="css/sistema.css">
+<script src="js/sistema/init.js" charset="utf-8"></script>
+<div ng-include="'layout/sistema/header.html'" ></div>
+<div ng-include="'layout/sistema/atividades/modal-atividade.html'" ></div>
+<div ng-include="'layout/sistema/tempo_investido/modal-tempo-investido.html'" ></div>
+
+<main>
+<div ng-include="'layout/sistema/menu.html'" ></div>
+<div id='calendar'></div>
 	<script>
 		$(document).ready(function(){
   $(".icon-close").on("click",function(){
@@ -69,3 +77,4 @@
 	});
 
 	</script>
+</main>
