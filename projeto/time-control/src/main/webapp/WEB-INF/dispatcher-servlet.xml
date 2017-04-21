@@ -46,6 +46,4 @@
 			<value>.html</value>
 		</property>
 	</bean>
-	
-	<mvc:view-controller path="/" view-name="/WEB-INF/views/index.html"/>
 </beans>

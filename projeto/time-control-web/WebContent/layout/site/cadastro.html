@@ -20,21 +20,22 @@
                             <text class="center-text"> Os campos que possuem (*) são de preenchimento obrigatório. </text>
                         </div>
                         <label for="inputNome" class="">Nome: *</label><br>
-                        <input type="text" id="inputNome" class="form-control" placeholder="Informe seu nome" required ><br>
+                        <input type="text" id="inputNome" class="form-control" placeholder="Informe seu nome" required ng-model="usuario.nome"><br>
                         <label for="inputProf" class="">Profissão: *</label><br>
-                        <input type="text" id="inputProf" class="form-control" placeholder="Informe sua Profissão" required ><br>
+                        <input type="text" id="inputProf" class="form-control" placeholder="Informe sua Profissão" required ng-model="usuario.profissao"><br>
 
                         <label for="inputEmail" class="">Email: *</label><br>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Informe seu e-mail" required ><br> 
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Informe seu e-mail" required ng-model="usuario.email"><br> 
                         <label for="inputEmail" class="">Digite seu e-mail novamente: *</label><br>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Informe seu e-mail" required ><br> 
-
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Informe seu e-mail" required ng-model="usuario.emailRepeat"><br> 
+						<p><span style="color:red" ng-if="usuario.email != usuario.emailRepeat">Os emails não são iguais</span></p>
+						
                         <label for="inputPassword" class="">Senha: *</label><br>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Informe sua senha com 4 dígitos" minlength="4" maxlength="4" required ><br>
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Informe sua senha com 4 dígitos" minlength="4" maxlength="4" required ng-model="usuario.senha"><br>
                         <label for="inputPassword" class="">Digite sua senha novamente: *</label><br>
-                        <input type="password" id="inputPassword" class="form-control" placeholder="Informe sua senha com 4 dígitos" minlength="4" maxlength="4" required ><br>
-
-                        <button class="button button-cadastrar" type="submit">Registar</button> <br>		
+                        <input type="password" id="inputPassword" class="form-control" placeholder="Informe sua senha com 4 dígitos" minlength="4" maxlength="4" required ng-model="usuario.senhaRepeat"><br>
+						<p><span style="color:red" ng-if="usuario.senha != usuario.senhaRepeat">As senhas não são iguais</span></p>
+                        <button class="button button-cadastrar" type="submit" ng-click="registrar()">Registar</button> <br>		
                     </form>
                 </div>
 
