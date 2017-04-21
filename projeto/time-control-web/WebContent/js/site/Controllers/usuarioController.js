@@ -35,6 +35,7 @@ angular.module("timeControl").controller("usuarioController", ['$scope', '$http'
 	
 			$http(req).then(function(response){
 				alert("Salvo com Sucesso!");
+				$location.path('/login');
 			}, function(response){
 				if(response.status = 409){
 					alert("Já existe usuário cadastrado para esse email!");
