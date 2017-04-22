@@ -5,10 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
 import br.com.timecontrol.model.Atividade;
+import br.com.timecontrol.model.Usuario;
 
 @Repository
 public class AtividadeRepository{
@@ -40,10 +42,12 @@ public class AtividadeRepository{
 		manager.remove(atividade);
  
 	}
- 
-	public List<Atividade> listarTodas(){
- 
-		return manager.createQuery("SELECT a FROM Atividade a ", Atividade.class).getResultList();	
+
+	public List<Atividade> listarTodasPorUsuario(Integer codigoUsuario) {
+		Query query = manager.createQuery("SELECT c FROM Atividade c WHERE c.usuario.codigo = :codigoUsuario",
+				Atividade.class);
+		query.setParameter("codigoUsuario", codigoUsuario);
+		return query.getResultList();
 	}
  
 }

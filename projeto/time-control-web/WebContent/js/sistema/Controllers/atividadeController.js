@@ -1,5 +1,5 @@
 angular.module("timeControl").controller("atividadeController", function($scope){
-
+	
   $scope.atividades=[
     {
     "id": 1,

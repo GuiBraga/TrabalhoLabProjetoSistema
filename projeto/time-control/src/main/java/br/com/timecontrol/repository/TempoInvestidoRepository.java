@@ -16,8 +16,8 @@ public class TempoInvestidoRepository{
 	@PersistenceContext(type = PersistenceContextType.EXTENDED)
 	private EntityManager manager;
  
+	@javax.transaction.Transactional
 	public void salvar(TempoInvestido tempoInvestido){
- 
 		manager.persist(tempoInvestido);		
 	}
  

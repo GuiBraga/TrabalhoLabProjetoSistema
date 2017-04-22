@@ -29,9 +29,9 @@ public class AtividadeController {
 		return atividade;
 	}
 	
-	@RequestMapping(value ="/todos", method= RequestMethod.GET)
-	public List<Atividade> listarTodas(){
-		List<Atividade> atividades = atividadeRepository.listarTodas();
+	@RequestMapping(value ="/{codigoUsuario}/todos", method= RequestMethod.GET)
+	public List<Atividade> listarTodas(@PathVariable Integer codigoUsuario){
+		List<Atividade> atividades = atividadeRepository.listarTodasPorUsuario(codigoUsuario);
 		return atividades;
 	}
  

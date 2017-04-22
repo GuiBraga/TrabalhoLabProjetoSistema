@@ -19,14 +19,7 @@ public class TempoInvestido {
 	private Integer codigo;
 	
 	@ManyToOne
-	private Dia dia;
-	
-	@ManyToOne
 	private Atividade atividade;
-	
-	@Temporal(TemporalType.TIME)
-	@Column
-	private Date horasGastas;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column
@@ -35,16 +28,18 @@ public class TempoInvestido {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column
 	private Date dataFim;
-
+	
+	@Column
+	private String descricao;
+	
 	public TempoInvestido() {
 	}
 
-	public TempoInvestido(Dia dia, Atividade atividade, Date horasGastas, Date dataInicio, Date dataFim) {
-		this.dia = dia;
+	public TempoInvestido(Atividade atividade, Date dataInicio, Date dataFim, String descricao) {
 		this.atividade = atividade;
-		this.horasGastas = horasGastas;
 		this.dataInicio = dataInicio;
 		this.dataFim = dataFim;
+		this.descricao = descricao;
 	}
 
 	public Integer getCodigo() {
@@ -55,28 +50,12 @@ public class TempoInvestido {
 		this.codigo = codigo;
 	}
 
-	public Dia getDia() {
-		return this.dia;
-	}
-
-	public void setDia(Dia dia) {
-		this.dia = dia;
-	}
-
 	public Atividade getAtividade() {
 		return this.atividade;
 	}
 
 	public void setAtividade(Atividade atividade) {
 		this.atividade = atividade;
-	}
-
-	public Date getHorasGastas() {
-		return this.horasGastas;
-	}
-
-	public void setHorasGastas(Date horasGastas) {
-		this.horasGastas = horasGastas;
 	}
 
 	public Date getDataInicio() {
@@ -93,6 +72,14 @@ public class TempoInvestido {
 
 	public void setDataFim(Date dataFim) {
 		this.dataFim = dataFim;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 }
