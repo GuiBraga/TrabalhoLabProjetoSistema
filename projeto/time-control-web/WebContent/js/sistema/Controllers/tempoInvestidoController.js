@@ -8,8 +8,15 @@ angular.module("timeControl").controller("tempoInvestidoController", ['$scope', 
 	}, function myError(response) {
 	});
 	
+	$scope.$on('go', function(event, args) {
+		$scope.tempoInvestido = { dataInicio: args.argument.inicio, dataFim: args.argument.fim};
+	});
+	
 	$scope.editar = function(atividade){
 		$scope.tempoInvestido = {atividade:atividade};
+		$scope.isEdit = true;
+		$rootScope.start = null;
+		$rootScope.end = null;
 	}
 	
 	$scope.salvar = function(){

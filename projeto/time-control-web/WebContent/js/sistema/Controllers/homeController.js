@@ -1,4 +1,4 @@
-angular.module("timeControl").controller("homeController", function($scope){
+angular.module("timeControl").controller("homeController", ["$scope", "$rootScope", function($scope, $rootScope){
   
   $("#calendar").fullCalendar({
 			locale: "pt-br",
@@ -15,8 +15,8 @@ angular.module("timeControl").controller("homeController", function($scope){
 			selectable: true,
 			selectHelper: true,
 			select: function(start, end) {
-				$("#modal-nova-atividade").modal("show");
-
+				$("#modal-tempo-investido").modal("show");
+				$rootScope.$broadcast('go', { argument: {inicio: start._d, fim:end._d}});
 				// var title = prompt('Event Title:');
 				// var eventData;
 				// if (title) {
@@ -55,4 +55,4 @@ angular.module("timeControl").controller("homeController", function($scope){
 
     $(".fc-time-grid-container").height("498px");
 
- });
+ }]);

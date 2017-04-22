@@ -10,17 +10,10 @@
       <div class="modal-body">
         <form action="" method="POST">
           <div class="row">
-            <div class="form-group col-xs-12 col-md-10">
-              <label>Nome da atividade:</label>
-              <input required  disabled type="text" name="nomeAtividade" class="form-control" placeholder="" ng-model="tempoInvestido.atividade.nome">
-            </div>
-             <div class="form-group col-xs-12 col-md-2">
-              <label>Prioridade:</label>
-              <select disabled name="prioridadeAtividade" class="form-control">
-                <option>Selecione</option>
-                <option class="baixa" value="0">Baixa</option>
-                <option class="media" value="1">Média</option>
-                <option class="alta" value="2">Alta</option>
+            <div class="form-group col-xs-12 col-md-12">
+              <label>Atividade:</label>
+              <select ng-disabled="isEdit" name="Atividade" class="form-control" ng-model="tempoInvestido.atividade.nome">
+              <option ng-repeat="atividade in atividades">{{atividade.nome}}</option>
               </select>
             </div>
             
