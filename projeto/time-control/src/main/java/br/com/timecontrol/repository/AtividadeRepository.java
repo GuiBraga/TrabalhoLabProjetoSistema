@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContextType;
 import org.springframework.stereotype.Repository;
 
 import br.com.timecontrol.model.Atividade;
+import br.com.timecontrol.model.Usuario;
 
 @Repository
 public class AtividadeRepository{
@@ -16,8 +17,8 @@ public class AtividadeRepository{
 	@PersistenceContext(type = PersistenceContextType.EXTENDED)
 	private EntityManager manager;
  
+	@javax.transaction.Transactional
 	public void salvar(Atividade atividade){
- 
 		manager.persist(atividade);		
 	}
  

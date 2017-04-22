@@ -6,6 +6,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.timecontrol.model.Atividade;
+import br.com.timecontrol.model.Usuario;
 import br.com.timecontrol.repository.AtividadeRepository;
 
 @RestController
@@ -34,17 +37,17 @@ public class AtividadeController {
 		List<Atividade> atividades = atividadeRepository.listarTodas();
 		return atividades;
 	}
- 
-	@RequestMapping(value="/", method= RequestMethod.POST)
-	public @ResponseBody ResponseBuilder criar(@RequestBody Atividade atividade){
-		
+	
+	@RequestMapping(value="/", method= RequestMethod.POST, headers = "Content-type=application/json", consumes = "application/json")
+	public ResponseEntity<Atividade> criar(@RequestBody Atividade atividade){
+	
 		try {
 			atividadeRepository.salvar(atividade);
-		}
+		}	
 		catch (Exception e) {
-			return null;
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return Response.ok("OK", "response");
+		return new ResponseEntity<>(atividade, HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="/", method= RequestMethod.PUT)
