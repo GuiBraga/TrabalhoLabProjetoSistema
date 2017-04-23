@@ -1,18 +1,11 @@
-<link rel="stylesheet" href="css/sistema.css">
-<script src="js/sistema/init.js" charset="utf-8"></script>
-<div ng-include="'layout/sistema/header.html'" ></div>
-<div ng-include="'layout/sistema/atividades/modal-atividade.html'" ></div>
-<div ng-include="'layout/sistema/tempo_investido/modal-tempo-investido.html'" ></div>
 
-<main>
-  <div ng-include="'layout/sistema/menu.html'" ></div>
   <section>
     <h1>Lista de Tempo Investido</h1>
     <table class="table table-condensed table-hover">
     <thead>
       <tr>
-        <th>Nome Atividade</th> 
-        <th>Descrição Atividade</th> 
+        <th>Nome Atividade</th>
+        <th>Descrição Atividade</th>
         <th>Ações</th>
       </tr>
     </thead>
@@ -26,9 +19,8 @@
           </td>
       </tr>
     </tbody>
-  </table> 
+  </table>
 
   <ui-confirmacao identificador="excluir"  fechar="Não"  confirmar="Sim"  titulo="Atenção" mensagem="Tem certeza que deseja excluir?"></ui-confirmacao>
 
   </section>
-</main>

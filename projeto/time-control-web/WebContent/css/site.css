@@ -1,4 +1,7 @@
-.home{
+body{
+  background-color: #FFF;
+  }
+  .home{
     background:url('../img/banner_timeControl.gif') no-repeat;
     background-size: cover;
     height: 670px;
@@ -99,6 +102,7 @@ header.header-page:hover .nav>li:not(.active)>a:focus, header.header-page:hover 
 }
 main{
   margin-top: 150px;
+   margin-left: 0;
 }
 footer{
     padding: 30px 0;
@@ -286,8 +290,11 @@ button.button.button-cadastrar:hover {
   text-align: right;
 }
 
-
+.erro{
+  background-color: transparent;
+}
 .form-signin {
+   padding-bottom: 90px;
     max-width: 600px;
     font-size: 12px;
 }

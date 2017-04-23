@@ -1,17 +1,15 @@
-<link rel="stylesheet" href="css/site.css">
-<script src="js/site/init.js" charset="utf-8"></script>
 <div ng-include="'layout/site/header.html'" ></div>
-<main>
+<link rel="stylesheet" href="css/site.css">
     <section class="loginTimeControl row">
         <div class="col-md-12 body-login">
             <div id="labelLogin">
                 Login
             </div>
             <div id="labelRegistre">
-                Novo no TimeControl? 
+                Novo no TimeControl?
                 <a href="#/cadastro" id="registre-login"> &nbsp; Registre-se</a>
             </div>
-            
+
             <div id="login-layout">
                 <form class="form-signin center-block" name="login">
                     <label for="inputEmail" class="">Email:</label><br>
@@ -21,8 +19,7 @@
 					<span style="color:red" ng-if="loginInvalid">Email e/ou senha invalidos</span>
                     <button class="button button-login" type="submit" ng-click="logar()">Entrar</button>
                 </form>
-            </div>  
+            </div>
         </div>
     </section>
-</main>
 <div ng-include="'layout/site/footer.html'"></div>

@@ -1,18 +1,16 @@
-<link rel="stylesheet" href="css/site.css">
-<script src="js/site/init.js" charset="utf-8"></script>
 <div ng-include="'layout/site/header.html'" ></div>
-    <main>
+<link rel="stylesheet" href="css/site.css">
         <section class="cadastroTimeControl row">
             <div class="col-md-12 body-cadastro " >
                 <div id="labelReg1">
                     Registre-se
                 </div>
-                
+
                 <div id="labelReg2">
-                    Já tem uma conta? 
+                    Já tem uma conta?
                     <a href="#/login" id="registre-cadastro">&nbsp;Login</a><br><br>
                 </div>
-                
+
 
                  <div id="cadastrar-layout">
                     <form class="form-cadastro">
@@ -25,22 +23,22 @@
                         <input type="text" id="inputProf" class="form-control" placeholder="Informe sua Profissão" required ng-model="usuario.profissao"><br>
 
                         <label for="inputEmail" class="">Email: *</label><br>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Informe seu e-mail" required ng-model="usuario.email"><br> 
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Informe seu e-mail" required ng-model="usuario.email"><br>
                         <label for="inputEmail" class="">Digite seu e-mail novamente: *</label><br>
-                        <input type="email" id="inputEmail" class="form-control" placeholder="Informe seu e-mail" required ng-model="usuario.emailRepeat"><br> 
+                        <input type="email" id="inputEmail" class="form-control" placeholder="Informe seu e-mail" required ng-model="usuario.emailRepeat"><br>
 						<p><span style="color:red" ng-if="usuario.email != usuario.emailRepeat">Os emails não são iguais</span></p>
-						
+
                         <label for="inputPassword" class="">Senha: *</label><br>
                         <input type="password" id="inputPassword" class="form-control" placeholder="Informe sua senha com 4 dígitos" minlength="4" maxlength="4" required ng-model="usuario.senha"><br>
                         <label for="inputPassword" class="">Digite sua senha novamente: *</label><br>
                         <input type="password" id="inputPassword" class="form-control" placeholder="Informe sua senha com 4 dígitos" minlength="4" maxlength="4" required ng-model="usuario.senhaRepeat"><br>
 						<p><span style="color:red" ng-if="usuario.senha != usuario.senhaRepeat">As senhas não são iguais</span></p>
-                        <button class="button button-cadastrar" type="submit" ng-click="registrar()">Registar</button> <br>		
+                        <button class="button button-cadastrar" type="submit" ng-click="registrar()">Registar</button> <br>
                     </form>
                 </div>
 
                 <div id="labelTermoUso">
-                    <text>Ao se inscrever, você concorda com os 
+                    <text>Ao se inscrever, você concorda com os
                         <a href="#" style="color: #33ccff"> Termos de Uso</a>,<br>
                         <!-- <a href="#" style="color: #33ccff"> Política de Privacidade </a>
                         e a receber emails com novidades do TimeControl. -->
@@ -48,5 +46,4 @@
                 </div>
             </div>
         </section>
-    </main>
-<div ng-include="'layout/site/footer.html'"></div>
+ <div ng-include="'layout/site/footer.html'" ></div>

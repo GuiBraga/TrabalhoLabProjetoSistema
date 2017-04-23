@@ -7,8 +7,9 @@
     <link href='css/lib/fullcalendar.min.css' rel='stylesheet' />
 
     <link rel="stylesheet" href="css/lib/bootstrap.min.css">
+
     <link rel="stylesheet" href="css/style.css">
-    
+    <link rel="stylesheet" href="css/site.css">
 
     <!-- ANGULAR ARQUIVOS -->
     <script src="js/lib/angular/angular.min.js" charset="utf-8"></script>
@@ -21,18 +22,8 @@
     <script src="js/routeConfig.js" charset="utf-8"></script>
 
       <!--Controllers site-->
-    <script src="js/site/Controllers/timeControlController.js" charset="utf-8"></script>
-    <script src="js/site/Controllers/paginaController.js" charset="utf-8"></script>
-    <script src="js/site/Controllers/usuarioController.js" charset="utf-8"></script>
-
-      <!--Controllers sistema-->
-    <script src="js/sistema/Controllers/timeControlController.js" charset="utf-8"></script>
-    <script src="js/sistema/Controllers/homeController.js" charset="utf-8"></script>
-    <script src="js/sistema/Controllers/atividadeController.js" charset="utf-8"></script>
-    <script src="js/sistema/Controllers/tempoInvestidoController.js" charset="utf-8"></script>
-    <script src="js/sistema/Controllers/historicoController.js" charset="utf-8"></script>
-    <script src="js/sistema/Controllers/relatoriosController.js" charset="utf-8"></script>
-    <script src="js/sistema/Directives/uiConfirmacao.js" charset="utf-8"></script>
+    <script src="js/Controllers/timeControlController.js" charset="utf-8"></script>
+    <script src="js/Controllers/paginaController.js" charset="utf-8"></script>
 
     <!-- fim angular -->
 
@@ -41,11 +32,13 @@
     <script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
     <script src='js/lib/fullcalendar.js'></script>
     <script src='js/lib/locale-all.js'></script>
-    
+
     <title>TimeControl</title>
 
   </head>
-  <body ng-app="timeControl">
-     <ng-view/>
+  <body>
+    <div ng-include="'layout/site/header.html'"></div>
+     <ng-view />
+     <div ng-include="'layout/site/footer.html'"></div>
   </body>
 </html>

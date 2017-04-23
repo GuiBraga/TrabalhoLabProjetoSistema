@@ -16,15 +16,19 @@
     <script src="js/lib/angular/angular-route-.js" charset="utf-8"></script>
     <script src="js/lib/angular/angular-messages.js" charset="utf-8"></script>
     <script src="js/lib/ng-google-chart.min.js" charset="utf-8"></script>
-    <script src="js/sistema/timeControl.js" charset="utf-8"></script>
-    <script src="js/sistema/Controllers/timeControlController.js" charset="utf-8"></script>
-    <script src="js/sistema/Controllers/homeController.js" charset="utf-8"></script>
-    <script src="js/sistema/Controllers/atividadeController.js" charset="utf-8"></script>
-    <script src="js/sistema/Controllers/tempoInvestidoController.js" charset="utf-8"></script>
-    <script src="js/sistema/Controllers/historicoController.js" charset="utf-8"></script>
-    <script src="js/sistema/Controllers/relatoriosController.js" charset="utf-8"></script>
-    <script src="js/sistema/Config/routeConfig.js" charset="utf-8"></script>
-    <script src="js/sistema/Directives/uiConfirmacao.js" charset="utf-8"></script>
+    <script src="js/timeControl.js" charset="utf-8"></script>
+
+    <script src="js/Services/loginService.js" charset="utf-8"></script>
+    <script src="js/Controllers/timeControlController.js" charset="utf-8"></script>
+    <script src="js/Controllers/homeController.js" charset="utf-8"></script>
+    <script src="js/Controllers/atividadeController.js" charset="utf-8"></script>
+    <script src="js/Controllers/tempoInvestidoController.js" charset="utf-8"></script>
+    <script src="js/Controllers/historicoController.js" charset="utf-8"></script>
+    <script src="js/Controllers/relatoriosController.js" charset="utf-8"></script>
+    <script src="js/Controllers/erroController.js" charset="utf-8"></script>
+      <script src="js/Controllers/usuarioController.js" charset="utf-8"></script>
+    <script src="js/routeConfig.js" charset="utf-8"></script>
+    <script src="js/Directives/uiConfirmacao.js" charset="utf-8"></script>
 
 
     <!-- fim angular -->
@@ -35,18 +39,20 @@
     <script src='js/lib/fullcalendar.js'></script>
     <script src='js/lib/locale-all.js'></script>
     <script src="js/lib/bootstrap.min.js" charset="utf-8"></script>
-    <script src="js/sistema/init.js" charset="utf-8"></script>
+    <script src="js/init.js" charset="utf-8"></script>
     <title>TimeControl</title>
   </head>
   <body ng-controller="timeControlController">
-  <div ng-include="'layout/sistema/header.html'" ></div>
-  <div ng-include="'layout/sistema/atividades/modal-atividade.html'" ></div>
-  <div ng-include="'layout/sistema/tempo_investido/modal-tempo-investido.html'" ></div>
+  <div ng-if="showLayoutSistema" ng-include="'layout/sistema/header.html'" ></div>
+  <div ng-if="showLayoutSistema" ng-include="'layout/sistema/atividades/modal-atividade.html'" ></div>
+  <div ng-if="showLayoutSistema" ng-include="'layout/sistema/tempo_investido/modal-tempo-investido.html'" ></div>
 
-    <main>
-      <div ng-include="'layout/sistema/menu.html'" ></div>
-     <ng-view/>
-    </main>
+  <main>
+    <div ng-if="showLayoutSistema" ng-include="'layout/sistema/menu.html'" ></div>
+   <ng-view/>
+
+  </main>
+
 
 
   </body>
