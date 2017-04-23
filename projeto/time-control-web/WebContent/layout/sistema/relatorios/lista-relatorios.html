@@ -10,17 +10,17 @@
             <div google-chart chart="rankingGrafico" class="col-md-12" style="height:200px"></div>
       </div>
 
-    <div ng-if="graficosPrioridadeAlta.length" class="row charts-semanais">
+    <div ng-if="graficosPrioridadeAlta.length" class="charts-semanais">
       <h4>Horas Gastas na semana por atividades com PRIORIDADE ALTA</h4>
       <div ng-repeat="(key, grafico) in graficosPrioridadeAlta" google-chart chart="{{grafico}}" class="col-md-6 col-xs-12" style="height:200px"></div>
     </div>
 
-    <div ng-if="graficosPrioridadeMedia.length" class="row charts-semanais">
+    <div ng-if="graficosPrioridadeMedia.length" class="charts-semanais">
       <h4>Horas Gastas na semana por atividades com PRIORIDADE MEDIA</h4>
       <div ng-repeat="(key, grafico) in graficosPrioridadeMedia" google-chart chart="{{grafico}}" class="col-md-6 col-xs-12" style="height:200px"></div>
     </div>
 
-    <div ng-if="graficosPrioridadeBaixa.length" class="row charts-semanais">
+    <div ng-if="graficosPrioridadeBaixa.length" class="charts-semanais">
       <h4>Horas Gastas na semana por atividades com PRIORIDADE BAIXA</h4>
       <div ng-repeat="(key, grafico) in graficosPrioridadeBaixa" google-chart chart="{{grafico}}" class="col-md-6 col-xs-12" style="height:200px"></div>
     </div>
