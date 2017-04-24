@@ -1,0 +1,26 @@
+
+  <section>
+    <h1>Lista de Tempo Investido</h1>
+    <table class="table table-condensed table-hover">
+    <thead>
+      <tr>
+        <th>Nome Atividade</th>
+        <th>Descrição Atividade</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="atividade in atividades">
+          <td>{{atividade.nome}}</td>
+          <td>{{atividade.descricao}}</td>
+          <td>
+            <span class="glyphicon glyphicon-time" title="Adicionar novo tempo"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-tempo-investido" ng-click="editar(atividade)"></span>
+<!--             <span class="glyphicon glyphicon-trash" aria-hidden="true" data-placement="top" title="Excluir" aria-hidden="true" data-toggle="modal" data-target="#excluir"></span> -->
+          </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ui-confirmacao identificador="excluir"  fechar="Não"  confirmar="Sim"  titulo="Atenção" mensagem="Tem certeza que deseja excluir?"></ui-confirmacao>
+
+  </section>

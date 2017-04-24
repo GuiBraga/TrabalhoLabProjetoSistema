@@ -1,0 +1,33 @@
+
+  <section>
+    <h1>Relatório</h1>
+    <div>
+
+
+  <section class="charts">
+      <div class="col-xs-12 cold-md-12 charts-semanais">
+        <h4>Ranking de atividades que demandaram mais tempo na semana atual</h4>
+            <div google-chart chart="rankingGrafico" class="col-md-12" style="height:200px"></div>
+      </div>
+
+      <div ng-if="graficosPrioridadeAlta.length" class="col-xs-12 cold-md-12 charts-semanais">
+        <h4>Horas Gastas na semana por atividades com PRIORIDADE ALTA</h4>
+        <div ng-repeat="(key, grafico) in graficosPrioridadeAlta" google-chart chart="{{grafico}}" class="col-md-6 col-xs-12" style="height:200px"></div>
+      </div>
+
+
+    <div ng-if="graficosPrioridadeMedia.length" class="col-xs-12 cold-md-12  charts-semanais">
+      <h4>Horas Gastas na semana por atividades com PRIORIDADE MEDIA</h4>
+      <div ng-repeat="(key, grafico) in graficosPrioridadeMedia" google-chart chart="{{grafico}}" class="col-md-6 col-xs-12" style="height:200px"></div>
+    </div>
+
+    <div ng-if="graficosPrioridadeBaixa.length" class="col-xs-12 cold-md-12 charts-semanais">
+      <h4>Horas Gastas na semana por atividades com PRIORIDADE BAIXA</h4>
+      <div ng-repeat="(key, grafico) in graficosPrioridadeBaixa" google-chart chart="{{grafico}}" class="col-md-6 col-xs-12" style="height:200px"></div>
+    </div>
+
+
+  </section>
+  </div>
+  <!--<ui-confirmacao identificador="excluir"  fechar="Não"  confirmar="Sim"  titulo="Atenção" mensagem="Tem certeza que deseja excluir?"></ui-confirmacao> -->
+  </section>

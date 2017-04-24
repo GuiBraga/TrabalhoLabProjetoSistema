@@ -1,4 +1,10 @@
+<link rel="stylesheet" href="css/sistema.css">
+<script src="js/sistema/init.js" charset="utf-8"></script>
+<div ng-include="'layout/sistema/header.html'" ></div>
+<div ng-include="'layout/sistema/atividades/modal-atividade.html'" ></div>
+<div ng-include="'layout/sistema/tempo_investido/modal-tempo-investido.html'" ></div>
 
+<main>
 <div ng-include="'layout/sistema/menu.html'" ></div>
 <div id='calendar'></div>
 	<script>
@@ -15,7 +21,7 @@
 
     $('[data-toggle="tooltip"]').tooltip();
 
-
+		
 		$('#calendar').fullCalendar({
 			locale: "pt-br",
 			defaultView: 'agendaDay',
@@ -27,7 +33,7 @@
 				right: 'agendaWeek,agendaDay'
 			},
 			defaultDate: new Date(),
-			navLinks: true,
+			navLinks: true, 
 			selectable: true,
 			selectHelper: true,
 			select: function(start, end) {
@@ -41,7 +47,7 @@
 				// 		start: start,
 				// 		end: end
 				// 	};
-				// 	$('#calendar').fullCalendar('renderEvent', eventData, true);
+				// 	$('#calendar').fullCalendar('renderEvent', eventData, true); 
 				// }
 				// $('#calendar').fullCalendar('unselect');
 			},
@@ -71,3 +77,4 @@
 	});
 
 	</script>
+</main>
