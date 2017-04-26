@@ -32,9 +32,9 @@ public class AtividadeController {
 		return atividade;
 	}
 	
-	@RequestMapping(value ="/todos", method= RequestMethod.GET)
-	public List<Atividade> listarTodas(){
-		List<Atividade> atividades = atividadeRepository.listarTodas();
+	@RequestMapping(value ="/{codigoUsuario}/todos", method= RequestMethod.GET)
+	public List<Atividade> listarTodas(@PathVariable Integer codigoUsuario){
+		List<Atividade> atividades = atividadeRepository.listarTodasPorUsuario(codigoUsuario);
 		return atividades;
 	}
 	
@@ -42,6 +42,10 @@ public class AtividadeController {
 	public ResponseEntity<Atividade> criar(@RequestBody Atividade atividade){
 	
 		try {
+			Atividade atividadeExistente = atividadeRepository.buscarAtividadePorNome(atividade.getNome());
+			if(atividadeExistente != null){
+				return new ResponseEntity<>(HttpStatus.CONFLICT);
+			}
 			atividadeRepository.salvar(atividade);
 		}	
 		catch (Exception e) {
@@ -50,7 +54,7 @@ public class AtividadeController {
 		return new ResponseEntity<>(atividade, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value="/", method= RequestMethod.PUT)
+	@RequestMapping(value="/{id}", method= RequestMethod.PUT, headers = "Content-type=application/json", consumes = "application/json")
 	public @ResponseBody ResponseBuilder alterar(@RequestBody Atividade atividade){
 		
 		try {

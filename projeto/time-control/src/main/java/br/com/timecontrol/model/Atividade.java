@@ -26,9 +26,6 @@ public class Atividade{
 	private String descricao;
 	
 	@Column
-	private int prioridade;
-	
-	@Column
 	private String categoria;
 
 	public Atividade() {
@@ -38,7 +35,6 @@ public class Atividade{
 		this.usuario = usuario;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.prioridade = prioridade;
 		this.categoria = categoria;
 	}
 
@@ -76,14 +72,6 @@ public class Atividade{
 
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
-	}
-
-	public int getPrioridade() {
-		return this.prioridade;
-	}
-
-	public void setPrioridade(int prioridade) {
-		this.prioridade = prioridade;
 	}
 
 	public String getCategoria() {

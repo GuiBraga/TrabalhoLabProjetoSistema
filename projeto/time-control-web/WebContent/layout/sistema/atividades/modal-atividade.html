@@ -8,57 +8,34 @@
         <h4 class="modal-title">Cadastro de Atividade</h4>
       </div>
       <div class="modal-body" >
-        <form action="" method="POST">
+        <form action="">
+        <input type="hidden" ng-model="codigoAtividade" />
           <div class="row">
             <div class="form-group col-xs-12 col-md-10">
               <label>Nome da atividade*:</label>
-              <input required type="text" name="nomeAtividade" ng-model="nomeAtividade" class="form-control" placeholder="Informe o nome da atividade" required>
+              <input type="text" name="nomeAtividade" ng-model="nomeAtividade" class="form-control" placeholder="Informe o nome da atividade" required ng-disabled="!isEdit">
             </div>
-             <!-- <div class="form-group col-xs-6 col-md-2">
-              <label>Tempo gasto:</label>
-              <input required type="time" name="tempo-gastoAtividade" ng-model="tempo-gastoAtividade" class="form-control" placeholder="">
-            </div> -->
              <div class="form-group col-xs-12 col-md-2">
-              <label>Prioridade:</label>
-              <select name="prioridadeAtividade" ng-model="prioridadeAtividade" class="form-control">
+              <label>Categoria:</label>
+              <select name="prioridadeAtividade" ng-model="categoriaAtividade" class="form-control" ng-disabled="!isEdit">
                 <option>Selecione</option>
-                <option class="baixa" value="0">Baixa</option>
-                <option class="media" value="1">Média</option>
-                <option class="alta" value="2">Alta</option>
+                <option  value="trabalho">Trabalho</option>
+                <option  value="lazer">Lazer</option>
               </select>
             </div>
-            
-          </div>
-           <div class="row">
-             
-            <!--<div class="form-group col-xs-6 col-md-3">
-              <label>Data Início:</label>
-              <input required type="date" name="data-inicioAtividade" class="form-control" placeholder="">
-            </div>
-            <div class="form-group col-xs-6 col-md-3">
-              <label>Hora Início:</label>
-              <input required type="time" name="hora-inicioAtividade" class="form-control" placeholder="">
-            </div>
-             <div class="form-group col-xs-6 col-md-3">
-              <label>Data Final:</label>
-              <input required type="date" name="data-finalAtividade" class="form-control" placeholder="">
-            </div>
-            <div class="form-group col-xs-6 col-md-3">
-              <label>Hora Final:</label>
-              <input required type="time" name="hora-finalAtividade" class="form-control" placeholder="">
-            </div>-->
           </div>
           <div class="row">
             <div class="form-group col-xs-12 col-md-12">
               <label>Descrição*:</label>
-              <textarea class="textarea-observacao" ng-model="descricaoAtividade" rows="10" name="descricaoAtividade" placeholder="Informe a descrição da atividade" required></textarea>
+              <textarea class="textarea-observacao" ng-model="descricaoAtividade" rows="10" name="descricaoAtividade" placeholder="Informe a descrição da atividade" required ng-disabled="!isEdit"></textarea>
             </div>            
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secundario btn-radius" data-dismiss="modal" type="button">Cancelar</button>
-        <button class="btn btn-principal btn-radius" type="submit" ng-click="salvar()" data-dismiss="modal">Salvar</button>
+        <button class="btn btn-principal btn-radius" type="submit" ng-click="salvar()" data-dismiss="modal" ng-disabled="!isEdit" ng-if="!editAtividade">Salvar</button>
+        <button class="btn btn-principal btn-radius" type="submit" ng-click="editar(codigoAtividade)" data-dismiss="modal" ng-if="editAtividade">Salvar Altera��es</button>
       </div>
     </div>
   </div>

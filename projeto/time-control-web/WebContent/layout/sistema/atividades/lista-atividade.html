@@ -13,27 +13,17 @@
       <tr>
         <th>Nome Atividade</th> 
         <th>Descrição Atividade</th> 
-             
-           <!--<th>
-          Tempo Gasto no Dia<span class="glyphicon glyphicon-question-sign tooltip-table" aria-hidden="true" data-placement="top" title="O tempo gasto para exercer cada atividade considerando o dia ATUAL."></span>
-          </th>
-           <th>
-          Tempo Gasto na Semana<span class="glyphicon glyphicon-question-sign tooltip-table" aria-hidden="true" data-placement="top" title="O tempo gasto para exercer cada atividade considerando a semana ATUAL."></span>
-          </th>
-           <th>
-          Tempo Gasto no Mês<span class="glyphicon glyphicon-question-sign tooltip-table" aria-hidden="true" data-placement="top" title="O tempo gasto para exercer cada atividade considerando o mês ATUAL."></span>
-          </th>-->
         <th>Ações</th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="atividade in atividades">
-        <td>{{atividade["nomeAtividade"]}}</td>
-        <td>{{atividade["descricaoAtividade"]}}</td>
+        <td>{{atividade["nome"]}}</td>
+        <td>{{atividade["descricao"]}}</td>
         <td>
-          <span class="glyphicon glyphicon-eye-open" title="Visualizar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
-          <span class="glyphicon glyphicon-pencil" title="Editar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>        
-          <span class="glyphicon glyphicon-trash" aria-hidden="true" data-placement="top" title="Excluir" aria-hidden="true" data-toggle="modal" data-target="#excluir"></span>
+          <span class="glyphicon glyphicon-eye-open" title="Visualizar" ng-click="carregarAtividadeModal(atividade.codigo, true)" data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
+          <span class="glyphicon glyphicon-pencil" title="Editar" ng-click="carregarAtividadeModal(atividade.codigo, false)" data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>        
+          <span class="glyphicon glyphicon-trash" aria-hidden="true" data-placement="top" title="Excluir" ng-click="excluir(atividade.codigo)" aria-hidden="true" data-toggle="modal" data-target="#excluir"></span>
 
         </td>
       </tr>

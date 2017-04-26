@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
@@ -27,7 +28,8 @@ public class AtividadeRepository{
  
 		manager.merge(atividade);		
 	}
-
+	
+	@javax.transaction.Transactional
 	public Atividade consultarPorCodigo(int codigo){
  
 		return manager.find(Atividade.class, codigo);		
@@ -41,10 +43,23 @@ public class AtividadeRepository{
 		manager.remove(atividade);
  
 	}
- 
-	public List<Atividade> listarTodas(){
- 
-		return manager.createQuery("SELECT a FROM Atividade a ", Atividade.class).getResultList();	
+
+	public List<Atividade> listarTodasPorUsuario(Integer codigoUsuario) {
+		Query query = manager.createQuery("SELECT c FROM Atividade c WHERE c.usuario.codigo = :codigoUsuario",
+				Atividade.class);
+		query.setParameter("codigoUsuario", codigoUsuario);
+		return query.getResultList();
+	}
+	
+	public Atividade buscarAtividadePorNome(String nome) {
+		Query query = manager.createQuery("SELECT c FROM Atividade c WHERE c.nome = :nome",
+				Atividade.class);
+		query.setParameter("nome", nome);
+		try {
+			return (Atividade) query.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
 	}
  
 }
