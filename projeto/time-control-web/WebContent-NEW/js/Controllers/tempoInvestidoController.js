@@ -5,6 +5,7 @@ angular.module("timeControl").controller("tempoInvestidoController", ['$scope', 
 		url : "http://localhost:8080/time-control/atividade/" + $rootScope.usuario.codigo + "/todos"
 	}).then(function mySucces(response) {
 		$scope.atividades = response.data;
+		console.log(response.data);
 	}, function myError(response) {
 	});
 	
@@ -13,7 +14,8 @@ angular.module("timeControl").controller("tempoInvestidoController", ['$scope', 
 	});
 	
 	$scope.editar = function(atividade){
-		$scope.tempoInvestido = {atividade:atividade};
+		$scope.tempoInvestido = null;
+		$scope.tempoInvestido = {atividade:atividade, dataInicio: null, dataFim: null};
 		$scope.isEdit = true;
 	}
 	

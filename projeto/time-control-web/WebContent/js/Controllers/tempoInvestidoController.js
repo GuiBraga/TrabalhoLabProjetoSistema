@@ -15,6 +15,8 @@ angular.module("timeControl").controller("tempoInvestidoController", ['$scope', 
 	$scope.editar = function(atividade){
 		$scope.tempoInvestido = {atividade:atividade};
 		$scope.isEdit = true;
+		$rootScope.start = null;
+		$rootScope.end = null;
 	}
 	
 	$scope.salvar = function(){
