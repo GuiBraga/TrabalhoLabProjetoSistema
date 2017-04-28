@@ -16,14 +16,14 @@
     <script src="js/lib/angular/angular-route-.js" charset="utf-8"></script>
     <script src="js/lib/angular/angular-messages.js" charset="utf-8"></script>
     <script src="js/lib/ng-google-chart.min.js" charset="utf-8"></script>
-    <script src="js/sistema/timeControl.js" charset="utf-8"></script>
+    <script src="js/timeControl.js" charset="utf-8"></script>
     <script src="js/sistema/Controllers/timeControlController.js" charset="utf-8"></script>
     <script src="js/sistema/Controllers/homeController.js" charset="utf-8"></script>
     <script src="js/sistema/Controllers/atividadeController.js" charset="utf-8"></script>
     <script src="js/sistema/Controllers/tempoInvestidoController.js" charset="utf-8"></script>
     <script src="js/sistema/Controllers/historicoController.js" charset="utf-8"></script>
     <script src="js/sistema/Controllers/relatoriosController.js" charset="utf-8"></script>
-    <script src="js/sistema/Config/routeConfig.js" charset="utf-8"></script>
+    <script src="js/routeConfig.js" charset="utf-8"></script>
     <script src="js/sistema/Directives/uiConfirmacao.js" charset="utf-8"></script>
 
 
@@ -45,6 +45,13 @@
 
     <main>
       <div ng-include="'layout/sistema/menu.html'" ></div>
+      <div class="alert alert-{{tipoMensagemUsuario}} alert-dismissible fade in" id="mensagemUsuario" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">×</span>
+         </button>
+         <strong>{{tituloMensagemParaUsuario}}</strong>
+          {{mensagemParaUsuario}}
+        </div>
      <ng-view/>
     </main>
 
