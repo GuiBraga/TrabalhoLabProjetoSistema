@@ -1,12 +1,9 @@
-angular.module("timeControl").controller("usuarioController", ['$scope', '$http', '$rootScope', '$location', '$route', '$timeout', function($scope, $http, $rootScope, $location, $route, $timeout) {
+angular.module("timeControl").controller("usuarioController", ['$scope', '$http', '$rootScope', '$location', function($scope, $http, $rootScope, $location) {
 	$(document).ready(function(){
 		$('.menu-topo').hide();
 		$('.sistema').hide();
 		$('.menu-topo').addClass('esconde');
 		$('.logo').addClass('usuario');
-
-		$('#mensagemUsuario').removeClass('in');
-
 	});
 	$scope.loginInvalid = false;
 
@@ -39,33 +36,13 @@ angular.module("timeControl").controller("usuarioController", ['$scope', '$http'
 					}
 
 			$http(req).then(function(response){
-				$rootScope.tipoMensagemUsuario = 'success';
-				$rootScope.tituloMensagemParaUsuario = '';
-				$rootScope.mensagemParaUsuario = 'Salvo com Sucesso!';
-
-				$('#mensagemUsuario').addClass('in');
-
-				$timeout(function(){$route.location();}, 5000);
-				//alert("Salvo com Sucesso!");
+				alert("Salvo com Sucesso!");
 				$location.path('/login');
 			}, function(response){
 				if(response.status = 409){
-					$rootScope.tipoMensagemUsuario = 'warning';
-					$rootScope.tituloMensagemParaUsuario = '';
-					$rootScope.mensagemParaUsuario = 'Já existe usuário cadastrado para esse email!';
-
-					$('#mensagemUsuario').addClass('in');
-
-					$timeout(function(){$route.location();}, 5000);
-					//alert("Já existe usuário cadastrado para esse email!");
+					alert("Já existe usuário cadastrado para esse email!");
 				}else{
-					$rootScope.tipoMensagemUsuario = 'danger';
-					$rootScope.tituloMensagemParaUsuario = 'Atenção';
-					$rootScope.mensagemParaUsuario = 'Erro ao Salvar, tente novamente!';
-					$('#mensagemUsuario').addClass('in');
-
-					$timeout(function(){$route.location();}, 5000);
-					//alert("Erro ao Salvar, tente novamente!");
+					alert("Erro ao Salvar, tente novamente!");
 				}
 			});
 		}

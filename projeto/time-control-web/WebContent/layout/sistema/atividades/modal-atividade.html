@@ -26,16 +26,16 @@
           </div>
           <div class="row">
             <div class="form-group col-xs-12 col-md-12">
-              <label>Descri&ccedil;&atilde;o*:</label>
-              <textarea class="textarea-observacao" ng-model="descricaoAtividade" rows="10" name="descricaoAtividade" placeholder="Informe a descri&ccedil;&atilde;o da atividade" required ng-disabled="!isEdit"></textarea>
-            </div>
+              <label>Descrição*:</label>
+              <textarea class="textarea-observacao" ng-model="descricaoAtividade" rows="10" name="descricaoAtividade" placeholder="Informe a descrição da atividade" required ng-disabled="!isEdit"></textarea>
+            </div>            
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button class="btn btn-secundario btn-radius" data-dismiss="modal" type="button">Cancelar</button>
         <button class="btn btn-principal btn-radius" type="submit" ng-click="salvar()" data-dismiss="modal" ng-disabled="!isEdit" ng-if="!editAtividade">Salvar</button>
-        <button class="btn btn-principal btn-radius" type="submit" ng-click="editar(codigoAtividade)" data-dismiss="modal" ng-if="editAtividade">Salvar Altera��es</button>
+        <button class="btn btn-principal btn-radius" type="submit" ng-click="editar(codigoAtividade)" data-dismiss="modal" ng-if="editAtividade">Salvar Altera��es</button>
       </div>
     </div>
   </div>
