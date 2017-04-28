@@ -8,7 +8,9 @@ angular.module('timeControl').directive('uiConfirmacao', function(){
 			fechar: '@',
 			confirmar: '@',
 			titulo: '@',
-			mensagem: '@'
+			mensagem: '@',
+			idexcluir: '@',
+			callback: '='
 		},
 		replace: true,
 	}
