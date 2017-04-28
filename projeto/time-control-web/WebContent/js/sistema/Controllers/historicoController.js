@@ -1,5 +1,9 @@
 angular.module("timeControl").controller("historicoController", function($scope){
 
+	$(document).ready(function(){
+		$('#mensagemUsuario').removeClass('in');
+	});
+	
   $scope.atividades=[
     {
     "id": 1,

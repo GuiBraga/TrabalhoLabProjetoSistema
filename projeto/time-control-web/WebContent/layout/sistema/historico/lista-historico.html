@@ -1,10 +1,19 @@
 <link rel="stylesheet" href="css/sistema.css">
 <script src="js/sistema/init.js" charset="utf-8"></script>
+<div ng-include="'layout/sistema/header.html'" ></div>
 <div ng-include="'layout/sistema/atividades/modal-atividade.html'" ></div>
 <div ng-include="'layout/sistema/tempo_investido/modal-tempo-investido.html'" ></div>
 
-
   <div ng-include="'layout/sistema/menu.html'" ></div>
+  
+<main>
+<div class="alert alert-{{tipoMensagemUsuario}} alert-dismissible fade in" id="mensagemUsuario" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">�</span>
+         </button>
+         <strong>{{tituloMensagemParaUsuario}}</strong>
+          {{mensagemParaUsuario}}
+        </div>
   <section>
     <h1>Histórico</h1>
     <table class="table table-condensed table-hover">
@@ -36,3 +45,5 @@
 
   <!--<ui-confirmacao identificador="excluir"  fechar="Não"  confirmar="Sim"  titulo="Atenção" mensagem="Tem certeza que deseja excluir?"></ui-confirmacao> -->
   </section>
+
+</main>

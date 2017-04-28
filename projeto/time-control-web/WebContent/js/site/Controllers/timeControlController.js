@@ -3,4 +3,8 @@ angular.module("timeControl").controller("timeControlController", function($scop
 
 	$('.menu-topo').removeClass('esconde');
 	$('.logo').removeClass('usuario');
+	
+	$(document).ready(function(){
+		$('#mensagemUsuario').removeClass('in');
+	});
 });

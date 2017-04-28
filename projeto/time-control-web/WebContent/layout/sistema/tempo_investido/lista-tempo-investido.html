@@ -4,8 +4,9 @@
 <div ng-include="'layout/sistema/atividades/modal-atividade.html'" ></div>
 <div ng-include="'layout/sistema/tempo_investido/modal-tempo-investido.html'" ></div>
 
-
   <div ng-include="'layout/sistema/menu.html'" ></div>
+  
+<main>
   <section>
     <h1>Lista de Tempo Investido</h1>
     <table class="table table-condensed table-hover">
@@ -29,3 +30,5 @@
   </table>
 <ui-confirmacao identificador="excluir"  idexcluir="{{idExcluir}}" callback="callbackModal" fechar="Não"  confirmar="Sim"  titulo="Atenção" mensagem="Tem certeza que deseja excluir?"></ui-confirmacao>
   </section>
+
+</main>
