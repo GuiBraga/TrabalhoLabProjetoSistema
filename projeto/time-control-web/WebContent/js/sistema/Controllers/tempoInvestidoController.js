@@ -1,5 +1,10 @@
-angular.module("timeControl").controller("tempoInvestidoController", ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope){ 
-	
+angular.module("timeControl").controller("tempoInvestidoController", ['$scope', '$http', '$rootScope','$route', '$timeout', function($scope, $http, $rootScope, $route, $timeout){
+
+
+	$(document).ready(function(){
+		$('#mensagemUsuario').removeClass('in');
+	});		
+
 	$http({
 		method : "GET",
 		url : "http://localhost:8080/time-control/atividade/" + $rootScope.usuario.codigo + "/todos"
@@ -7,9 +12,19 @@ angular.module("timeControl").controller("tempoInvestidoController", ['$scope', 
 		$scope.atividades = response.data;
 	}, function myError(response) {
 	});
+
+	$rootScope.$on('go', function(event, args) {
+		$scope.tempoInvestido = {};
+		$scope.tempoInvestido = { atividade:{}, dataInicio: args.argument.inicio, dataFim: args.argument.fim};
+		$scope.isEdit=false;
+		$scope.isPut = false;
+	});
 	
-	$scope.$on('go', function(event, args) {
-		$scope.tempoInvestido = { dataInicio: args.argument.inicio, dataFim: args.argument.fim};
+	$scope.$on('edit', function(event, args) {
+		$scope.tempoInvestido = {};
+		$scope.tempoInvestido = { atividade:args.argument.atividade, dataInicio: args.argument.start._d,
+				dataFim: args.argument.end._d,	descricao: args.argument.descricao};
+		$scope.isEdit=false;
 	});
 	
 	$scope.editar = function(atividade){
@@ -18,24 +33,54 @@ angular.module("timeControl").controller("tempoInvestidoController", ['$scope', 
 	}
 	
 	$scope.salvar = function(){
-		if($scope.tempoInvestido.descricao != undefined && $scope.tempoInvestido.descricao != null 
+		if($scope.tempoInvestido.descricao != undefined && $scope.tempoInvestido.descricao != null
 				&& $scope.tempoInvestido.dataFim != undefined && $scope.tempoInvestido.dataFim != null
 				&& $scope.tempoInvestido.dataInicio != undefined && $scope.tempoInvestido.dataInicio != null
 				&& $scope.tempoInvestido.atividade != undefined && $scope.tempoInvestido.atividade != null){
-			var req = {
-					 method: 'POST',
-					 url: 'http://localhost:8080/time-control/tempoinvestido/',
-					 headers: {
-					   'Content-Type': 'application/json'
-					 },
-					 data: $scope.tempoInvestido
-					}
-	
+			if($scope.tempoInvestido.codigo != null && $scope.tempoInvestido.codigo != undefined ){
+				var req = {
+						method: 'PUT',
+						url: 'http://localhost:8080/time-control/tempoinvestido/',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						data: $scope.tempoInvestido
+				}
+			}else{
+				var req = {
+						method: 'POST',
+						url: 'http://localhost:8080/time-control/tempoinvestido/',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						data: $scope.tempoInvestido
+				}
+			}
+
 			$http(req).then(function(response){
-				alert("Salvo com Sucesso!");
-			}, function(response){
-				alert("Erro ao Salvar, tente novamente!");
+				
+				$rootScope.tipoMensagemUsuario = 'success';
+				$rootScope.tituloMensagemParaUsuario = '';
+				$rootScope.mensagemParaUsuario = 'Salvo com Sucesso!';
+				$route.reload();
+				$('#mensagemUsuario').addClass('in');
+//						$timeout(function(){$route.reload();}, 5000);
+					}, function(response){
+						$rootScope.tipoMensagemUsuario = 'danger';
+						$rootScope.tituloMensagemParaUsuario = 'Atenção';
+						$rootScope.mensagemParaUsuario = 'Erro ao Salvar, tente novamente!';
+						$('#mensagemUsuario').addClass('in');
+						$timeout(function(){$route.reload();}, 5000);
 			});
 		}
 	}
+	
+
+	$scope.idExcluir = '';
+		$scope.eventoModal = function(id){
+			$scope.idExcluir = id;
+			$scope.callbackModal = $scope.excluir;
+
+		};
+
 }]);

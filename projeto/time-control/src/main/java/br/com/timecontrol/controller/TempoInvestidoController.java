@@ -1,5 +1,6 @@
 package br.com.timecontrol.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.core.Response;
@@ -12,9 +13,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.timecontrol.model.Evento;
 import br.com.timecontrol.model.TempoInvestido;
 import br.com.timecontrol.repository.TempoInvestidoRepository;
 
@@ -31,10 +32,21 @@ public class TempoInvestidoController {
 		return tempoInvestido;
 	}
 
-	@RequestMapping(value = "/todos", method = RequestMethod.GET)
-	public List<TempoInvestido> listarTodas() {
-		List<TempoInvestido> tempoInvestidos = tempoInvestidoRepository.listarTodos();
-		return tempoInvestidos;
+	@RequestMapping(value = "/{codigoUsuario}/todos", method = RequestMethod.GET)
+	public List<Evento> listarTodas(@PathVariable Integer codigoUsuario) {
+		List<TempoInvestido> tempoInvestidos = tempoInvestidoRepository.listarTodosPorUsuario(codigoUsuario);
+		List<Evento> eventos = new ArrayList<>();
+		for (TempoInvestido tempoInvestido : tempoInvestidos) {
+			Evento evento = new Evento();
+			evento.setAtividade(tempoInvestido.getAtividade());
+			evento.setDescricao(tempoInvestido.getDescricao());
+			evento.setStart(tempoInvestido.getDataInicio());
+			evento.setEnd(tempoInvestido.getDataFim());
+			evento.setTitle(tempoInvestido.getAtividade().getNome());
+			
+			eventos.add(evento);
+		}
+		return eventos;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.POST, headers = "Content-type=application/json", consumes = "application/json")
@@ -50,15 +62,15 @@ public class TempoInvestidoController {
 		return new ResponseEntity<>(tempoInvestido, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.PUT)
-	public @ResponseBody ResponseBuilder alterar(@RequestBody TempoInvestido tempoInvestido) {
+	@RequestMapping(value = "/", method = RequestMethod.PUT, headers = "Content-type=application/json", consumes = "application/json")
+	public ResponseEntity<TempoInvestido> alterar(@RequestBody TempoInvestido tempoInvestido) {
 
 		try {
 			tempoInvestidoRepository.alterar(tempoInvestido);
 		} catch (Exception e) {
-			return null;
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return Response.ok("OK", "response");
+		return new ResponseEntity<>(tempoInvestido, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/{codigo}", method = RequestMethod.DELETE)

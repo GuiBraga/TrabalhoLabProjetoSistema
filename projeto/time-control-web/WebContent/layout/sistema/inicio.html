@@ -4,77 +4,14 @@
 <div ng-include="'layout/sistema/atividades/modal-atividade.html'" ></div>
 <div ng-include="'layout/sistema/tempo_investido/modal-tempo-investido.html'" ></div>
 
+  <div ng-include="'layout/sistema/menu.html'" ></div>
 <main>
-<div ng-include="'layout/sistema/menu.html'" ></div>
-<div id='calendar'></div>
-	<script>
-		$(document).ready(function(){
-  $(".icon-close").on("click",function(){
-    $(".main-menu").removeClass("expanded");
-     $("main").addClass("expanded");
-  });
-
-  $(".icon-open").on("click", function(){
-    $(".main-menu").addClass("expanded");
-     $("main").removeClass("expanded");
-  });
-
-    $('[data-toggle="tooltip"]').tooltip();
-
-		
-		$('#calendar').fullCalendar({
-			locale: "pt-br",
-			defaultView: 'agendaDay',
-			showMinutes: true,
-			showAllDay: false,
-			header: {
-				left: 'prev,next today',
-				center: 'title',
-				right: 'agendaWeek,agendaDay'
-			},
-			defaultDate: new Date(),
-			navLinks: true, 
-			selectable: true,
-			selectHelper: true,
-			select: function(start, end) {
-				$("#modal-nova-atividade").modal("show");
-
-				// var title = prompt('Event Title:');
-				// var eventData;
-				// if (title) {
-				// 	eventData = {
-				// 		title: title,
-				// 		start: start,
-				// 		end: end
-				// 	};
-				// 	$('#calendar').fullCalendar('renderEvent', eventData, true); 
-				// }
-				// $('#calendar').fullCalendar('unselect');
-			},
-			editable: false,
-			eventLimit: true,
-			events: [
-				{
-					title: 'teste',
-					start: '2017-03-12T09:00:00',
-					end: '2017-03-12T10:00:00',
-					color: '#ff0000'
-				},
-				{
-					title: 'teste',
-					start: '2017-03-12T10:00:00',
-					end: '2017-03-12T10:31:00',
-					color: '#ffff00'
-				},
-				{
-					title: 'teste',
-					start: '2017-03-12T08:00:00',
-					end: '2017-03-12T08:20:00',
-					color: '#00ff00'
-				}
-			]
-		});
-	});
-
-	</script>
+	<div class="alert alert-{{tipoMensagemUsuario}} alert-dismissible fade in" id="mensagemUsuario" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">×</span>
+         </button>
+         <strong>{{tituloMensagemParaUsuario}}</strong>
+          {{mensagemParaUsuario}}
+    </div>
+	<div id='calendar'></div>
 </main>

@@ -2,6 +2,13 @@
 <script src="js/site/init.js" charset="utf-8"></script>
 <div ng-include="'layout/site/header.html'" ></div>
     <main>
+    <div class="alert alert-{{tipoMensagemUsuario}} alert-dismissible fade in" id="mensagemUsuario" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">×</span>
+         </button>
+         <strong>{{tituloMensagemParaUsuario}}</strong>
+          {{mensagemParaUsuario}}
+        </div>
         <section class="cadastroTimeControl row">
             <div class="col-md-12 body-cadastro " >
                 <div id="labelReg1">
