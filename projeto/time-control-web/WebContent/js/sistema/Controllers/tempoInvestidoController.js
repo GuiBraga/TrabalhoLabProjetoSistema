@@ -25,39 +25,42 @@ angular.module("timeControl").controller("tempoInvestidoController", ['$scope', 
 		$scope.tempoInvestido = { atividade:args.argument.atividade, dataInicio: args.argument.start._d,
 				dataFim: args.argument.end._d,	descricao: args.argument.descricao};
 		$scope.isEdit=false;
-		$scope.isPut = true;
 	});
 	
 	$scope.editar = function(atividade){
 		$scope.tempoInvestido = {atividade:atividade};
 		$scope.isEdit = true;
-		$scope.isPut = false;
 	}
-
-	$scope.isPut = false;
 	
 	$scope.salvar = function(){
 		if($scope.tempoInvestido.descricao != undefined && $scope.tempoInvestido.descricao != null
 				&& $scope.tempoInvestido.dataFim != undefined && $scope.tempoInvestido.dataFim != null
 				&& $scope.tempoInvestido.dataInicio != undefined && $scope.tempoInvestido.dataInicio != null
 				&& $scope.tempoInvestido.atividade != undefined && $scope.tempoInvestido.atividade != null){
-			var req = {
-					 method: 'POST',
-					 url: 'http://localhost:8080/time-control/tempoinvestido/',
-					 headers: {
-					   'Content-Type': 'application/json'
-					 },
-					 data: $scope.tempoInvestido
-					}
+			if($scope.tempoInvestido.codigo != null && $scope.tempoInvestido.codigo != undefined ){
+				var req = {
+						url: 'http://localhost:8080/time-control/tempoinvestido/',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						data: $scope.tempoInvestido
+				}
+			}else{
+				var req = {
+						url: 'http://localhost:8080/time-control/tempoinvestido/',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						data: $scope.tempoInvestido
+				}
+			}
 
-					$http(req).then(function(response){
-
-							$rootScope.tipoMensagemUsuario = 'success';
-							$rootScope.tituloMensagemParaUsuario = '';
-							$rootScope.mensagemParaUsuario = 'Salvo com Sucesso!';
-
-							$('#mensagemUsuario').addClass('in');
-
+			$http(req).then(function(response){
+				
+				$rootScope.tipoMensagemUsuario = 'success';
+				$rootScope.tituloMensagemParaUsuario = '';
+				$rootScope.mensagemParaUsuario = 'Salvo com Sucesso!';
+				$('#mensagemUsuario').addClass('in');
 //						$timeout(function(){$route.reload();}, 5000);
 					}, function(response){
 						$rootScope.tipoMensagemUsuario = 'danger';
@@ -65,13 +68,9 @@ angular.module("timeControl").controller("tempoInvestidoController", ['$scope', 
 						$rootScope.mensagemParaUsuario = 'Erro ao Salvar, tente novamente!';
 						$('#mensagemUsuario').addClass('in');
 						$timeout(function(){$route.reload();}, 5000);
-					});
+			});
 		}
 	}
-
-	$scope.salvarEdit = function(){
-		
-	};
 	
 
 	$scope.idExcluir = '';

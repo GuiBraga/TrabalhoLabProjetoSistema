@@ -9,7 +9,6 @@ import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.timecontrol.model.Atividade;
 import br.com.timecontrol.model.TempoInvestido;
 
 @Repository

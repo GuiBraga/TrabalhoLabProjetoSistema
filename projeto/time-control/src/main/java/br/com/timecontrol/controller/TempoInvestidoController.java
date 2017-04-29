@@ -1,10 +1,7 @@
 package br.com.timecontrol.controller;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.TimeZone;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
@@ -16,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.timecontrol.model.Evento;
@@ -66,15 +62,15 @@ public class TempoInvestidoController {
 		return new ResponseEntity<>(tempoInvestido, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/", method = RequestMethod.PUT)
-	public @ResponseBody ResponseBuilder alterar(@RequestBody TempoInvestido tempoInvestido) {
+	@RequestMapping(value = "/", method = RequestMethod.PUT, headers = "Content-type=application/json", consumes = "application/json")
+	public ResponseEntity<TempoInvestido> alterar(@RequestBody TempoInvestido tempoInvestido) {
 
 		try {
 			tempoInvestidoRepository.alterar(tempoInvestido);
 		} catch (Exception e) {
-			return null;
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
-		return Response.ok("OK", "response");
+		return new ResponseEntity<>(tempoInvestido, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/{codigo}", method = RequestMethod.DELETE)

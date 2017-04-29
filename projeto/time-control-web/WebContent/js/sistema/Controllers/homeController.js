@@ -6,7 +6,7 @@ angular.module("timeControl").controller("homeController", ["$scope", "$rootScop
 	
 	$("#calendar").fullCalendar({
 		locale: "pt-br",
-		height : 550,
+		height : 510,
 		defaultView: 'agendaWeek',
 		showMinutes: true,
 		showAllDay: false,
