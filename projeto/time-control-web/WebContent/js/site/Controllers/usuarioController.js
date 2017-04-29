@@ -37,23 +37,25 @@ angular.module("timeControl").controller("usuarioController", ['$scope', '$http'
 					}
 
 			$http(req).then(function(response){
-				$location.path('/login');
 				$rootScope.tipoMensagemUsuario = 'success';
 				$rootScope.tituloMensagemParaUsuario = '';
 				$rootScope.mensagemParaUsuario = 'Salvo com Sucesso!';
 				$('#mensagemUsuario').addClass('in');
+				$scope.usuario = {};
 			}, function(response){
 				if(response.status = 409){
 					$rootScope.tipoMensagemUsuario = 'warning';
 					$rootScope.tituloMensagemParaUsuario = '';
 					$rootScope.mensagemParaUsuario = 'Já existe usuário cadastrado para esse email!';
 					$('#mensagemUsuario').addClass('in');
+					$scope.usuario = {};
 				}else{
 					$rootScope.tipoMensagemUsuario = 'danger';
 					$rootScope.tituloMensagemParaUsuario = '';
 					$rootScope.mensagemParaUsuario = 'Erro ao Salvar, tente novamente!';
 					$('#mensagemUsuario').addClass('in');
-					$timeout(function(){$route.location();}, 5000);
+//					$timeout(function(){$route.location();}, 5000);
+					$scope.usuario = {};
 				}
 			});
 		}

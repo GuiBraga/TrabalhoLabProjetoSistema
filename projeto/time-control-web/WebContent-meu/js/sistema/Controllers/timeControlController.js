@@ -1,1 +1,0 @@
-angular.module("timeControl").controller("timeControlController", function($scope){ });
