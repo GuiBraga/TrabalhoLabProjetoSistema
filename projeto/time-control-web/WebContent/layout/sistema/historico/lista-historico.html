@@ -15,26 +15,17 @@
         <th>Semana Retrasada</th>
         <th>Semana Passada</th>
         <th>Semana Atual</th>
-    <!--<th>Ações</th>-->
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="atividade in atividades">
-        <td>{{atividade["nomeAtividade"]}}</td>
-        <td>{{atividade["totalGastoSemanaRetrasada"]}}</td>
-        <td>{{atividade["totalGastoSemanaPassada"]}}</td>
-        <td>{{atividade["totalGastoSemanaAtual"]}}</td>
-    <!--  <td>
-          <span class="glyphicon glyphicon-eye-open" title="Visualizar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
-          <span class="glyphicon glyphicon-pencil" title="Editar"  data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
-          <span class="glyphicon glyphicon-trash" aria-hidden="true" data-placement="top" title="Excluir" aria-hidden="true" data-toggle="modal" data-target="#excluir"></span>
-
-        </td> -->
+      <tr ng-repeat="historico in historicos">
+        <td>{{historico.atividade.nome}}</td>
+        <td>{{historico.duasSemanasAnteriores}}</td>
+        <td>{{historico.semanaAnterior}}</td>
+        <td>{{historico.semanaAtual}}</td>
       </tr>
 
     </tbody>
   </table>
-
-  <!--<ui-confirmacao identificador="excluir"  fechar="Não"  confirmar="Sim"  titulo="Atenção" mensagem="Tem certeza que deseja excluir?"></ui-confirmacao> -->
   </section>
 </main>

@@ -59,5 +59,17 @@ public class UsuarioRepository {
 			return null;
 		}
 	}
+	
+	public Usuario buscaPorCodigo(Integer codigo){
+		Query query = manager.createQuery("SELECT c FROM Usuario c WHERE c.codigo = :codigo",
+				Usuario.class);
+		query.setParameter("codigo", codigo);
+		try {
+			return (Usuario) query.getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+		
+	}
 
 }

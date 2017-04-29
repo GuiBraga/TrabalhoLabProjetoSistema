@@ -29,9 +29,8 @@ angular.module("timeControl").controller("atividadeController",['$scope', '$http
 				}
   
 		$http(req).then(function(response){
-			
+			$scope.sucesso = true;
 			$route.reload();
-			alert("Salvo com Sucesso!");
 		}, function(response){
 			if(response.status = 409){
 				alert("Erro ao salvar, já existe uma atividade cadastrada com esse nome.");
@@ -91,15 +90,31 @@ angular.module("timeControl").controller("atividadeController",['$scope', '$http
 		});
   }
   
-  $scope.carregarAtividadeModal = function(id, visualizacao){
+  $scope.carregarAtividadeModalVisualizar = function(id){
+	 
+	  $scope.isEdit = false;
+	  $scope.editAtividade = false;
 	  
-	  if(visualizacao){
-		   $scope.isEdit = false;
-		   $scope.editAtividade = false;
-		}else{
-			 $scope.isEdit = true;
-			 $scope.editAtividade = true;
-		}
+	  $http({
+			method : "GET",
+			url : "http://localhost:8080/time-control/atividade/" + id
+		}).then(function mySucces(response) {
+			
+			$scope.atividade = response.data;
+			$scope.nomeAtividade = $scope.atividade.nome;
+			$scope.descricaoAtividade = $scope.atividade.descricao;
+			$scope.categoriaAtividade = $scope.atividade.categoria;
+			$scope.codigoAtividade = $scope.atividade.codigo;
+			
+			
+		}, function myError(response) {
+		});
+  }
+  
+  $scope.carregarAtividadeModalEditar = function(id){
+		 
+	  $scope.isEdit = true;
+	  $scope.editAtividade = true;
 	  
 	  $http({
 			method : "GET",

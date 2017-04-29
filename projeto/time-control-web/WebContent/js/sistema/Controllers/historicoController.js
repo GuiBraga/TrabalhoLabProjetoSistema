@@ -1,27 +1,11 @@
-angular.module("timeControl").controller("historicoController", function($scope){
+angular.module("timeControl").controller("historicoController", ['$scope', '$http', '$rootScope', '$location','$route', function($scope, $http, $rootScope, $location,$route) {
 
-  $scope.atividades=[
-    {
-    "id": 1,
-    "nomeAtividade": "ler",
-    "totalGastoSemanaRetrasada": "10:00",
-    "totalGastoSemanaPassada": "20:00",
-    "totalGastoSemanaAtual": "30:00"
-  },
-  {
-    "id": 2,
-    "nomeAtividade": "estudar",
-    "totalGastoSemanaRetrasada": "40:00",
-    "totalGastoSemanaPassada": "50:00",
-    "totalGastoSemanaAtual": "40:00"
-  },
-  {
-    "id": 3,
-    "nomeAtividade": "academia",
-    "totalGastoSemanaRetrasada": "20:00",
-    "totalGastoSemanaPassada": "10:00",
-    "totalGastoSemanaAtual": "5:00"
-    }
-  ];
-
- });
+	$http({
+		method : "GET",
+		url : "http://localhost:8080/time-control/historico/buscaHistorico/" + $rootScope.usuario.codigo
+	}).then(function mySucces(response) {
+		$scope.historicos = response.data;
+		console.log(response.data);
+	}, function myError(response) {
+	});
+}]);
