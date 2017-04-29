@@ -39,6 +39,7 @@ angular.module("timeControl").controller("tempoInvestidoController", ['$scope', 
 				&& $scope.tempoInvestido.atividade != undefined && $scope.tempoInvestido.atividade != null){
 			if($scope.tempoInvestido.codigo != null && $scope.tempoInvestido.codigo != undefined ){
 				var req = {
+						method: 'PUT',
 						url: 'http://localhost:8080/time-control/tempoinvestido/',
 						headers: {
 							'Content-Type': 'application/json'
@@ -47,6 +48,7 @@ angular.module("timeControl").controller("tempoInvestidoController", ['$scope', 
 				}
 			}else{
 				var req = {
+						method: 'POST',
 						url: 'http://localhost:8080/time-control/tempoinvestido/',
 						headers: {
 							'Content-Type': 'application/json'
@@ -60,6 +62,7 @@ angular.module("timeControl").controller("tempoInvestidoController", ['$scope', 
 				$rootScope.tipoMensagemUsuario = 'success';
 				$rootScope.tituloMensagemParaUsuario = '';
 				$rootScope.mensagemParaUsuario = 'Salvo com Sucesso!';
+				$route.reload();
 				$('#mensagemUsuario').addClass('in');
 //						$timeout(function(){$route.reload();}, 5000);
 					}, function(response){
