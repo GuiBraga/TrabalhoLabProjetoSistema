@@ -3,6 +3,7 @@
 <div ng-include="'layout/sistema/header.html'" ></div>
 <div ng-include="'layout/sistema/atividades/modal-atividade.html'" ></div>
 <div ng-include="'layout/sistema/tempo_investido/modal-tempo-investido.html'" ></div>
+<div ng-include="'layout/sistema/atividades/modal-atividade-visualizar.html'" ></div>
 
   <div ng-include="'layout/sistema/menu.html'" ></div>
   
@@ -31,7 +32,7 @@
         <td>{{atividade["nome"]}}</td>
         <td>{{atividade["descricao"]}}</td>
         <td>
-          <span class="glyphicon glyphicon-eye-open" title="Visualizar" ng-click="carregarAtividadeModalVisualizar(atividade.codigo)" data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
+          <span class="glyphicon glyphicon-eye-open" title="Visualizar" ng-click="carregarAtividadeModalVisualizar(atividade.codigo)" data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-atividade-visualizar"></span>
           <span class="glyphicon glyphicon-pencil" title="Editar" ng-click="carregarAtividadeModalEditar(atividade.codigo)" data-placement="top" aria-hidden="true" data-toggle="modal" data-target="#modal-nova-atividade"></span>
           <span class="glyphicon glyphicon-trash" aria-hidden="true" data-placement="top" title="Excluir" ng-click="eventoModal(atividade.codigo)" aria-hidden="true" data-toggle="modal" data-target="#excluir"></span>
 
