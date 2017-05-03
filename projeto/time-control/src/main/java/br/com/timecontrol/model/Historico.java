@@ -14,6 +14,9 @@ public class Historico {
 		this.duasSemanasAnteriores = duasSemanasAnteriores;
 	}
 
+	public Historico() {
+	}
+
 	public Atividade getAtividade() {
 		return atividade;
 	}

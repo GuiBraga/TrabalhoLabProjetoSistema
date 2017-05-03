@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.timecontrol.model.Atividade;
 import br.com.timecontrol.model.Historico;
+import br.com.timecontrol.model.Relatorio;
+import br.com.timecontrol.model.TempoHistorico;
 import br.com.timecontrol.model.TempoInvestido;
 import br.com.timecontrol.repository.AtividadeRepository;
 import br.com.timecontrol.repository.HistoricoRepository;
@@ -30,98 +32,63 @@ public class HistoricoController {
 
 	@RequestMapping(value = "/buscaHistorico/{codigo}", method = RequestMethod.GET)
 	public List<Historico> listarTodas(@PathVariable Integer codigo) {
-		String semanaAtual;
-		String semanaAnterior;
-		String duasSemanasAnteriores;
-
-		Long horas;
-		Long minutos;
-		Long tempoInvestidoHoras = 0L;
-		Long tempoInvestidoMinutos = 0L;
-
-		LocalDate hoje = LocalDate.now();
-		LocalDate diaSemanaAnterior = hoje.minusWeeks(1);
-		LocalDate diaDuasSemanasAnteriores = hoje.minusWeeks(2);
-
-		LocalDate dtInicioSemanaAtual = buscaDataInicioSemana(hoje);
-		LocalDate dtInicioSemanaAnterior = buscaDataInicioSemana(diaSemanaAnterior);
-		LocalDate dtInicioDuasSemanasAnteriores = buscaDataInicioSemana(diaDuasSemanasAnteriores);
-
-		LocalDate dtFimSemanaAtual = buscaDataFimSemana(hoje);
-		LocalDate dtFimSemanaAnterior = buscaDataFimSemana(diaSemanaAnterior);
-		LocalDate dtFimDuasSemanasAnteriores = buscaDataFimSemana(diaDuasSemanasAnteriores);
 		
-		Date dataInicioSemanaAtual = Date.from(dtInicioSemanaAtual.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Date dataInicioSemanaAnterior = Date.from(dtInicioSemanaAnterior.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Date dataInicioDuasSemanasAnteriores = Date.from(dtInicioDuasSemanasAnteriores.atStartOfDay(ZoneId.systemDefault()).toInstant());
-
-		Date dataFimSemanaAtual = Date.from(dtFimSemanaAtual.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Date dataFimSemanaAnterior = Date.from(dtFimSemanaAnterior.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Date dataFimDuasSemanasAnteriores = Date.from(dtFimDuasSemanasAnteriores.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		TempoHistorico tempoH = new TempoHistorico();
+		inicializaDatas(tempoH);
 
 		List<Atividade> atividades = atividadeRepository.listarTodasPorUsuario(codigo);
 		List<Historico> historicos = new ArrayList<>();
-
-		List<TempoInvestido> tempoInvestidoSemanaAtual = historicoRepository.buscaHistorico(codigo,
-				dataInicioSemanaAtual, dataFimSemanaAtual);
-		List<TempoInvestido> tempoInvestidoSemanaAnterior = historicoRepository.buscaHistorico(codigo,
-				dataInicioSemanaAnterior, dataFimSemanaAnterior);
-		List<TempoInvestido> tempoInvestidoDuasSemanasAnteriores = historicoRepository.buscaHistorico(codigo,
-				dataInicioDuasSemanasAnteriores, dataFimDuasSemanasAnteriores);
+		List<TempoInvestido> tempoInvestidoSemanaAtual = historicoRepository.buscaHistorico(codigo,tempoH.getDataInicioSemanaAtual(), tempoH.getDataFimSemanaAtual());
+		List<TempoInvestido> tempoInvestidoSemanaAnterior = historicoRepository.buscaHistorico(codigo,tempoH.getDataInicioSemanaAnterior(), tempoH.getDataFimSemanaAnterior());
+		List<TempoInvestido> tempoInvestidoDuasSemanasAnteriores = historicoRepository.buscaHistorico(codigo,tempoH.getDataInicioDuasSemanasAnteriores(), tempoH.getDataFimDuasSemanasAnteriores());
 
 		for (Atividade atividade : atividades) {
-			for (TempoInvestido tempo : tempoInvestidoSemanaAtual) {
-				if(tempo.getDataFim() != null && tempo.getDataInicio() != null && tempo.getAtividade().getCodigo() == atividade.getCodigo()){
-					horas = (tempo.getDataFim().getTime() - tempo.getDataInicio().getTime()) / 3600000;
-					minutos = (tempo.getDataFim().getTime() - tempo.getDataInicio().getTime() - horas * 3600000) / 60000;
-					tempoInvestidoHoras += horas;
-					tempoInvestidoMinutos += minutos;
-				}
-			}
-			
-			semanaAtual = tempoInvestidoHoras + ":" + tempoInvestidoMinutos;
-			tempoInvestidoHoras = 0L;
-			tempoInvestidoMinutos = 0L;
-			horas = 0L;
-			minutos = 0L;
-
-			for (TempoInvestido tempo : tempoInvestidoSemanaAnterior) {
-				if(tempo.getDataFim() != null && tempo.getDataInicio() != null && tempo.getAtividade().getCodigo() == atividade.getCodigo()){
-					horas = (tempo.getDataFim().getTime() - tempo.getDataInicio().getTime()) / 3600000;
-					minutos = (tempo.getDataFim().getTime() - tempo.getDataInicio().getTime() - horas * 3600000) / 60000;
-					tempoInvestidoHoras += horas;
-					tempoInvestidoMinutos += minutos;
-				}
-			}
-			
-			semanaAnterior = tempoInvestidoHoras + ":" + tempoInvestidoMinutos;
-			tempoInvestidoHoras = 0L;
-			tempoInvestidoMinutos = 0L;
-			horas = 0L;
-			minutos = 0L;
-			
-			for (TempoInvestido tempo : tempoInvestidoDuasSemanasAnteriores) {
-				if(tempo.getDataFim() != null && tempo.getDataInicio() != null && tempo.getAtividade().getCodigo() == atividade.getCodigo()){
-					horas = (tempo.getDataFim().getTime() - tempo.getDataInicio().getTime()) / 3600000;
-					minutos = (tempo.getDataFim().getTime() - tempo.getDataInicio().getTime() - horas * 3600000) / 60000;
-					tempoInvestidoHoras += horas;
-					tempoInvestidoMinutos += minutos;
-				}
-			}
-			
-			duasSemanasAnteriores = tempoInvestidoHoras + ":" + tempoInvestidoMinutos;
-			tempoInvestidoHoras = 0L;
-			tempoInvestidoMinutos = 0L;
-			horas = 0L;
-			minutos = 0L;
-
-			Historico historico = new Historico(atividade, semanaAtual, semanaAnterior, duasSemanasAnteriores);
+			Historico historico = montaHistoricoAtividade(atividade, tempoInvestidoSemanaAtual,tempoInvestidoSemanaAnterior, tempoInvestidoDuasSemanasAnteriores,tempoH);
 			historicos.add(historico);
 		}
 
 		return historicos;
 	}
-	
+
+	@RequestMapping(value = "/buscaRelatorio/{codigo}", method = RequestMethod.GET)
+	public List<Relatorio> BuscaRelatorio(@PathVariable Integer codigo) {
+		
+		TempoHistorico tempoH = new TempoHistorico();
+		String domingo;
+		String segunda;
+		String terca;
+		String quarta;
+		String quinta;
+		String sexta;
+		String sabado;
+		
+		inicializaDatas(tempoH);
+
+		List<Atividade> atividades = atividadeRepository.listarTodasPorUsuario(codigo);
+		List<Relatorio> relatorios = new ArrayList<>();
+
+		List<TempoInvestido> tempoInvestidoSemanaAtual = historicoRepository.buscaHistorico(codigo,
+				tempoH.getDataInicioSemanaAtual(), tempoH.getDataFimSemanaAtual());
+
+		for (Atividade atividade : atividades) {
+			calculaTempoInvestido(tempoInvestidoSemanaAtual, atividade,"relatorio",tempoH);
+			reiniciarVariaveisTempoInvestido(tempoH);
+			
+			domingo = tempoH.getDomingoHr() + ":" + tempoH.getDomingoMin();
+			segunda = tempoH.getSegundaHr() + ":" + tempoH.getSegundaMin();
+			terca = tempoH.getTercaHr() + ":" + tempoH.getTercaMin();
+			quarta = tempoH.getQuartaHr() + ":" + tempoH.getQuartaMin();
+			quinta = tempoH.getQuintaHr() + ":" + tempoH.getQuintaMin();
+			sexta = tempoH.getSextaHr() + ":" + tempoH.getSextaMin();
+			sabado = tempoH.getSabadoHr() + ":" + tempoH.getSabadoMin();
+
+			Relatorio relatorio = new Relatorio(atividade, domingo, segunda, terca, quarta, quinta, sexta, sabado);
+			relatorios.add(relatorio);
+		}
+
+		return relatorios;
+
+	}
 
 	private LocalDate buscaDataInicioSemana(LocalDate data) {
 
@@ -170,4 +137,112 @@ public class HistoricoController {
 		return data;
 	}
 
+	private void inicializaDatas(TempoHistorico tempoH) {
+		LocalDate hoje = LocalDate.now();
+		LocalDate diaSemanaAnterior = hoje.minusWeeks(1);
+		LocalDate diaDuasSemanasAnteriores = hoje.minusWeeks(2);
+
+		tempoH.setDataInicioSemanaAtual(dataInicioSemana(hoje));
+		tempoH.setDataInicioSemanaAnterior(dataInicioSemana(diaSemanaAnterior));
+		tempoH.setDataInicioDuasSemanasAnteriores(dataInicioSemana(diaDuasSemanasAnteriores));
+
+		tempoH.setDataFimSemanaAtual(dataFimSemana(hoje));
+		tempoH.setDataFimSemanaAnterior(dataFimSemana(diaSemanaAnterior));
+		tempoH.setDataFimDuasSemanasAnteriores(dataFimSemana(diaDuasSemanasAnteriores));
+	}
+
+	private Date dataInicioSemana(LocalDate data) {
+		return Date.from(buscaDataInicioSemana(data).atStartOfDay(ZoneId.systemDefault()).toInstant());
+	}
+
+	private Date dataFimSemana(LocalDate data) {
+		return Date.from(buscaDataFimSemana(data).atStartOfDay(ZoneId.systemDefault()).toInstant());
+	}
+
+	private Historico montaHistoricoAtividade(Atividade atividade, List<TempoInvestido> listSemanaAtual,
+			List<TempoInvestido> listSemanaAnterior, List<TempoInvestido> listDuasSemanasAnteriores,TempoHistorico tempoH) {
+
+		calculaTempoInvestido(listSemanaAtual, atividade,"historico",tempoH);
+		String semanaAtual = tempoH.getTempoInvestidoHoras() + ":" + tempoH.getTempoInvestidoMinutos();
+		reiniciarVariaveisTempoInvestido(tempoH);
+
+		calculaTempoInvestido(listSemanaAnterior, atividade,"historico",tempoH);
+		String semanaAnterior = tempoH.getTempoInvestidoHoras() + ":" + tempoH.getTempoInvestidoMinutos();
+		reiniciarVariaveisTempoInvestido(tempoH);
+
+		calculaTempoInvestido(listDuasSemanasAnteriores, atividade,"historico",tempoH);
+		String duasSemanasAnteriores = tempoH.getTempoInvestidoHoras() + ":" + tempoH.getTempoInvestidoMinutos();
+		reiniciarVariaveisTempoInvestido(tempoH);
+
+		return new Historico(atividade, semanaAtual, semanaAnterior, duasSemanasAnteriores);
+	}
+
+	public void calculaTempoInvestido(List<TempoInvestido> listaTempo, Atividade atividade,String tipo,TempoHistorico tempoH) {
+		Long horas = 0L;
+		Long minutos = 0L;
+		Long tempoInvestidoHoras = 0L;
+		Long tempoInvestidoMinutos = 0L;
+		
+		for (TempoInvestido tempo : listaTempo) {			
+			if (tempo.getDataFim() != null && tempo.getDataInicio() != null && tempo.getAtividade().getCodigo() == atividade.getCodigo()) {
+				horas = (tempo.getDataFim().getTime() - tempo.getDataInicio().getTime()) / 3600000;
+				minutos = (tempo.getDataFim().getTime() - tempo.getDataInicio().getTime() - horas*3600000) / 60000;
+				tempoInvestidoHoras += horas;
+				tempoInvestidoMinutos += minutos;
+			
+				
+				if(tipo.equals("relatorio")){
+					buscaDiaRelatorio(tempo, tempoH);
+				}
+				
+			}
+			tempoH.setTempoInvestidoHoras(tempoInvestidoHoras);
+			tempoH.setTempoInvestidoMinutos(tempoInvestidoMinutos);
+			
+		}
+		
+		
+		
+	}
+
+	private void reiniciarVariaveisTempoInvestido(TempoHistorico tempoH){
+		tempoH.setHoras(0L);
+		tempoH.setMinutos(0L);
+	}
+	
+	private void buscaDiaRelatorio(TempoInvestido tempo,TempoHistorico tempoH){
+
+		switch (tempo.getDataInicio().getDay()) {
+		case 0:
+			tempoH.setDomingoHr(tempoH.getTempoInvestidoHoras());
+			tempoH.setDomingoMin(tempoH.getTempoInvestidoMinutos());
+			break;
+		case 1:
+			tempoH.setSegundaHr(tempoH.getTempoInvestidoHoras());
+			tempoH.setSegundaMin(tempoH.getTempoInvestidoMinutos());
+			break;
+		case 2:
+			tempoH.setTercaHr(tempoH.getTempoInvestidoHoras());
+			tempoH.setTercaMin(tempoH.getTempoInvestidoMinutos());
+			break;
+		case 3:
+			tempoH.setQuartaHr(tempoH.getTempoInvestidoHoras());
+			tempoH.setQuartaMin(tempoH.getTempoInvestidoMinutos());
+			break;
+		case 4:
+			tempoH.setQuintaHr(tempoH.getTempoInvestidoHoras());
+			tempoH.setQuintaMin(tempoH.getTempoInvestidoMinutos());
+			break;
+		case 5:
+			tempoH.setSextaHr(tempoH.getTempoInvestidoHoras());
+			tempoH.setSextaMin(tempoH.getTempoInvestidoMinutos());
+			break;
+		case 6:
+			tempoH.setSabadoHr(tempoH.getTempoInvestidoHoras());
+			tempoH.setSabadoMin(tempoH.getTempoInvestidoMinutos());
+			break;
+		default:
+			break;
+		}
+	}
 }
