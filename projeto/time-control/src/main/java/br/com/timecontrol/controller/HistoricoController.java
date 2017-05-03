@@ -190,7 +190,6 @@ public class HistoricoController {
 				tempoInvestidoHoras += horas;
 				tempoInvestidoMinutos += minutos;
 			
-				
 				if(tipo.equals("relatorio")){
 					buscaDiaRelatorio(tempo, tempoH);
 				}
@@ -200,8 +199,6 @@ public class HistoricoController {
 			tempoH.setTempoInvestidoMinutos(tempoInvestidoMinutos);
 			
 		}
-		
-		
 		
 	}
 
