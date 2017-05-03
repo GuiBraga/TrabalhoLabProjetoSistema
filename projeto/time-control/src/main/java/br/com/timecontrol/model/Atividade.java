@@ -31,7 +31,7 @@ public class Atividade{
 	public Atividade() {
 	}
 
-	public Atividade(Usuario usuario, String nome, String descricao, int prioridade, String categoria) {
+	public Atividade(Usuario usuario, String nome, String descricao, String categoria) {
 		this.usuario = usuario;
 		this.nome = nome;
 		this.descricao = descricao;

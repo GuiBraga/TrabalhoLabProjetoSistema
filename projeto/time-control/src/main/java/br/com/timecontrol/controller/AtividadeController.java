@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.timecontrol.model.Atividade;
+import br.com.timecontrol.model.TempoInvestido;
 import br.com.timecontrol.model.Usuario;
 import br.com.timecontrol.repository.AtividadeRepository;
+import br.com.timecontrol.repository.TempoInvestidoRepository;
 
 @RestController
 @RequestMapping("/atividade")
@@ -25,6 +27,9 @@ public class AtividadeController {
  
 	@Autowired
 	AtividadeRepository atividadeRepository;
+	
+	@Autowired 
+	TempoInvestidoRepository tempoInvestidoRepository;
 	
 	@RequestMapping(value ="/{codigo}", method= RequestMethod.GET)
 	public Atividade buscarPorCodigo(@PathVariable Integer codigo){
@@ -66,15 +71,19 @@ public class AtividadeController {
 		return Response.ok("OK", "response");
 	}
 	
-	@RequestMapping(value="/{codigo}", method= RequestMethod.DELETE)
-	public ResponseBuilder deletar(@PathVariable Integer codigo){
+	@RequestMapping(value="/{codigo}", method= RequestMethod.DELETE, consumes = "application/json")
+	public ResponseBuilder deletar(@PathVariable Integer codigo, @RequestBody Integer codigoUsuario){
 		
-		try {
-			atividadeRepository.excluir(codigo);
-		}
-		catch (Exception e) {
-			return null;
-		}
+		List<TempoInvestido> temposInvestidos = tempoInvestidoRepository.listarTodosPorUsuario(codigoUsuario);
+		Atividade atividade = atividadeRepository.consultarPorCodigo(codigo);
+		
+		for(TempoInvestido tempo : temposInvestidos){
+			if(tempo.getAtividade().getCodigo() == atividade.getCodigo()){
+				tempoInvestidoRepository.excluir(tempo.getCodigo());
+			}
+		}	
+		atividadeRepository.excluir(codigo,codigoUsuario);
+		
 		return Response.ok("OK", "response");
 	}
 }

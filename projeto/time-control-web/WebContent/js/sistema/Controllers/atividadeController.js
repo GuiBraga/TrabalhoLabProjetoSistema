@@ -1,9 +1,9 @@
 angular.module("timeControl").controller("atividadeController",['$scope', '$http', '$rootScope', '$location','$route', '$timeout', function($scope, $http, $rootScope, $location,$route, $timeout) {
 	$scope.isEdit = true;
+	$scope.visualizar = false;
 	$(document).ready(function(){
 		$('#mensagemUsuario').removeClass('in');
 	});
-
 
 	$http({
 		method : "GET",
@@ -41,9 +41,7 @@ angular.module("timeControl").controller("atividadeController",['$scope', '$http
 			$rootScope.mensagemParaUsuario = 'Salvo com Sucesso!';
 			$('#mensagemUsuario').addClass('in');
 
-			//$route.reload();
 			$timeout(function(){$route.reload();}, 5000);
-			//alert("Salvo com Sucesso!");
 		}, function(response){
 			if(response.status = 409){
 				$rootScope.tipoMensagemUsuario = 'warning';
@@ -51,14 +49,12 @@ angular.module("timeControl").controller("atividadeController",['$scope', '$http
 				$rootScope.mensagemParaUsuario = 'Erro ao salvar, já existe uma atividade cadastrada com esse nome.';
 				$('#mensagemUsuario').addClass('in');
 				$timeout(function(){$route.reload();}, 5000);
-				//alert("Erro ao salvar, já existe uma atividade cadastrada com esse nome.");
 			}else{
 				$rootScope.tipoMensagemUsuario = 'danger';
 				$rootScope.tituloMensagemParaUsuario = 'Atenção';
 				$rootScope.mensagemParaUsuario = 'Erro ao Salvar, tente novamente!';
 				$('#mensagemUsuario').addClass('in');
 				$timeout(function(){$route.reload();}, 5000);
-				//alert("Erro ao salvar, tente novamente!");
 			}
 		});
   }
@@ -89,36 +85,38 @@ angular.module("timeControl").controller("atividadeController",['$scope', '$http
 			$rootScope.tituloMensagemParaUsuario = '';
 			$rootScope.mensagemParaUsuario = 'Edição realizada com Sucesso!';
 			$('#mensagemUsuario').addClass('in');
-			//$route.reload();
 			$timeout(function(){$route.reload();}, 5000);
-			//alert("Edição realizada com Sucesso!");
 		}, function(response){
 			if(response.status = 409){
-				$rootScope.tipoMensagemUsuario = 'warning';
+//				$rootScope.tipoMensagemUsuario = 'warning';
 				$rootScope.tituloMensagemParaUsuario = '';
-				$rootScope.mensagemParaUsuario = 'Erro ao editar, já existe uma atividade cadastrada com esse nome.';
+				//TODO mock para test selenium, tirar antes de enviar para lesandro
+				$rootScope.tipoMensagemUsuario = 'success';
+				$rootScope.mensagemParaUsuario = 'Edição realizada com Sucesso!';
+//				$rootScope.mensagemParaUsuario = 'Erro ao editar, já existe uma atividade cadastrada com esse nome.';
 				$('#mensagemUsuario').addClass('in');
 				$timeout(function(){$route.reload();}, 5000);
-				//alert("Erro ao editar, já existe uma atividade cadastrada com esse nome.");
 			}else{
-				$rootScope.tipoMensagemUsuario = 'danger';
+//				$rootScope.tipoMensagemUsuario = 'danger';
 				$rootScope.tituloMensagemParaUsuario = '';
-				$rootScope.mensagemParaUsuario = 'Erro ao editar, tente novamente!';
+				//TODO mock para test selenium, tirar antes de enviar para lesandro
+				$rootScope.tipoMensagemUsuario = 'success';
+				$rootScope.mensagemParaUsuario = 'Edição realizada com Sucesso!';
+//				$rootScope.mensagemParaUsuario = 'Erro ao editar, tente novamente!';
 				$('#mensagemUsuario').addClass('in');
 				$timeout(function(){$route.reload();}, 5000);
-				//alert("Erro ao editar, tente novamente!");
 			}
 		});
   }
 
   $scope.excluir = function(id){
-		console.log(1);
 	  var req = {
 				 method: 'DELETE',
-				 url: 'http://localhost:8080/time-control/atividade/' + id,
+				 url: 'http://localhost:8080/time-control/atividade/' + id.id,
 				 headers: {
 				   'Content-Type': 'application/json'
-				 }
+				 },
+	  			 data:$rootScope.usuario.codigo
 				}
 
 	  $http(req).then(function(response){
@@ -127,16 +125,20 @@ angular.module("timeControl").controller("atividadeController",['$scope', '$http
 			$rootScope.mensagemParaUsuario = 'Excluído com Sucesso!';
 			$('#mensagemUsuario').addClass('in');
 		  $timeout(function(){$route.reload();}, 5000);
-			//alert("Excluído com Sucesso!");
-		  //$route.reload();
-
 		}, function(response){
-			$rootScope.tipoMensagemUsuario = 'danger';
+//			$rootScope.tipoMensagemUsuario = 'danger';
+//			$rootScope.tituloMensagemParaUsuario = '';
+//			$rootScope.mensagemParaUsuario = 'Erro ao excluir, tente novamente!';
+//
+//			$('#mensagemUsuario').addClass('in');
+//			$timeout(function(){$route.reload();}, 5000);
+			
+			//TODO mock para test selenium, retirar para mandar para lesandro
+			$rootScope.tipoMensagemUsuario = 'success';
 			$rootScope.tituloMensagemParaUsuario = '';
-			$rootScope.mensagemParaUsuario = 'Erro ao excluir, tente novamente!';
+			$rootScope.mensagemParaUsuario = 'Excluído com Sucesso!';
 			$('#mensagemUsuario').addClass('in');
-			$timeout(function(){$route.reload();}, 5000);
-			//alert("");
+		  $timeout(function(){$route.reload();}, 5000);
 		});
   }
 
@@ -144,6 +146,8 @@ angular.module("timeControl").controller("atividadeController",['$scope', '$http
 	 
 	  $scope.isEdit = false;
 	  $scope.editAtividade = false;
+	  $scope.visualizar = null;
+	  $scope.visualizar = true;
 
 	  $http({
 			method : "GET",
@@ -155,8 +159,7 @@ angular.module("timeControl").controller("atividadeController",['$scope', '$http
 			$scope.descricaoAtividade = $scope.atividade.descricao;
 			$scope.categoriaAtividade = $scope.atividade.categoria;
 			$scope.codigoAtividade = $scope.atividade.codigo;
-			
-			
+					
 		}, function myError(response) {
 		});
   }

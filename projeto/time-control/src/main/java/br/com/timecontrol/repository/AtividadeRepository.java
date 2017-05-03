@@ -7,14 +7,18 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Query;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import br.com.timecontrol.model.Atividade;
-import br.com.timecontrol.model.Usuario;
+import br.com.timecontrol.model.TempoInvestido;
 
 @Repository
 public class AtividadeRepository{
  
+	@Autowired 
+	TempoInvestidoRepository tempoInvestidoRepository;
+	
 	@PersistenceContext(type = PersistenceContextType.EXTENDED)
 	private EntityManager manager;
  
@@ -36,10 +40,10 @@ public class AtividadeRepository{
 	} 
  
 	@javax.transaction.Transactional
-	public void excluir(int codigo){
+	public void excluir(int codigo, int codigoUsuario){
  
 		Atividade atividade = this.consultarPorCodigo(codigo);
- 
+		
 		manager.remove(atividade);
  
 	}
