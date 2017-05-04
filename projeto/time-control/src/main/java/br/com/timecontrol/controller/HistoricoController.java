@@ -1,5 +1,8 @@
 package br.com.timecontrol.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -31,8 +34,8 @@ public class HistoricoController {
 	HistoricoRepository historicoRepository;
 
 	@RequestMapping(value = "/buscaHistorico/{codigo}", method = RequestMethod.GET)
-	public List<Historico> listarTodas(@PathVariable Integer codigo) {
-		
+	public List<Historico> listarTodas(@PathVariable Integer codigo) throws ParseException {
+			
 		TempoHistorico tempoH = new TempoHistorico();
 		inicializaDatas(tempoH);
 
@@ -99,9 +102,9 @@ public class HistoricoController {
 			return data.minusDays(1);
 		case "TUESDAY":
 			return data.minusDays(2);
-		case "FOURTH":
+		case "WEDNESDAY":
 			return data.minusDays(3);
-		case "FIFTH":
+		case "THURSDAY":
 			return data.minusDays(4);
 		case "FRIDAY":
 			return data.minusDays(5);
@@ -123,9 +126,9 @@ public class HistoricoController {
 			return data.plusDays(5);
 		case "TUESDAY":
 			return data.plusDays(4);
-		case "FOURTH":
-			return data.minusDays(3);
-		case "FIFTH":
+		case "WEDNESDAY":
+			return data.plusDays(3);
+		case "THURSDAY":
 			return data.plusDays(2);
 		case "FRIDAY":
 			return data.plusDays(1);
@@ -165,6 +168,7 @@ public class HistoricoController {
 		calculaTempoInvestido(listSemanaAtual, atividade,"historico",tempoH);
 		String semanaAtual = tempoH.getTempoInvestidoHoras() + ":" + tempoH.getTempoInvestidoMinutos();
 		reiniciarVariaveisTempoInvestido(tempoH);
+		
 
 		calculaTempoInvestido(listSemanaAnterior, atividade,"historico",tempoH);
 		String semanaAnterior = tempoH.getTempoInvestidoHoras() + ":" + tempoH.getTempoInvestidoMinutos();
@@ -187,8 +191,13 @@ public class HistoricoController {
 			if (tempo.getDataFim() != null && tempo.getDataInicio() != null && tempo.getAtividade().getCodigo() == atividade.getCodigo()) {
 				horas = (tempo.getDataFim().getTime() - tempo.getDataInicio().getTime()) / 3600000;
 				minutos = (tempo.getDataFim().getTime() - tempo.getDataInicio().getTime() - horas*3600000) / 60000;
+				if(minutos >= 60){
+					horas += 1;
+					minutos = minutos - 60; 
+				}
 				tempoInvestidoHoras += horas;
 				tempoInvestidoMinutos += minutos;
+				
 			
 				if(tipo.equals("relatorio")){
 					buscaDiaRelatorio(tempo, tempoH);
@@ -205,6 +214,8 @@ public class HistoricoController {
 	private void reiniciarVariaveisTempoInvestido(TempoHistorico tempoH){
 		tempoH.setHoras(0L);
 		tempoH.setMinutos(0L);
+		tempoH.setTempoInvestidoHoras(0L);
+		tempoH.setTempoInvestidoMinutos(0L);
 	}
 	
 	private void buscaDiaRelatorio(TempoInvestido tempo,TempoHistorico tempoH){
