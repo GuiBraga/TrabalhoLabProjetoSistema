@@ -17,33 +17,17 @@
   <section>
     <h1>Relatório</h1>
     <div>
-
-
   <section class="charts">
-    <!--  <div class="charts-semanais">
-        <h4>Ranking de atividades que demandaram mais tempo na semana atual</h4>
-            <div google-chart chart="rankingGrafico" class="col-md-12" style="height:200px"></div>
-      </div> -->
-
     <div ng-if="graficosPrioridadeAlta.length" class="charts-semanais">
       <h4>Horas Gastas na semana por atividades com TRABALHO</h4>
       <div ng-repeat="(key, grafico) in graficosPrioridadeAlta" google-chart chart="{{grafico}}" class="col-md-6 col-xs-12" style="height:200px"></div>
     </div>
-
-    <!-- <div ng-if="graficosPrioridadeMedia.length" class="row charts-semanais">
-      <h4>Horas Gastas na semana por atividades com LAZER</h4>
-      <div ng-repeat="(key, grafico) in graficosPrioridadeMedia" google-chart chart="{{grafico}}" class="col-md-6 col-xs-12" style="height:200px"></div>
-    </div> -->
-
     <div ng-if="graficosPrioridadeBaixa.length" class="charts-semanais">
       <h4>Horas Gastas na semana por atividades com LAZER</h4>
       <div ng-repeat="(key, grafico) in graficosPrioridadeBaixa" google-chart chart="{{grafico}}" class="col-md-6 col-xs-12" style="height:200px"></div>
     </div>
-
-
   </section>
   </div>
-  <!--<ui-confirmacao identificador="excluir"  fechar="Não"  confirmar="Sim"  titulo="Atenção" mensagem="Tem certeza que deseja excluir?"></ui-confirmacao> -->
   </section>
 
 </main>
