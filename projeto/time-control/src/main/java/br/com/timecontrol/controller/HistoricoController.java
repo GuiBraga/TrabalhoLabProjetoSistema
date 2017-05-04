@@ -35,7 +35,7 @@ public class HistoricoController {
 
 	@RequestMapping(value = "/buscaHistorico/{codigo}", method = RequestMethod.GET)
 	public List<Historico> listarTodas(@PathVariable Integer codigo) throws ParseException {
-			
+		
 		TempoHistorico tempoH = new TempoHistorico();
 		inicializaDatas(tempoH);
 
@@ -93,7 +93,7 @@ public class HistoricoController {
 
 	}
 
-	private LocalDate buscaDataInicioSemana(LocalDate data) {
+	public LocalDate buscaDataInicioSemana(LocalDate data) {
 
 		switch (data.getDayOfWeek().name()) {
 		case "SUNDAY":
@@ -117,7 +117,7 @@ public class HistoricoController {
 
 	}
 
-	private LocalDate buscaDataFimSemana(LocalDate data) {
+	public LocalDate buscaDataFimSemana(LocalDate data) {
 
 		switch (data.getDayOfWeek().name()) {
 		case "SUNDAY":
@@ -140,29 +140,29 @@ public class HistoricoController {
 		return data;
 	}
 
-	private void inicializaDatas(TempoHistorico tempoH) {
+	public void inicializaDatas(TempoHistorico tempoH) {//testado
 		LocalDate hoje = LocalDate.now();
 		LocalDate diaSemanaAnterior = hoje.minusWeeks(1);
 		LocalDate diaDuasSemanasAnteriores = hoje.minusWeeks(2);
 
-		tempoH.setDataInicioSemanaAtual(dataInicioSemana(hoje));
-		tempoH.setDataInicioSemanaAnterior(dataInicioSemana(diaSemanaAnterior));
-		tempoH.setDataInicioDuasSemanasAnteriores(dataInicioSemana(diaDuasSemanasAnteriores));
+		tempoH.setDataInicioSemanaAtual(convertDataInicioSemanaToDate(hoje));
+		tempoH.setDataInicioSemanaAnterior(convertDataInicioSemanaToDate(diaSemanaAnterior));
+		tempoH.setDataInicioDuasSemanasAnteriores(convertDataInicioSemanaToDate(diaDuasSemanasAnteriores));
 
-		tempoH.setDataFimSemanaAtual(dataFimSemana(hoje));
-		tempoH.setDataFimSemanaAnterior(dataFimSemana(diaSemanaAnterior));
-		tempoH.setDataFimDuasSemanasAnteriores(dataFimSemana(diaDuasSemanasAnteriores));
+		tempoH.setDataFimSemanaAtual(convertDataFimSemanaToDate(hoje));
+		tempoH.setDataFimSemanaAnterior(convertDataFimSemanaToDate(diaSemanaAnterior));
+		tempoH.setDataFimDuasSemanasAnteriores(convertDataFimSemanaToDate(diaDuasSemanasAnteriores));
 	}
 
-	private Date dataInicioSemana(LocalDate data) {
+	public Date convertDataInicioSemanaToDate(LocalDate data) {//testado
 		return Date.from(buscaDataInicioSemana(data).atStartOfDay(ZoneId.systemDefault()).toInstant());
 	}
 
-	private Date dataFimSemana(LocalDate data) {
+	public Date convertDataFimSemanaToDate(LocalDate data) {//testado
 		return Date.from(buscaDataFimSemana(data).atStartOfDay(ZoneId.systemDefault()).toInstant());
 	}
 
-	private Historico montaHistoricoAtividade(Atividade atividade, List<TempoInvestido> listSemanaAtual,
+	public Historico montaHistoricoAtividade(Atividade atividade, List<TempoInvestido> listSemanaAtual,
 			List<TempoInvestido> listSemanaAnterior, List<TempoInvestido> listDuasSemanasAnteriores,TempoHistorico tempoH) {
 
 		calculaTempoInvestido(listSemanaAtual, atividade,"historico",tempoH);
@@ -211,14 +211,14 @@ public class HistoricoController {
 		
 	}
 
-	private void reiniciarVariaveisTempoInvestido(TempoHistorico tempoH){
+	public void reiniciarVariaveisTempoInvestido(TempoHistorico tempoH){
 		tempoH.setHoras(0L);
 		tempoH.setMinutos(0L);
 		tempoH.setTempoInvestidoHoras(0L);
 		tempoH.setTempoInvestidoMinutos(0L);
 	}
 	
-	private void buscaDiaRelatorio(TempoInvestido tempo,TempoHistorico tempoH){
+	public void buscaDiaRelatorio(TempoInvestido tempo,TempoHistorico tempoH){
 
 		switch (tempo.getDataInicio().getDay()) {
 		case 0:

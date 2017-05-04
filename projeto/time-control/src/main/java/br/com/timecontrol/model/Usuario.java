@@ -35,6 +35,13 @@ public class Usuario{
 	}
 	
 	
+	public Usuario(String nome, String email, String profissao) {
+		super();
+		this.nome = nome;
+		this.email = email;
+		this.profissao = profissao;
+	}
+
 	public Integer getCodigo() {
 		return codigo;
 	}

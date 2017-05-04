@@ -1,7 +1,15 @@
-angular.module("timeControl").controller("relatoriosController", function($scope){
+angular.module("timeControl").controller("relatoriosController", ['$scope', '$http', '$rootScope', '$location','$route', function($scope, $http, $rootScope, $location,$route) {
 
 	$(document).ready(function(){
 		$('#mensagemUsuario').removeClass('in');
+	});
+	
+	$http({
+		method : "GET",
+		url : "http://localhost:8080/time-control/historico/buscaRelatorio/" + $rootScope.usuario.codigo
+	}).then(function mySucces(response) {
+		$scope.historicos = response.data;
+	}, function myError(response) {
 	});
 	
   $scope.atividades=[
@@ -217,4 +225,4 @@ angular.module("timeControl").controller("relatoriosController", function($scope
                $(img).css("width", $(img).attr("width")).css("height", $(img).attr("height"));
            });
        }
- });
+ }]);
