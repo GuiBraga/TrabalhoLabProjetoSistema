@@ -31,17 +31,17 @@ public class HistoricoController {
 	@Autowired
 	HistoricoRepository historicoRepository;
 
-	@RequestMapping(value = "/buscaHistorico/{codigo}", method = RequestMethod.GET)
-	public List<Historico> listarTodas(@PathVariable Integer codigo) throws ParseException {
+	@RequestMapping(value = "/buscaHistorico/{codigoUsuario}", method = RequestMethod.GET)
+	public List<Historico> listarTodas(@PathVariable Integer codigoUsuario) throws ParseException {
 		
 		TempoHistorico tempoH = new TempoHistorico();
 		inicializaDatas(tempoH);
 
-		List<Atividade> atividades = atividadeRepository.listarTodasPorUsuario(codigo);
+		List<Atividade> atividades = atividadeRepository.listarTodasPorUsuario(codigoUsuario);
 		List<Historico> historicos = new ArrayList<>();
-		List<TempoInvestido> tempoInvestidoSemanaAtual = historicoRepository.buscaHistorico(codigo,tempoH.getDataInicioSemanaAtual(), tempoH.getDataFimSemanaAtual());
-		List<TempoInvestido> tempoInvestidoSemanaAnterior = historicoRepository.buscaHistorico(codigo,tempoH.getDataInicioSemanaAnterior(), tempoH.getDataFimSemanaAnterior());
-		List<TempoInvestido> tempoInvestidoDuasSemanasAnteriores = historicoRepository.buscaHistorico(codigo,tempoH.getDataInicioDuasSemanasAnteriores(), tempoH.getDataFimDuasSemanasAnteriores());
+		List<TempoInvestido> tempoInvestidoSemanaAtual = historicoRepository.buscaHistorico(codigoUsuario,tempoH.getDataInicioSemanaAtual(), tempoH.getDataFimSemanaAtual());
+		List<TempoInvestido> tempoInvestidoSemanaAnterior = historicoRepository.buscaHistorico(codigoUsuario,tempoH.getDataInicioSemanaAnterior(), tempoH.getDataFimSemanaAnterior());
+		List<TempoInvestido> tempoInvestidoDuasSemanasAnteriores = historicoRepository.buscaHistorico(codigoUsuario,tempoH.getDataInicioDuasSemanasAnteriores(), tempoH.getDataFimDuasSemanasAnteriores());
 
 		for (Atividade atividade : atividades) {
 			Historico historico = montaHistoricoAtividade(atividade, tempoInvestidoSemanaAtual,tempoInvestidoSemanaAnterior, tempoInvestidoDuasSemanasAnteriores,tempoH);
@@ -51,8 +51,8 @@ public class HistoricoController {
 		return historicos;
 	}
 
-	@RequestMapping(value = "/buscaRelatorio/{codigo}", method = RequestMethod.GET)
-	public List<Relatorio> BuscaRelatorio(@PathVariable Integer codigo) {
+	@RequestMapping(value = "/buscaRelatorio/{codigoUsuario}", method = RequestMethod.GET)
+	public List<Relatorio> buscaRelatorio(@PathVariable Integer codigoUsuario) {
 		
 		TempoHistorico tempoH = new TempoHistorico();
 		String domingo;
@@ -65,10 +65,10 @@ public class HistoricoController {
 		
 		inicializaDatas(tempoH);
 
-		List<Atividade> atividades = atividadeRepository.listarTodasPorUsuario(codigo);
+		List<Atividade> atividades = atividadeRepository.listarTodasPorUsuario(codigoUsuario);
 		List<Relatorio> relatorios = new ArrayList<>();
 
-		List<TempoInvestido> tempoInvestidoSemanaAtual = historicoRepository.buscaHistorico(codigo,
+		List<TempoInvestido> tempoInvestidoSemanaAtual = historicoRepository.buscaHistorico(codigoUsuario,
 				tempoH.getDataInicioSemanaAtual(), tempoH.getDataFimSemanaAtual());
 
 		for (Atividade atividade : atividades) {
@@ -197,13 +197,13 @@ public class HistoricoController {
 				tempoInvestidoMinutos += minutos;
 				
 			
-				if(tipo.equals("relatorio")){
-					buscaDiaRelatorio(tempo, tempoH);
-				}
 				
 			}
 			tempoH.setTempoInvestidoHoras(tempoInvestidoHoras);
 			tempoH.setTempoInvestidoMinutos(tempoInvestidoMinutos);
+			if(tipo.equals("relatorio")){
+				buscaDiaRelatorio(tempo, tempoH);
+			}
 			
 		}
 		

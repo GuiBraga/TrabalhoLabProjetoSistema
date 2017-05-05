@@ -1,9 +1,13 @@
+
+import static org.junit.Assert.*;
+
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import br.com.timecontrol.controller.HistoricoController;
@@ -12,7 +16,6 @@ import br.com.timecontrol.model.Historico;
 import br.com.timecontrol.model.TempoHistorico;
 import br.com.timecontrol.model.TempoInvestido;
 import br.com.timecontrol.model.Usuario;
-import junit.framework.Assert;
 
 public class HistoricoTest {
 
@@ -21,10 +24,10 @@ public class HistoricoTest {
 		// Parte 1: Cenário
 		LocalDate hoje = LocalDate.now();
 		/*
-		 * Teste executado em uma quarta-feira. Logo o primeiro dia da semana é
-		 * no Domingo. 3 dias antes de quarta-feira.
+		 * Teste executado em uma quinta-feira. Logo o primeiro dia da semana é
+		 * no Domingo. 4 dias antes de quinta-feira.
 		 */
-		LocalDate inicioSemanaEsperado = hoje.minusDays(3);
+		LocalDate inicioSemanaEsperado = hoje.minusDays(4);
 
 		// Parte 2: Ação
 		HistoricoController historicoController = new HistoricoController();
@@ -39,10 +42,10 @@ public class HistoricoTest {
 		// Parte 1: Cenário
 		LocalDate hoje = LocalDate.now();
 		/*
-		 * Teste executado em uma quarta-feira. Logo o dia final da semana é no
-		 * Sábado. 3 dias após a quarta-feira.
+		 * Teste executado pela ultima vez em uma quinta-feira. Logo o dia final da semana é no
+		 * Sábado. 4 dias após a quinta-feira.
 		 */
-		LocalDate inicioSemanaEsperado = hoje.plusDays(3);
+		LocalDate inicioSemanaEsperado = hoje.plusDays(2);
 
 		// Parte 2: Ação
 		HistoricoController historicoController = new HistoricoController();
@@ -63,26 +66,26 @@ public class HistoricoTest {
 		TempoHistorico tempoGerado = new TempoHistorico();
 
 		/*
-		 * Teste executado em uma quarta-feira. Logo o primeiro dia da semana é
-		 * no Domingo. 3 dias antes de quarta-feira.
+		 * Teste executado pela ultima vez em uma quinta-feira. Logo o primeiro dia da semana é
+		 * no Domingo. 4 dias antes de quinta-feira.
 		 */
 		tempoEsperado.setDataInicioSemanaAtual(
-				Date.from(hoje.minusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant()));
+				Date.from(hoje.minusDays(4).atStartOfDay(ZoneId.systemDefault()).toInstant()));
 		tempoEsperado.setDataInicioSemanaAnterior(
-				Date.from(diaSemanaAnterior.minusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant()));
+				Date.from(diaSemanaAnterior.minusDays(4).atStartOfDay(ZoneId.systemDefault()).toInstant()));
 		tempoEsperado.setDataInicioDuasSemanasAnteriores(
-				Date.from(diaDuasSemanasAnteriores.minusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant()));
+				Date.from(diaDuasSemanasAnteriores.minusDays(4).atStartOfDay(ZoneId.systemDefault()).toInstant()));
 
 		/*
-		 * Teste executado em uma quarta-feira. Logo o dia final da semana é no
-		 * Sábado. 3 dias após a quarta-feira.
+		 * Teste executado pela ultima vez em uma quinta-feira. Logo o dia final da semana é no
+		 * Sábado. 4 dias após a quinta-feira.
 		 */
 		tempoEsperado
-				.setDataFimSemanaAtual(Date.from(hoje.plusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant()));
+				.setDataFimSemanaAtual(Date.from(hoje.plusDays(2).atStartOfDay(ZoneId.systemDefault()).toInstant()));
 		tempoEsperado.setDataFimSemanaAnterior(
-				Date.from(diaSemanaAnterior.plusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant()));
+				Date.from(diaSemanaAnterior.plusDays(2).atStartOfDay(ZoneId.systemDefault()).toInstant()));
 		tempoEsperado.setDataFimDuasSemanasAnteriores(
-				Date.from(diaDuasSemanasAnteriores.plusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant()));
+				Date.from(diaDuasSemanasAnteriores.plusDays(2).atStartOfDay(ZoneId.systemDefault()).toInstant()));
 
 		// Parte 2: Ação
 		HistoricoController historicoController = new HistoricoController();
@@ -106,10 +109,10 @@ public class HistoricoTest {
 		// Parte 1: Cenário
 		LocalDate hoje = LocalDate.now();
 		/*
-		 * Teste executado em uma quarta-feira. Logo o dia final da semana é no
-		 * sábado. 3 dias após a quarta-feira.
+		 * Teste executado em uma quinta-feira. Logo o dia final da semana é no
+		 * sábado. 4 dias após a quinta-feira.
 		 */
-		Date dataEsperada = Date.from(hoje.plusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date dataEsperada = Date.from(hoje.plusDays(2).atStartOfDay(ZoneId.systemDefault()).toInstant());
 
 		// Parte 2: Ação
 		HistoricoController historicoController = new HistoricoController();
@@ -124,10 +127,10 @@ public class HistoricoTest {
 		// Parte 1: Cenário
 		LocalDate hoje = LocalDate.now();
 		/*
-		 * Teste executado em uma quarta-feira. Logo o primeiro dia da semana é
-		 * no Domingo. 3 dias antes de quarta-feira.
+		 * Teste executado em uma quinta-feira. Logo o primeiro dia da semana é
+		 * no Domingo. 4 dias antes de quinta-feira.
 		 */
-		Date dataEsperada = Date.from(hoje.minusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date dataEsperada = Date.from(hoje.minusDays(4).atStartOfDay(ZoneId.systemDefault()).toInstant());
 
 		// Parte 2: Ação
 		HistoricoController historicoController = new HistoricoController();
@@ -148,36 +151,36 @@ public class HistoricoTest {
 		LocalDate diaSemanaAnterior = hoje.minusWeeks(1);
 		LocalDate diaDuasSemanasAnteriores = hoje.minusWeeks(2);
 
-		Date dataInicioSemanaAtual = Date.from(hoje.minusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date dataInicioSemanaAtual = Date.from(hoje.minusDays(4).atStartOfDay(ZoneId.systemDefault()).toInstant());
 		dataInicioSemanaAtual.setHours(12);
 		dataInicioSemanaAtual.setMinutes(00);
 		dataInicioSemanaAtual.setSeconds(00);
 
-		Date dataFimSemanaAtual = Date.from(hoje.minusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date dataFimSemanaAtual = Date.from(hoje.minusDays(4).atStartOfDay(ZoneId.systemDefault()).toInstant());
 		dataFimSemanaAtual.setHours(14);
 		dataFimSemanaAtual.setMinutes(00);
 		dataFimSemanaAtual.setSeconds(00);
 
 		Date dataInicioSemanaAnterior = Date
-				.from(diaSemanaAnterior.minusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant());
+				.from(diaSemanaAnterior.minusDays(4).atStartOfDay(ZoneId.systemDefault()).toInstant());
 		dataInicioSemanaAnterior.setHours(10);
 		dataInicioSemanaAnterior.setMinutes(30);
 		dataInicioSemanaAnterior.setSeconds(00);
 
 		Date dataFimSemanaAnterior = Date
-				.from(diaSemanaAnterior.minusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant());
+				.from(diaSemanaAnterior.minusDays(4).atStartOfDay(ZoneId.systemDefault()).toInstant());
 		dataFimSemanaAnterior.setHours(12);
 		dataFimSemanaAnterior.setMinutes(30);
 		dataFimSemanaAnterior.setSeconds(00);
 
 		Date dataInicioDuasSemanasAnteriores = Date
-				.from(diaDuasSemanasAnteriores.minusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant());
+				.from(diaDuasSemanasAnteriores.minusDays(4).atStartOfDay(ZoneId.systemDefault()).toInstant());
 		dataInicioDuasSemanasAnteriores.setHours(11);
 		dataInicioDuasSemanasAnteriores.setMinutes(10);
 		dataInicioDuasSemanasAnteriores.setSeconds(00);
 
 		Date dataFimDuasSemanasAnteriores = Date
-				.from(diaDuasSemanasAnteriores.minusDays(3).atStartOfDay(ZoneId.systemDefault()).toInstant());
+				.from(diaDuasSemanasAnteriores.minusDays(4).atStartOfDay(ZoneId.systemDefault()).toInstant());
 		dataFimDuasSemanasAnteriores.setHours(13);
 		dataFimDuasSemanasAnteriores.setMinutes(10);
 		dataFimDuasSemanasAnteriores.setSeconds(00);
@@ -220,47 +223,89 @@ public class HistoricoTest {
 	public void deveCalcularTempoInvestidoDaAtividade() {
 		// Parte 1: Cenário
 		Usuario usuario = new Usuario("Jusefina de Jesus Madalena", "juju.dalena@email.com", "Cozinheira de doces");
-
+		
 		Atividade atividade = new Atividade(usuario, "Correr", "Correr 1 KM em volta da orla da lagoa da pampulha", "Lazer");
-
+		
 		LocalDate hoje = LocalDate.now();
-
+		
 		Date dataInicio = Date.from(hoje.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		dataInicio.setHours(12);
 		dataInicio.setMinutes(00);
 		dataInicio.setSeconds(00);
-
+		
 		Date dataFim = Date.from(hoje.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		dataFim.setHours(14);
 		dataFim.setMinutes(00);
 		dataFim.setSeconds(00);
-
+		
 		Date dataInicio1 = Date.from(hoje.minusDays(4).atStartOfDay(ZoneId.systemDefault()).toInstant());
 		dataInicio1.setHours(12);
 		dataInicio1.setMinutes(30);
 		dataInicio1.setSeconds(00);
-
+		
 		Date dataFim1 = Date.from(hoje.minusDays(4).atStartOfDay(ZoneId.systemDefault()).toInstant());
 		dataFim1.setHours(14);
 		dataFim1.setMinutes(30);
 		dataFim1.setSeconds(00);
-
+		
 		TempoInvestido tempoInvestido = new TempoInvestido(atividade, dataInicio, dataFim, "Completar o km nesse tempo.");
 		TempoInvestido tempoInvestido1 = new TempoInvestido(atividade, dataInicio1, dataFim1, "Completar o km nesse tempo.");
 		List<TempoInvestido> temposInvestidos = new ArrayList<>();
 		temposInvestidos.add(tempoInvestido);
 		temposInvestidos.add(tempoInvestido1);
-
+		
 		TempoHistorico tempoH = new TempoHistorico();
-
+		
 		// Parte 2: Ação
 		HistoricoController historicoController = new HistoricoController();
 		historicoController.calculaTempoInvestido(temposInvestidos, atividade, "historico", tempoH);
 		String horasCalculadas = tempoH.getTempoInvestidoHoras() + ":" + tempoH.getTempoInvestidoMinutos();
 		String horasEsperadas = "4:0";
-
+		
 		// Parte 3: Validação
 		Assert.assertEquals(horasEsperadas, horasCalculadas);
+	}
+	@Test
+	public void deveCalcularTempoInvestidoDaAtividadeParaGeracaoDeRelatorio() {
+		// Parte 1: Cenário
+		Usuario usuario = new Usuario("Jusefina de Jesus Madalena", "juju.dalena@email.com", "Cozinheira de doces");
+		
+		Atividade atividade = new Atividade(usuario, "Correr", "Correr 1 KM em volta da orla da lagoa da pampulha", "Lazer");
+		
+		LocalDate hoje = LocalDate.now();
+		
+		Date dataInicio = Date.from(hoje.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		dataInicio.setHours(12);
+		dataInicio.setMinutes(00);
+		dataInicio.setSeconds(00);
+		
+		Date dataFim = Date.from(hoje.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		dataFim.setHours(14);
+		dataFim.setMinutes(00);
+		dataFim.setSeconds(00);
+		
+		TempoInvestido tempoInvestido = new TempoInvestido(atividade, dataInicio, dataFim, "Completar o km nesse tempo.");
+		List<TempoInvestido> temposInvestidos = new ArrayList<>();
+		temposInvestidos.add(tempoInvestido);
+		
+		TempoHistorico tempoEsperado = new TempoHistorico();
+		tempoEsperado.setQuintaHr(2L);
+		tempoEsperado.setQuintaMin(0L);
+		
+		TempoHistorico tempoGerado = new TempoHistorico();
+		
+		
+		// Parte 2: Ação
+		HistoricoController historicoController = new HistoricoController();
+		historicoController.calculaTempoInvestido(temposInvestidos, atividade, "relatorio", tempoGerado);
+		String horasCalculadas = tempoGerado.getTempoInvestidoHoras() + ":" + tempoGerado.getTempoInvestidoMinutos();
+		String horasEsperadas = "2:0";
+		
+		// Parte 3: Validação
+		Assert.assertEquals(horasEsperadas, horasCalculadas);
+		Assert.assertEquals(tempoEsperado.getQuintaHr(), tempoGerado.getQuintaHr());
+		Assert.assertEquals(tempoEsperado.getQuintaMin(), tempoGerado.getQuintaMin());
+		
 	}
 
 	@Test
@@ -287,5 +332,43 @@ public class HistoricoTest {
 		Assert.assertEquals(tempoEsperado.getMinutos(), tempoGerado.getMinutos());
 		Assert.assertEquals(tempoEsperado.getTempoInvestidoHoras(), tempoGerado.getTempoInvestidoHoras());
 		Assert.assertEquals(tempoEsperado.getTempoInvestidoMinutos(), tempoGerado.getTempoInvestidoMinutos());
+	}
+	
+	@Test
+	public void deveObeterOTempoInvestidoNoDiaDaSemanaParaGerarRelatorio(){
+		// Parte 1: Cenário
+		Usuario usuario = new Usuario("Jusefina de Jesus Madalena", "juju.dalena@email.com", "Cozinheira de doces");
+
+		Atividade atividade = new Atividade(usuario, "Correr", "Correr 1 KM em volta da orla da lagoa da pampulha", "Lazer");
+
+		LocalDate hoje = LocalDate.now();
+		Date dataInicio = Date.from(hoje.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		dataInicio.setHours(12);
+		dataInicio.setMinutes(00);
+		dataInicio.setSeconds(00);
+
+		Date dataFim = Date.from(hoje.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		dataFim.setHours(14);
+		dataFim.setMinutes(00);
+		dataFim.setSeconds(00);
+		
+		TempoInvestido tempoInvestido = new TempoInvestido(atividade, dataInicio, dataFim, "Completar o km nesse tempo.");
+		TempoHistorico tempoGerado = new TempoHistorico();
+		TempoHistorico tempoEsperado = new TempoHistorico();
+		
+		tempoEsperado.setQuintaHr(3L);
+		tempoEsperado.setQuintaMin(45L);
+		
+		tempoGerado.setTempoInvestidoHoras(3L);
+		tempoGerado.setTempoInvestidoMinutos(45L);
+		
+		//Parte 2: Ação
+		HistoricoController historicoController = new HistoricoController();
+		historicoController.buscaDiaRelatorio(tempoInvestido, tempoGerado);
+		
+		//Parte 3: Validação
+		Assert.assertEquals(tempoEsperado.getQuintaHr(), tempoGerado.getQuintaHr());
+		Assert.assertEquals(tempoEsperado.getQuintaMin(), tempoGerado.getQuintaMin());
+		
 	}
 }
