@@ -47,6 +47,7 @@ public class TempoInvestidoRepository{
 		return manager.createQuery("SELECT ti FROM TempoInvestido ti ", TempoInvestido.class).getResultList();	
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<TempoInvestido> listarTodosPorUsuario(Integer codigoUsuario) {
 		Query query = manager.createQuery("SELECT c FROM TempoInvestido c WHERE c.atividade.usuario.codigo = :codigoUsuario",
 				TempoInvestido.class);

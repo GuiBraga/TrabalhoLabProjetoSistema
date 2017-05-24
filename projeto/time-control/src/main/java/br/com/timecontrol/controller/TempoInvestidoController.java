@@ -15,13 +15,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.timecontrol.model.Atividade;
 import br.com.timecontrol.model.Evento;
 import br.com.timecontrol.model.TempoInvestido;
+import br.com.timecontrol.repository.AtividadeRepository;
 import br.com.timecontrol.repository.TempoInvestidoRepository;
 
 @RestController
 @RequestMapping("/tempoinvestido")
 public class TempoInvestidoController {
+	
+	@Autowired
+	AtividadeRepository atividadeRepository;
 
 	@Autowired
 	TempoInvestidoRepository tempoInvestidoRepository;
@@ -53,11 +58,13 @@ public class TempoInvestidoController {
 	public ResponseEntity<TempoInvestido> criar(@RequestBody TempoInvestido tempoInvestido) {
 
 		try {
-			
+			Atividade atividade = atividadeRepository.buscarAtividadePorNome(tempoInvestido.getAtividade().getNome());
+			tempoInvestido.setAtividade(atividade);
 			tempoInvestidoRepository.salvar(tempoInvestido);
 			
 		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			throw e;
+			//return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>(tempoInvestido, HttpStatus.OK);
 	}
