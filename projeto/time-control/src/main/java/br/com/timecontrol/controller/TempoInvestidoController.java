@@ -63,8 +63,7 @@ public class TempoInvestidoController {
 			tempoInvestidoRepository.salvar(tempoInvestido);
 			
 		} catch (Exception e) {
-			throw e;
-			//return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<>(tempoInvestido, HttpStatus.OK);
 	}

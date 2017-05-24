@@ -47,6 +47,7 @@ public class AtividadeRepository{
  
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Atividade> listarTodasPorUsuario(Integer codigoUsuario) {
 		Query query = manager.createQuery("SELECT c FROM Atividade c WHERE c.usuario.codigo = :codigoUsuario",
 				Atividade.class);
