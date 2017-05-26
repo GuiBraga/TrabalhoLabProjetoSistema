@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="css/sistema.css">
+<script src="js/sistema/init.js" charset="utf-8"></script>
+<div ng-include="'layout/sistema/header.html'" ></div>
+<div ng-include="'layout/sistema/atividades/modal-atividade.html'" ></div>
+<div ng-include="'layout/sistema/tempo_investido/modal-tempo-investido.html'" ></div>
+
+  <div ng-include="'layout/sistema/menu.html'" ></div>
+
+
+<main>
+<!--<div class="alert alert-{{tipoMensagemUsuario}} alert-dismissible fade in" id="mensagemUsuario" role="alert">
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">×</span>
+         </button>
+         <strong>{{tituloMensagemParaUsuario}}</strong>
+          {{mensagemParaUsuario}}
+        </div> -->
+  <section>
+
+    <h1>Relatório - Lista de Atividades</h1>
+    <button class="btn btn-secundario btn-radius align-right navbar-right btn-pesquisar" ng-click="mostrarAtividadesMarcadas()" type="button">Filtrar</button>
+
+    <p>{{todosNomesMarcados}}</p>
+    <table class="table table-condensed table-hover">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Nome Atividade</th>
+        <th>Descri&ccedil;&atilde;o Atividade</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="atividade in atividades">
+        <td>
+          <input type=checkbox ng-checked="isMarcado(atividade)" value="{{atividade.nome}}" ng-click="marcar(atividade)"/>
+        </td>
+        <td>{{atividade["nome"]}}</td>
+        <td>{{atividade["descricao"]}}</td>
+
+      </tr>
+
+    </tbody>
+  </table>
+  <ui-confirmacao identificador="excluir"  idexcluir="{{idExcluir}}" callback="callbackModal" fechar="Não"  confirmar="Sim"  titulo="Atenção" mensagem="Tem certeza que deseja excluir?"></ui-confirmacao>
+  </section>
+
+</main>

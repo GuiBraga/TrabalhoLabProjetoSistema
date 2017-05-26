@@ -43,6 +43,11 @@ angular.module("timeControl").config(['$routeProvider', function($routeProvider)
         templateUrl: "layout/sistema/historico/lista-historico.html",
         controller: "historicoController",
     });
+    
+    $routeProvider.when("/relatoriosAtividades", {
+        templateUrl: "layout/sistema/relatorios/lista-atividade.html",
+        controller: "relatorioAtividadeController",
+    });
 
     $routeProvider.when("/relatorios", {
         templateUrl: "layout/sistema/relatorios/lista-relatorios.html",

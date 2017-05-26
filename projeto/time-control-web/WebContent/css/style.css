@@ -95,3 +95,11 @@ border-width: 2px;
 .esconde{
 	display:none;
 }
+
+.btn-pesquisar{
+  margin-right: 0;
+}
+
+ul > ul{
+    margin-left: 20px !important;
+}
