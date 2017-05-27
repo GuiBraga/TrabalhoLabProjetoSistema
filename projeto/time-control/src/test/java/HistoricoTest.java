@@ -371,23 +371,7 @@ public class HistoricoTest {
 		Assert.assertEquals(tempoEsperado.getQuintaMin(), tempoGerado.getQuintaMin());
 		
 	}
-	
-	/*
-	 * public String somarHorasInvestidas(TempoHistorico tempoH){ Long horas,
-	 * minutos; horas = tempoH.getDomingoHr() + tempoH.getSegundaHr() +
-	 * tempoH.getTercaHr() + tempoH.getQuartaHr() + tempoH.getQuintaHr() +
-	 * tempoH.getSextaHr() + tempoH.getSabadoHr();
-	 * 
-	 * minutos = tempoH.getDomingoMin() + tempoH.getSegundaMin() +
-	 * tempoH.getTercaMin() + tempoH.getQuartaMin() + tempoH.getQuintaMin() +
-	 * tempoH.getSextaMin() + tempoH.getSabadoMin();
-	 * 
-	 * return horas + ":" + minutos;
-	 * 
-	 * 
-	 * }
-	 */
-	
+		
 	@Test
 	public void deveSomarTempoInvestidoPorAtividade() {
 		// Parte 1: Cenário
@@ -408,12 +392,10 @@ public class HistoricoTest {
 		tempoEsperado.setSabadoMin(0L);
 		tempoEsperado.setDomingoMin(0L);
 		
-		
-
 		// Parte 2: Ação
 		HistoricoController historicoController = new HistoricoController();
 		
 		// Parte 3: Validação
-		Assert.assertEquals(historicoController.somarHorasInvestidas(tempoEsperado), "10:00");
+		Assert.assertEquals(historicoController.somarHorasInvestidas(tempoEsperado), "14:00");
 	}
 }
