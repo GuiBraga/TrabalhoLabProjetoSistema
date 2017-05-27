@@ -178,59 +178,5 @@ angular.module("timeControl").controller("relatoriosController", ['$scope', '$ht
 			$(img).css("width", $(img).attr("width")).css("height", $(img).attr("height"));
 		});
 	}
-	
-	
-	
-//  $scope.atividades=[
-//    {
-//    "id": 1,
-//    "nomeAtividade": "ler",
-//    "prioridadeAtividade": "0",
-//    "totalGastoSegunda": "13.00",
-//    "totalGastoTerca": "20.00",
-//    "totalGastoQuarta": "8.00",
-//    "totalGastoQuinta": "10.00",
-//    "totalGastoSexta": "10.00",
-//    "totalGastoSabado": "10.00",
-//    "totalGastoDomingo": "10.00",
-//  },
-//  {
-//    "id": 2,
-//    "nomeAtividade": "estudar",
-//    "prioridadeAtividade": "1",
-//    "totalGastoSegunda": "10.00",
-//    "totalGastoTerca": "10.00",
-//    "totalGastoQuarta": "10.00",
-//    "totalGastoQuinta": "10.00",
-//    "totalGastoSexta": "6.00",
-//    "totalGastoSabado": "19.00",
-//    "totalGastoDomingo": "21.00",
-//  },
-//  {
-//    "id": 3,
-//    "nomeAtividade": "academia",
-//    "prioridadeAtividade": "2",
-//    "totalGastoSegunda": "10.00",
-//    "totalGastoTerca": "10.00",
-//    "totalGastoQuarta": "1.00",
-//    "totalGastoQuinta": "0.00",
-//    "totalGastoSexta": "10.00",
-//    "totalGastoSabado": "14.00",
-//    "totalGastoDomingo": "10.00",
-//  },
-//  {
-//    "id": 4,
-//    "nomeAtividade": "correr",
-//    "prioridadeAtividade": "2",
-//    "totalGastoSegunda": "10.00",
-//    "totalGastoTerca": "10.00",
-//    "totalGastoQuarta": "1.00",
-//    "totalGastoQuinta": "1.00",
-//    "totalGastoSexta": "10.00",
-//    "totalGastoSabado": "17.00",
-//    "totalGastoDomingo": "10.00",
-//    }
-//  ];
-
       
  }]);
