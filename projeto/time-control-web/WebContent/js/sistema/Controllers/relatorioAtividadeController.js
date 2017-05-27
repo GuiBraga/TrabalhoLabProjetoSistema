@@ -43,7 +43,7 @@ $scope.isMarcado = function(atividade){
 $scope.mostrarTodasAtividades = function(){
 	$scope.todasAtividades = true;
 	$scope.atividadesMarcadas = false;
-	$scope.marcados =[];
+	$scope.marcados = [];
 	$http({
 		method : "GET",
 		url : "http://localhost:8080/time-control/historico/buscaRelatorio/" + $rootScope.usuario.codigo
