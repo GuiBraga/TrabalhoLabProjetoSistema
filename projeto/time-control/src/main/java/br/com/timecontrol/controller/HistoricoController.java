@@ -55,14 +55,6 @@ public class HistoricoController {
 	public List<Relatorio> buscaRelatorio(@PathVariable Integer codigoUsuario) {
 		
 		TempoHistorico tempoH = new TempoHistorico();
-		String domingo;
-		String segunda;
-		String terca;
-		String quarta;
-		String quinta;
-		String sexta;
-		String sabado;
-		
 		inicializaDatas(tempoH);
 
 		List<Atividade> atividades = atividadeRepository.listarTodasPorUsuario(codigoUsuario);
@@ -75,15 +67,16 @@ public class HistoricoController {
 			calculaTempoInvestido(tempoInvestidoSemanaAtual, atividade,"relatorio",tempoH);
 			reiniciarVariaveisTempoInvestido(tempoH);
 			
-			domingo = tempoH.getDomingoHr() + ":" + tempoH.getDomingoMin();
-			segunda = tempoH.getSegundaHr() + ":" + tempoH.getSegundaMin();
-			terca = tempoH.getTercaHr() + ":" + tempoH.getTercaMin();
-			quarta = tempoH.getQuartaHr() + ":" + tempoH.getQuartaMin();
-			quinta = tempoH.getQuintaHr() + ":" + tempoH.getQuintaMin();
-			sexta = tempoH.getSextaHr() + ":" + tempoH.getSextaMin();
-			sabado = tempoH.getSabadoHr() + ":" + tempoH.getSabadoMin();
+			String domingo = tempoH.getDomingoHr() + ":" + tempoH.getDomingoMin();
+			String segunda = tempoH.getSegundaHr() + ":" + tempoH.getSegundaMin();
+			String terca = tempoH.getTercaHr() + ":" + tempoH.getTercaMin();
+			String quarta = tempoH.getQuartaHr() + ":" + tempoH.getQuartaMin();
+			String quinta = tempoH.getQuintaHr() + ":" + tempoH.getQuintaMin();
+			String sexta = tempoH.getSextaHr() + ":" + tempoH.getSextaMin();
+			String sabado = tempoH.getSabadoHr() + ":" + tempoH.getSabadoMin();
+			String tempoInvestidoTotal = somarHorasInvestidas(tempoH);
 
-			Relatorio relatorio = new Relatorio(atividade, domingo, segunda, terca, quarta, quinta, sexta, sabado);
+			Relatorio relatorio = new Relatorio(atividade, domingo, segunda, terca, quarta, quinta, sexta, sabado, tempoInvestidoTotal);
 			relatorios.add(relatorio);
 		}
 
@@ -250,5 +243,18 @@ public class HistoricoController {
 		default:
 			break;
 		}
+	}
+	
+	public String somarHorasInvestidas(TempoHistorico tempoH){
+		Long horas, minutos;
+		horas = tempoH.getDomingoHr() + tempoH.getSegundaHr() + tempoH.getTercaHr()
+		+ tempoH.getQuartaHr() + tempoH.getQuintaHr() + tempoH.getSextaHr() + tempoH.getSabadoHr();
+		
+		minutos = tempoH.getDomingoMin() + tempoH.getSegundaMin() + tempoH.getTercaMin()
+		+ tempoH.getQuartaMin() + tempoH.getQuintaMin() + tempoH.getSextaMin() + tempoH.getSabadoMin();
+		
+		return horas + ":" + minutos;
+		
+		
 	}
 }

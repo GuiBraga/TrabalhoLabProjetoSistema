@@ -10,6 +10,8 @@ public class Relatorio {
 	String quinta;
 	String sexta;
 	String sabado;
+	String tempoInvestidoTotal;
+	
 	public Atividade getAtividade() {
 		return atividade;
 	}
@@ -58,8 +60,14 @@ public class Relatorio {
 	public void setSabado(String sabado) {
 		this.sabado = sabado;
 	}
+	public String getTempoInvestidoTotal() {
+		return tempoInvestidoTotal;
+	}
+	public void setTempoInvestidoTotal(String tempoInvestidoTotal) {
+		this.tempoInvestidoTotal = tempoInvestidoTotal;
+	}
 	public Relatorio(Atividade atividade, String domingo, String segunda, String terca, String quarta, String quinta,
-			String sexta, String sabado) {
+			String sexta, String sabado, String tempoInvestidoTotal) {
 		super();
 		this.atividade = atividade;
 		this.domingo = domingo;
@@ -69,6 +77,7 @@ public class Relatorio {
 		this.quinta = quinta;
 		this.sexta = sexta;
 		this.sabado = sabado;
+		this.tempoInvestidoTotal = tempoInvestidoTotal;
 	}
 	
 	
